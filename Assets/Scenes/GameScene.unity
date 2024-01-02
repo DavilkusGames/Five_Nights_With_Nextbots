@@ -662,6 +662,7 @@ GameObject:
   - component: {fileID: 70419205}
   - component: {fileID: 70419204}
   - component: {fileID: 70419206}
+  - component: {fileID: 70419207}
   m_Layer: 5
   m_Name: camRightBtn
   m_TagString: Untagged
@@ -745,10 +746,10 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 311925046}
-          m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
-          m_MethodName: SetRightBtnState
-          m_Mode: 6
+        - m_Target: {fileID: 70419207}
+          m_TargetAssemblyTypeName: CameraControlBtn, Assembly-CSharp
+          m_MethodName: ButtonHover
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -757,22 +758,36 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-  - eventID: 1
+  - eventID: 4
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 311925046}
-          m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
-          m_MethodName: SetRightBtnState
-          m_Mode: 6
+        - m_Target: {fileID: 70419207}
+          m_TargetAssemblyTypeName: CameraControlBtn, Assembly-CSharp
+          m_MethodName: ButtonPressed
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
+--- !u!114 &70419207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70419202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 013816e49ee6036419febd1c9942f7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 311925046}
+  id: 1
 --- !u!1 &79067468
 GameObject:
   m_ObjectHideFlags: 1
@@ -1199,6 +1214,7 @@ GameObject:
   - component: {fileID: 125542178}
   - component: {fileID: 125542177}
   - component: {fileID: 125542179}
+  - component: {fileID: 125542180}
   m_Layer: 5
   m_Name: camLeftBtn
   m_TagString: Untagged
@@ -1282,10 +1298,10 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 311925046}
-          m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
-          m_MethodName: SetLeftBtnState
-          m_Mode: 6
+        - m_Target: {fileID: 125542180}
+          m_TargetAssemblyTypeName: CameraControlBtn, Assembly-CSharp
+          m_MethodName: ButtonHover
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1294,22 +1310,36 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-  - eventID: 1
+  - eventID: 4
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 311925046}
-          m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
-          m_MethodName: SetLeftBtnState
-          m_Mode: 6
+        - m_Target: {fileID: 125542180}
+          m_TargetAssemblyTypeName: CameraControlBtn, Assembly-CSharp
+          m_MethodName: ButtonPressed
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
+--- !u!114 &125542180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125542175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 013816e49ee6036419febd1c9942f7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 311925046}
+  id: 0
 --- !u!1 &133474984
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,14 +3125,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311925042}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.008726558, z: 0, w: 0.999962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 934050995}
   m_Father: {fileID: 1547143946}
-  m_LocalEulerAnglesHint: {x: 0, y: 1, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &311925046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3117,7 +3147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveRightBtn: {fileID: 70419202}
   moveLeftBtn: {fileID: 125542175}
-  rotSpeed: 50
+  rotSpeed: 1
   minX: 0
   maxX: 72
 --- !u!114 &311925047
@@ -7638,6 +7668,34 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999661
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.00043157782
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.008228652
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.000058010355
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.943
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14613,7 +14671,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547143945}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19373,6 +19431,134 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059703578}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2085578462
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2085578464}
+  - component: {fileID: 2085578463}
+  m_Layer: 0
+  m_Name: source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &2085578463
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085578462}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &2085578464
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085578462}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2114953152
 GameObject:
   m_ObjectHideFlags: 1
@@ -19962,3 +20148,4 @@ SceneRoots:
   - {fileID: 67004487}
   - {fileID: 500784381}
   - {fileID: 1922677907}
+  - {fileID: 2085578464}

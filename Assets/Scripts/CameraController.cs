@@ -9,38 +9,38 @@ public class CameraController : MonoBehaviour
     public float maxX = 0f;
 
     private Transform trans;
-    private float rotVectorY = 0f;
+    private Quaternion startRot;
+    private Quaternion targetRot;
+    private float rotProgress = 0f;
+    private bool isRotating = false;
 
     void Start()
     {
         trans = transform;
     }
 
-    private float ClampAngle(float angle, float from, float to)
+    void Update()
     {
-        if (angle < 0f) angle = 360 + angle;
-        if (angle > 180f) return Mathf.Max(angle, 360 + from);
-        return Mathf.Min(angle, to);
-    }
-
-    void FixedUpdate()
-    {
-        if (rotVectorY != 0f)
+        if (isRotating)
         {
-            trans.Rotate(0f, rotVectorY * Time.fixedDeltaTime, 0f, Space.Self);
-            trans.eulerAngles = new Vector3(0f, ClampAngle(trans.eulerAngles.y, minX, maxX), 0f);
-            moveLeftBtn.SetActive(trans.eulerAngles.y > minX+0.01f);
-            moveRightBtn.SetActive(trans.eulerAngles.y < maxX-0.01f);
+            if (rotProgress >= 1f)
+            {
+                isRotating = false;
+                rotProgress = 1f;
+            }
+            trans.localRotation = Quaternion.Lerp(startRot, targetRot, rotProgress);
+            rotProgress += rotSpeed * Time.deltaTime;
         }
     }
 
-    public void SetRightBtnState(bool pressed)
+    public void ControlBtnPressed(int id)
     {
-        rotVectorY = ((pressed) ? rotSpeed : 0f);
-    }
-
-    public void SetLeftBtnState(bool pressed)
-    {
-        rotVectorY = ((pressed) ? -rotSpeed : 0f);
+        if (isRotating) rotProgress = 1f - rotProgress;
+        else rotProgress = 0f;
+        startRot = Quaternion.Euler(0f, (id == 1 ? minX : maxX), 0f);
+        targetRot = Quaternion.Euler(0f, (id == 1 ? maxX : minX), 0f);
+        isRotating = true;
+        moveRightBtn.SetActive((id == 0));
+        moveLeftBtn.SetActive((id == 1));
     }
 }
