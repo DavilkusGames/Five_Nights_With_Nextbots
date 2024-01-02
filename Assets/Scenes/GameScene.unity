@@ -3133,7 +3133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: daab9b1deab1f7645bb08133e4cdbae8, type: 3}
-  brightness: 1.5
+  brightness: 1.75
 --- !u!1 &315527057
 GameObject:
   m_ObjectHideFlags: 1
@@ -14300,7 +14300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -234, y: -54.000244}
+  m_AnchoredPosition: {x: -234, y: -54.00023}
   m_SizeDelta: {x: 500, y: -220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1539820579
