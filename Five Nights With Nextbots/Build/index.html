@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Five Nights With Nextbots</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+
+    <script type="text/javascript" src="./Web Audio Plugin/howler.min.js"></script>
+    <script type="text/javascript" src="./Web Audio Plugin/WebAudio.js"></script>
+
+    <!-- Yandex Games SDK -->
+    <script src="https://yandex.ru/games/sdk/v2"></script>
+</head>
+<body class="dark">
+    <div id="unity-container" class="unity-desktop">
+        <canvas id="unity-canvas"></canvas>
+    </div>
+    <div id="loading-cover" style="display:none;">
+        <div id="unity-loading-bar">
+            <div id="unity-logo"><img src="logo.png"></div>
+            <div id="unity-progress-bar-empty" style="display: none;">
+                <div id="unity-progress-bar-full"></div>
+            </div>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <script>
+        const hideFullScreenButton = "";
+        const buildUrl = "Build";
+        const loaderUrl = buildUrl + "/Build.loader.js";
+        const config = {
+            dataUrl: buildUrl + "/Build.data.unityweb",
+            frameworkUrl: buildUrl + "/Build.framework.js.unityweb",
+            codeUrl: buildUrl + "/Build.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+            companyName: "1Pixel Games",
+            productName: "Five Nights With Nextbots",
+            productVersion: "1.0.0.0",
+        };
+
+        const container = document.querySelector("#unity-container");
+        const canvas = document.querySelector("#unity-canvas");
+        const loadingCover = document.querySelector("#loading-cover");
+        const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
+        const progressBarFull = document.querySelector("#unity-progress-bar-full");
+        const spinner = document.querySelector('.spinner');
+
+        const canFullscreen = (function () {
+            for (const key of [
+                'exitFullscreen',
+                'webkitExitFullscreen',
+                'webkitCancelFullScreen',
+                'mozCancelFullScreen',
+                'msExitFullscreen',
+            ]) {
+                if (key in document) {
+                    return true;
+                }
+            }
+            return false;
+        }());
+
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            container.className = "unity-mobile";
+        }
+
+        var backgroundUnity = "url('" + buildUrl + "/Build.jpg') center / cover";
+        canvas.style.background = "url('background.jpg') center / cover";
+
+        loadingCover.style.display = "";
+
+        canvas.addEventListener("touchstart", () => { window.focus() });
+        canvas.addEventListener("pointerdown", () => { window.focus() });
+
+        let myGameInstance = null;
+
+        const script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+            createUnityInstance(canvas, config, (progress) => {
+                spinner.style.display = "none";
+                progressBarEmpty.style.display = "";
+                progressBarFull.style.width = `${100 * progress}%`;
+            }).then((unityInstance) => {
+                myGameInstance = unityInstance;
+                loadingCover.style.display = "none";
+            }).catch((message) => {
+                alert(message);
+            });
+        };
+
+        var player;
+        var lb;
+
+        InitYandex();
+
+        function InitYandex() {
+            YaGames.init()
+                .then(ysdk => {
+                    console.log('Yandex SDK Initialized');
+                    window.ysdk = ysdk;
+                    ysdk.adv.showFullscreenAdv();
+                    InitPlayer();
+                    InitLb();
+                });
+        }
+
+        function InitPlayer() {
+            return ysdk.getPlayer().then(_player => {
+                console.log('Player Initialized');
+                player = _player;
+
+                return player;
+            });
+        }
+
+        function InitLb() {
+            ysdk.getLeaderboards()
+                .then(_lb => lb = _lb);
+            console.log('Leaderboard Initialized');
+        }
+
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>
