@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanDebug: 1
   CanValidate: 1
-  _database: {fileID: 0}
+  _database: {fileID: 11400000, guid: cec7f8dc7756c784ba1e1c546e3285d1, type: 2}
