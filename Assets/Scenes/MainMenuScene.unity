@@ -4037,8 +4037,8 @@ MonoBehaviour:
   textures:
   - {fileID: 2800000, guid: 51a06423c4285514992bb49161fe868b, type: 3}
   - {fileID: 2800000, guid: 726944863644fcf448f0895705677c99, type: 3}
-  - {fileID: 2800000, guid: 1b828b20638a6f04eb38df12a5fdbcca, type: 3}
-  - {fileID: 2800000, guid: 927d6c305e05fdc43b02d174945e41dd, type: 3}
+  - {fileID: 2800000, guid: 81cd147b9f301cb41b11bd5505a37ca8, type: 3}
+  - {fileID: 2800000, guid: b44ffa376a146634d993cd19cf7ab198, type: 3}
   minDelay: 3
   maxDelay: 5
   minShowtime: 0.1
