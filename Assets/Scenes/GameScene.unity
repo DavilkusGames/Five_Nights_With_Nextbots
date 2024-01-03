@@ -2168,7 +2168,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1921997047}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7c23315e749fadd4394d2b9bbe9c46f9, type: 3}
       propertyPath: m_LocalScale.x
@@ -2176,15 +2176,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c23315e749fadd4394d2b9bbe9c46f9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1.5000001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c23315e749fadd4394d2b9bbe9c46f9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 1.5000001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c23315e749fadd4394d2b9bbe9c46f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.46
+      value: -5.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c23315e749fadd4394d2b9bbe9c46f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2192,7 +2192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c23315e749fadd4394d2b9bbe9c46f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.84
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c23315e749fadd4394d2b9bbe9c46f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2204,7 +2204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c23315e749fadd4394d2b9bbe9c46f9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c23315e749fadd4394d2b9bbe9c46f9, type: 3}
       propertyPath: m_LocalRotation.z
@@ -12761,6 +12761,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784060785}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &787839115 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7c23315e749fadd4394d2b9bbe9c46f9, type: 3}
+  m_PrefabInstance: {fileID: 109678337}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &792898240
 GameObject:
   m_ObjectHideFlags: 1
@@ -15823,6 +15828,7 @@ GameObject:
   - component: {fileID: 980756123}
   - component: {fileID: 980756122}
   - component: {fileID: 980756121}
+  - component: {fileID: 980756124}
   m_Layer: 0
   m_Name: Obunga
   m_TagString: Untagged
@@ -15895,6 +15901,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &980756124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980756119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb21cb791ac0d7349b42679f32e006f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &981935776
 GameObject:
   m_ObjectHideFlags: 0
@@ -28722,28 +28740,24 @@ MonoBehaviour:
   nextbots:
   - name: Obunga
     obj: {fileID: 980756119}
-    trans: {fileID: 980756123}
     screamer: {fileID: 1493421130}
     screamerTime: 1.5
-    nodesT: []
+    perNightAI: 
   - name: Smile
     obj: {fileID: 1144609516}
-    trans: {fileID: 1144609519}
     screamer: {fileID: 1894790204}
     screamerTime: 1.5
-    nodesT: []
+    perNightAI: 
   - name: Amogus
     obj: {fileID: 1169168773}
-    trans: {fileID: 1169168776}
     screamer: {fileID: 2012978045}
     screamerTime: 1
-    nodesT: []
+    perNightAI: 
   - name: Sanic
     obj: {fileID: 1794906842}
-    trans: {fileID: 1794906845}
     screamer: {fileID: 2004432869}
     screamerTime: 1.7
-    nodesT: []
+    perNightAI: 
 --- !u!114 &1795527170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31058,6 +31072,7 @@ Transform:
   - {fileID: 35384286}
   - {fileID: 1329142202}
   - {fileID: 363291115}
+  - {fileID: 787839115}
   m_Father: {fileID: 1522647504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1922677905
@@ -34371,4 +34386,3 @@ SceneRoots:
   - {fileID: 1287995360}
   - {fileID: 724748124}
   - {fileID: 45581298}
-  - {fileID: 109678337}
