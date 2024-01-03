@@ -2,46 +2,48 @@ using UnityEngine;
 
 public class CCTVCamCntrl : MonoBehaviour
 {
-    public bool isRotating = true;
+    public bool canRotate = true;
     public float minRot = -90f;
     public float maxRot = 90f;
     public float rotSpeed = 4.0f;
     public float rotDelay = 1f;
-    public int rotDir = -1;
+    public int rotDir = 1;
 
     private Transform trans;
-    private float rot = 0f;
+    private Quaternion startRot;
+    private Quaternion targetRot;
+    private float rotProgress = 0f;
+    private float rotY = 0f;
+    private bool isRotating = false;
 
     void Start()
     {
         trans = transform;
-        rot = trans.localRotation.x;
+        rotY = transform.eulerAngles.x;
+        SwitchDirTimer();
     }
 
     void FixedUpdate()
     {
-        if (isRotating)
+        if (canRotate && isRotating)
         {
-            trans.Rotate(0f, rotSpeed * rotDir * Time.fixedDeltaTime, 0f, Space.World);
-            //Debug.Log(trans.eulerAngles.y);
-            if (rotDir == -1 && trans.eulerAngles.y < minRot + 0.01f)
+            if (rotProgress >= 1f)
             {
-                rotDir = 1;
                 isRotating = false;
-                Invoke(nameof(RotateDelayTimer), rotDelay);
+                rotProgress = 1f;
+                rotDir *= -1;
+                Invoke(nameof(SwitchDirTimer), rotDelay);
             }
-
-            if (rotDir == 1 && trans.eulerAngles.y > maxRot - 0.01f)
-            {
-                rotDir = -1;
-                isRotating = false;
-                Invoke(nameof(RotateDelayTimer), rotDelay);
-            }
+            trans.localRotation = Quaternion.Lerp(startRot, targetRot, rotProgress);
+            rotProgress += rotSpeed * Time.deltaTime;
         }
     }
 
-    private void RotateDelayTimer()
+    private void SwitchDirTimer()
     {
+        rotProgress = 0f;
+        startRot = Quaternion.Euler(rotY, (rotDir == 1 ? minRot : maxRot), 0f);
+        targetRot = Quaternion.Euler(rotY, (rotDir == 1 ? maxRot : minRot), 0f);
         isRotating = true;
     }
 }
