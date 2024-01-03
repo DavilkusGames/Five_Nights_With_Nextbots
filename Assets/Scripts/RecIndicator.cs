@@ -7,6 +7,7 @@ public class RecIndicator : MonoBehaviour
     public GameObject obj;
     private float nextStateChangeTime = 0f;
     private bool state = true;
+    private int statePoints = 0;
     private bool isEnabled = true;
 
     void Update()
@@ -21,7 +22,9 @@ public class RecIndicator : MonoBehaviour
 
     public void SetState(bool state)
     {
-        isEnabled = state;
+        if (state) statePoints++;
+        else statePoints--;
+        isEnabled = (statePoints == 0);
         if (!isEnabled)
         {
             this.state = false;

@@ -9,6 +9,7 @@ public class DoorCntrl : MonoBehaviour
     public MeshRenderer lightBtn;
     public Material[] doorBtnMats;
     public Material[] lightBtnMats;
+    public RecIndicator officeRecIndBehindDoor;
     public GameObject light;
     public GameObject blackImitation;
     public SourceAudio lightAudio;
@@ -52,12 +53,14 @@ public class DoorCntrl : MonoBehaviour
         if (isClosed) ToggleDoor(true);
         if (isLightOn) ToggleLight();
         this.enabled = false;
+        officeRecIndBehindDoor.SetState(false);
     }
 
     public void GameOver()
     {
         if (isLightOn) ToggleLight();
         this.enabled = false;
+        officeRecIndBehindDoor.SetState(false);
     }
 
     public void ToggleDoor(bool isSilent)
@@ -69,6 +72,7 @@ public class DoorCntrl : MonoBehaviour
         else anim.Play("doorOpen");
         if (!isSilent) doorAudio.PlayOneShot("door");
         isAnimationPlaying = true;
+        officeRecIndBehindDoor.SetState(!isClosed);
 
         if (isClosed) EnergyManager.Instance.IncreaseUsage();
         else EnergyManager.Instance.DecreaseUsage();
