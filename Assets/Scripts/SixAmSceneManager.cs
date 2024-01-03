@@ -25,10 +25,13 @@ public class SixAmSceneManager : MonoBehaviour
 
     void Start()
     {
-        GameData.data.nightId++;
-        GameData.data.survivedNightsCount++;
-        GameData.SaveData();
-        YandexGames.Instance.SaveToLeaderboard(GameData.data.survivedNightsCount);
+        if (GameData.data != null)
+        {
+            GameData.data.nightId++;
+            GameData.data.survivedNightsCount++;
+            GameData.SaveData();
+        }
+        if (YandexGames.Instance != null) YandexGames.Instance.SaveToLeaderboard(GameData.data.survivedNightsCount);
         nextBlinkTime = Time.time + blinkDelay;
         alarmAudio = GetComponent<SourceAudio>();
         Invoke(nameof(StartExiting), sceneTime);
