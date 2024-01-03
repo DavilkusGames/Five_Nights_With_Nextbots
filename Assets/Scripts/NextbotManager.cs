@@ -9,10 +9,9 @@ public class Nextbot
 {
     public string name;
     public GameObject obj;
-    public Transform trans;
     public GameObject screamer;
     public float screamerTime;
-    public Transform[] nodesT;
+    public int[] perNightAI;
 
     private int nodeId = 0;
 }
@@ -36,6 +35,13 @@ public class NextbotManager : MonoBehaviour
     private void Start()
     {
         screamerAudio = GetComponent<SourceAudio>();
+        for (int i = 0; i < nextbots.Length; i++)
+        {
+            if (nextbots[i].perNightAI[GameData.SelectedNightId] > 0)
+            {
+                nextbots[i].obj.SetActive(true);
+            }
+        }
     }
 
     private void OnDestroy()
@@ -54,7 +60,7 @@ public class NextbotManager : MonoBehaviour
         Screamer(0);
     }
 
-    private void Screamer(int id)
+    public void Screamer(int id)
     {
         Disable();
         nextbots[id].screamer.SetActive(true);
