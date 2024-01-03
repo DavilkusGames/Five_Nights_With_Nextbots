@@ -43,14 +43,6 @@ public class NextbotManager : MonoBehaviour
         if (Instance == this) Instance = null;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J) && !isLightsOff)
-        {
-            Screamer(Random.Range(0, 4));
-        }
-    }
-
     public void LightsOff()
     {
         isLightsOff = true;
