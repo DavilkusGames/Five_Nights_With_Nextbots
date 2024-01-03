@@ -11,6 +11,7 @@ public class TabletCntrl : MonoBehaviour
     public GameObject camRender;
     public GameObject[] cams;
     public GameObject[] camRooms;
+    public RecIndicator[] officeRecInds;
     public Image[] camIcons;
     public Color selectedCamIconColor;
     public WhiteNoise noise;
@@ -93,6 +94,7 @@ public class TabletCntrl : MonoBehaviour
             camAudio.Play("tabletUp");
             if (!camsDisabled) camAudio.PlayOneShot("camWorking");
             else camAudio.PlayOneShot("camsDisabled_" + Random.Range(0, 3).ToString());
+            foreach (var ind in officeRecInds) ind.SetState(false);
         }
         else
         {
@@ -119,6 +121,11 @@ public class TabletCntrl : MonoBehaviour
         if (camRooms[selectedCamId] != null) camRooms[selectedCamId].SetActive(true);
         camPanel.SetActive(true);
         StartCoroutine(nameof(ScanLinesAnimation));
+    }
+
+    public void TabletClosed()
+    {
+        foreach (var ind in officeRecInds) ind.SetState(true);
     }
 
     private IEnumerator ScanLinesAnimation()

@@ -1,26 +1,31 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RecIndicator : MonoBehaviour
 {
     public float stateChangeDelay = 1.0f;
 
-    private Image img;
+    public GameObject obj;
     private float nextStateChangeTime = 0f;
     private bool state = true;
-
-    void Start()
-    {
-        img = GetComponent<Image>();
-    }
+    private bool isEnabled = true;
 
     void Update()
     {
-        if (Time.time >= nextStateChangeTime)
+        if (isEnabled && Time.time >= nextStateChangeTime)
         {
             state = !state;
-            img.enabled = state;
+            obj.SetActive(state);
             nextStateChangeTime = Time.time + stateChangeDelay;
+        }
+    }
+
+    public void SetState(bool state)
+    {
+        isEnabled = state;
+        if (!isEnabled)
+        {
+            this.state = false;
+            obj.SetActive(false);
         }
     }
 }
