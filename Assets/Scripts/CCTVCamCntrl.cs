@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CCTVCamCntrl : MonoBehaviour
 {
-    public bool canRotate = true;
     public float minRot = -90f;
     public float maxRot = 90f;
     public float rotSpeed = 4.0f;
@@ -25,7 +24,7 @@ public class CCTVCamCntrl : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (canRotate && isRotating)
+        if (isRotating)
         {
             if (rotProgress >= 1f)
             {
