@@ -31,31 +31,35 @@ public class NextbotCntrl : MonoBehaviour
         }
     }
 
-    private void MovePrevNode()
+    private bool MovePrevNode()
     {
-        if (nodeId <= 0) return;
-        int prevNodeId = 0;
+        if (nodeId <= 0) return false;
+        int prevNodeId = -1;
         for (; prevNodeId < pathNodes[nodeId].prevPathNodes.Length; prevNodeId++)
         {
             if (Random.Range(0, 100) < (pathNodes[nodeId].prevPathNodes[prevNodeId].moveProbability * 100f)) break;
         }
 
+        if (prevNodeId == -1) return false;
         nodeId = pathNodes[prevNodeId].id;
         trans.position = pathNodes[nodeId].transform.position;
         transform.rotation = pathNodes[nodeId].transform.rotation;
+        return true;
     }
 
-    private void MoveNextNode()
+    private bool MoveNextNode()
     {
-        if (nodeId >= pathNodes.Count) return;
-        int nextNodeId = 0;
+        if (nodeId >= pathNodes.Count) return false;
+        int nextNodeId = -1;
         for (; nextNodeId < pathNodes[nodeId].nextPathNodes.Length; nextNodeId++)
         {
             if (Random.Range(0, 100) < (pathNodes[nodeId].nextPathNodes[nextNodeId].moveProbability * 100f)) break;
         }
 
+        if (nextNodeId == -1) return false;
         nodeId = pathNodes[nextNodeId].id;
         trans.position = pathNodes[nodeId].transform.position;
         transform.rotation = pathNodes[nodeId].transform.rotation;
+        return true;
     }
 }

@@ -8,12 +8,13 @@ public class TextTranslator : MonoBehaviour
 
     private string baseText = string.Empty;
     private string additionalText = string.Empty;
+    public bool isRus { get; private set; }
     private bool isTranslated = false;
 
     private void Start()
     {
         if (YandexGames.Instance != null) YandexGames.Instance.AddToTranslateQueue(this);
-        else Translate(false);
+        else Translate(true);
     }
 
     private void OnDestroy()
@@ -33,6 +34,7 @@ public class TextTranslator : MonoBehaviour
         else baseText = txt.text;
 
         txt.text = baseText + additionalText;
+        this.isRus = isRus;
         isTranslated = true;
     } 
 }

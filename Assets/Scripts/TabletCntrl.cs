@@ -11,6 +11,7 @@ public class TabletCntrl : MonoBehaviour
     public GameObject camRender;
     public GameObject[] cams;
     public GameObject[] camRooms;
+    public DynamicTextTranslator roomNameTxt;
     public RecIndicator[] officeRecInds;
     public Image[] camIcons;
     public Color selectedCamIconColor;
@@ -52,6 +53,8 @@ public class TabletCntrl : MonoBehaviour
         camIcons[selectedCamId].color = selectedCamIconColor;
         cams[selectedCamId].SetActive(true);
         if (camRooms[selectedCamId] != null) camRooms[selectedCamId].SetActive(true);
+
+        roomNameTxt.SetText(selectedCamId);
         camAudio.PlayOneShot("camChange");
         StartCoroutine(nameof(ScanLinesAnimation));
     }
