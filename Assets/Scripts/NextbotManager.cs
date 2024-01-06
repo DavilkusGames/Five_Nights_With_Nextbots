@@ -4,21 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Plugins.Audio.Core;
 
-[System.Serializable]
-public class Nextbot
-{
-    public string name;
-    public GameObject obj;
-    public GameObject screamer;
-    public float screamerTime;
-    public int[] perNightAI;
-
-    private int nodeId = 0;
-}
-
 public class NextbotManager : MonoBehaviour
 {
-    public Nextbot[] nextbots;
+    public NextbotCntrl[] nextbots;
     public static NextbotManager Instance;
 
     private SourceAudio screamerAudio;
