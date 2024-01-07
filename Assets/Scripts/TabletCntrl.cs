@@ -31,6 +31,19 @@ public class TabletCntrl : MonoBehaviour
 
     public float disableTime = 4.0f;
 
+    public static TabletCntrl Instance;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else DestroyImmediate(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
+    }
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -68,6 +81,7 @@ public class TabletCntrl : MonoBehaviour
 
     public void DisableCams()
     {
+        if (camsDisabled) return;
         noise.SetAlpha(0.6f);
         camRender.SetActive(false);
         StartCoroutine(nameof(ScanLinesAnimation));
@@ -84,6 +98,12 @@ public class TabletCntrl : MonoBehaviour
         StartCoroutine(nameof(ScanLinesAnimation));
         camAudio.Stop();
         camsDisabled = false;
+    }
+
+    public int GetCameraId()
+    {
+        if (!isTabletUp) return -1;
+        return selectedCamId;
     }
 
     public void ToggleTablet()

@@ -4,44 +4,46 @@ using UnityEngine;
 
 public class NextbotCntrl : MonoBehaviour
 {
+    public int id;
     public GameObject obj;
     public GameObject screamer;
     public float screamerTime;
     public int[] perNightAI;
+    public float moveChanceTime;
     public List<NextbotPathNode> pathNodes;
 
     private Transform trans;
+    private int ai = 0;
     private int nodeId = 0;
+    private bool isEnabled = false;
 
     private void Start()
     {
         trans = transform;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J))
+        ai = perNightAI[GameData.SelectedNightId];
+        if (ai == 0) obj.SetActive(false);
+        else
         {
-            MoveNextNode();
-        }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            MoveNextNode();
+            isEnabled = true;
+            StartCoroutine(nameof(MoveTimer));
         }
     }
 
     private bool MovePrevNode()
     {
         if (nodeId <= 0) return false;
-        int prevNodeId = -1;
-        for (; prevNodeId < pathNodes[nodeId].prevPathNodes.Length; prevNodeId++)
+        int prevNodeLocalId = -1;
+        while (prevNodeLocalId < pathNodes[nodeId].prevPathNodes.Length - 1)
         {
-            if (Random.Range(0, 100) < (pathNodes[nodeId].prevPathNodes[prevNodeId].moveProbability * 100f)) break;
+            prevNodeLocalId++;
+            if (Random.Range(0, 100) < (pathNodes[nodeId].prevPathNodes[prevNodeLocalId].moveProbability * 100f)) break;
         }
+        if (prevNodeLocalId == -1) return false;
 
-        if (prevNodeId == -1) return false;
-        nodeId = pathNodes[prevNodeId].id;
+        int prevNodeGlobalId = pathNodes[nodeId].prevPathNodes[prevNodeLocalId].id;
+        if (TabletCntrl.Instance.GetCameraId() == pathNodes[nodeId].camId ||
+            TabletCntrl.Instance.GetCameraId() == pathNodes[prevNodeGlobalId].camId) TabletCntrl.Instance.DisableCams();
+        nodeId = prevNodeGlobalId;
         trans.position = pathNodes[nodeId].transform.position;
         transform.rotation = pathNodes[nodeId].transform.rotation;
         return true;
@@ -49,17 +51,43 @@ public class NextbotCntrl : MonoBehaviour
 
     private bool MoveNextNode()
     {
-        if (nodeId >= pathNodes.Count) return false;
-        int nextNodeId = -1;
-        for (; nextNodeId < pathNodes[nodeId].nextPathNodes.Length; nextNodeId++)
+        if (nodeId >= pathNodes.Count-1) return false;
+        int nextNodeLocalId = -1;
+        while (nextNodeLocalId < pathNodes[nodeId].nextPathNodes.Length-1)
         {
-            if (Random.Range(0, 100) < (pathNodes[nodeId].nextPathNodes[nextNodeId].moveProbability * 100f)) break;
+            nextNodeLocalId++;
+            if (Random.Range(0, 100) < (pathNodes[nodeId].nextPathNodes[nextNodeLocalId].moveProbability * 100f)) break;
         }
+        if (nextNodeLocalId == -1) return false;
 
-        if (nextNodeId == -1) return false;
-        nodeId = pathNodes[nextNodeId].id;
+        int nextNodeGlobalId = pathNodes[nodeId].nextPathNodes[nextNodeLocalId].id;
+        if (TabletCntrl.Instance.GetCameraId() == pathNodes[nodeId].camId ||
+            TabletCntrl.Instance.GetCameraId() == pathNodes[nextNodeGlobalId].camId) TabletCntrl.Instance.DisableCams();
+        nodeId = nextNodeGlobalId;
         trans.position = pathNodes[nodeId].transform.position;
         transform.rotation = pathNodes[nodeId].transform.rotation;
         return true;
+    }
+
+    private IEnumerator MoveTimer()
+    {
+        while (isEnabled)
+        {
+            yield return new WaitForSeconds(moveChanceTime);
+            if (isEnabled && Random.Range(1, 21) <= ai)
+            {
+                if (!pathNodes[nodeId].isInOffice) MoveNextNode();
+                else
+                {
+                    obj.SetActive(false);
+                    NextbotManager.Instance.Screamer(id);
+                }
+            }
+        }
+    }
+
+    public void Disable()
+    {
+        isEnabled = false;
     }
 }

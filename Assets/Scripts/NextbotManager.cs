@@ -23,13 +23,6 @@ public class NextbotManager : MonoBehaviour
     private void Start()
     {
         screamerAudio = GetComponent<SourceAudio>();
-        for (int i = 0; i < nextbots.Length; i++)
-        {
-            if (nextbots[i].perNightAI[GameData.SelectedNightId] > 0)
-            {
-                nextbots[i].obj.SetActive(true);
-            }
-        }
     }
 
     private void OnDestroy()
@@ -65,7 +58,6 @@ public class NextbotManager : MonoBehaviour
 
     public void Disable()
     {
-        isEnabled = false;
-        CancelInvoke();
+        foreach (var nextbot in nextbots) nextbot.Disable();
     }
 }
