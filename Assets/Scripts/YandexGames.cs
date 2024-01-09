@@ -26,6 +26,9 @@ public class YandexGames : MonoBehaviour
     private static extern bool IsMobilePlatform();
 
     [DllImport("__Internal")]
+    private static extern void ShowFullscreenAd();
+
+    [DllImport("__Internal")]
     private static extern void SaveToLb(int score);
 
     [DllImport("__Internal")]
@@ -38,11 +41,11 @@ public class YandexGames : MonoBehaviour
     public static bool IsInit { get; private set; }
     public static bool IsRus { get; private set; }
     public static bool IsAuth { get; private set; }
-
     public static bool IsMobile { get; private set; }
 
     private static string[] RusLangDomens = { "ru", "be", "kk", "uk", "uz" };
     private List<TextTranslator> translateQueue = new List<TextTranslator>();
+    private Action adCallback;
 
     private void Awake()
     {
@@ -85,9 +88,35 @@ public class YandexGames : MonoBehaviour
         if (!Application.isEditor) StartCoroutine(nameof(WaitForSDKInit));
     }
 
+    public void ShowAd(Action callback) {
+        if (Application.isEditor || !IsInit)
+        {
+            Debug.Log("Ad cannot be shown in editor");
+            callback();
+            return;
+        }
+        adCallback = callback;
+        AudioListener.volume = 0f;
+        ShowFullscreenAd();
+    }
+
+    public void AdShown()
+    {
+        AudioListener.volume = 1f;
+        if (adCallback != null)
+        {
+            adCallback();
+            adCallback = null;
+        }
+    }
+
     public void SaveToLeaderboard(int score)
     {
-        if (Application.isEditor || !IsInit || !IsAuth) return;
+        if (Application.isEditor || !IsInit || !IsAuth)
+        {
+            Debug.Log("Leaderboard save failed");
+            return;
+        }
         SaveToLb(score);
         Debug.Log("Saved to lb: " + score.ToString());
     }
@@ -99,6 +128,7 @@ public class YandexGames : MonoBehaviour
             Debug.Log("Saving to cloud: " + str + "...");
             SaveCloudData(str);
         }
+        else Debug.Log("Cloud save failed");
     }
 
     public bool LoadData()

@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject continueDisabledTxt;
     public GameObject newGameConfirmPanel;
     public TextTranslator nightIdTxt;
+    public TextTranslator survivedNightsCountTxt;
     public SourceAudio menuMusic;
 
     public TMP_Text verTxt;
@@ -47,6 +48,7 @@ public class MainMenuManager : MonoBehaviour
         continueBtn.SetActive((GameData.data.nightId > 0));
         continueDisabledTxt.SetActive((GameData.data.nightId == 0));
         nightIdTxt.AddAdditionalText(' ' + (GameData.data.nightId+1).ToString());
+        survivedNightsCountTxt.AddAdditionalText(' ' + GameData.data.survivedNightsCount.ToString());
     }
 
     public void Continue()

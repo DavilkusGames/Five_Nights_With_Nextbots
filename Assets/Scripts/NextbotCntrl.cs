@@ -76,7 +76,7 @@ public class NextbotCntrl : MonoBehaviour
             yield return new WaitForSeconds(moveChanceTime);
             if (isEnabled && Random.Range(1, 21) <= ai)
             {
-                if (!pathNodes[nodeId].isInOffice) MoveNextNode();
+                if (pathNodes[nodeId].officeDoorId == -1) MoveNextNode();
                 else
                 {
                     obj.SetActive(false);

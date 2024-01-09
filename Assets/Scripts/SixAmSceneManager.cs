@@ -39,7 +39,13 @@ public class SixAmSceneManager : MonoBehaviour
 
     private void StartExiting()
     {
-        BlackPanel.Instance.FadeIn(ExitFromScene);
+        BlackPanel.Instance.FadeIn(ExitFromSceneRequest);
+    }
+
+    public void ExitFromSceneRequest()
+    {
+        if (YandexGames.Instance != null) YandexGames.Instance.ShowAd(ExitFromScene);
+        else ExitFromScene();
     }
 
     public void ExitFromScene()

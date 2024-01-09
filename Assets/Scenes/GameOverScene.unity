@@ -1230,7 +1230,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2145012193}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
-        m_MethodName: Retry
+        m_MethodName: RetryRequest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1363,7 +1363,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2145012193}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
-        m_MethodName: ToMainMenu
+        m_MethodName: ToMainMenuRequest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

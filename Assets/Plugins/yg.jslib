@@ -49,6 +49,22 @@
     return isMobile;
   },
 
+  ShowFullscreenAd : function(score) {
+    console.log("Show ad request...");
+    ysdk.adv.showFullscreenAdv({
+        callbacks: {
+            onClose: function(wasShown) {
+                console.log("Ad shown");
+                myGameInstance.SendMessage("_yandexGames", "AdShown");
+            },
+            onError: function(error) {
+                console.log("Ad error!");
+                myGameInstance.SendMessage("_yandexGames", "AdShown");
+            }
+        }
+    })
+  },
+
   SaveToLb : function (score) {
     lb.setLeaderboardScore('fnwnScore', score);
   },

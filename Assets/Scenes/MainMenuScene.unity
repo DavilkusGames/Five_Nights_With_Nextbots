@@ -233,8 +233,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -283, y: -26.505005}
-  m_SizeDelta: {x: 541.6599, y: 53.01001}
+  m_AnchoredPosition: {x: -322.84, y: -27.96}
+  m_SizeDelta: {x: 621.33, y: 55.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159314438
 MonoBehaviour:
@@ -2508,6 +2508,7 @@ MonoBehaviour:
   continueDisabledTxt: {fileID: 1822545942}
   newGameConfirmPanel: {fileID: 426640326}
   nightIdTxt: {fileID: 1300846214}
+  survivedNightsCountTxt: {fileID: 159314440}
   menuMusic: {fileID: 1459629044}
   verTxt: {fileID: 1048897749}
   loadingPanel: {fileID: 1871111109}

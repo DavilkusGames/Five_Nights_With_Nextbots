@@ -7682,7 +7682,7 @@ MonoBehaviour:
   prevPathNodes:
   - {fileID: 1611552213}
   moveProbability: 0.65
-  isInOffice: 0
+  officeDoorId: -1
 --- !u!1 &437409654
 GameObject:
   m_ObjectHideFlags: 0
@@ -10272,7 +10272,7 @@ MonoBehaviour:
   - {fileID: 1611552213}
   prevPathNodes: []
   moveProbability: 0
-  isInOffice: 0
+  officeDoorId: -1
 --- !u!1 &581009992
 GameObject:
   m_ObjectHideFlags: 0
@@ -11178,7 +11178,7 @@ MonoBehaviour:
   prevPathNodes:
   - {fileID: 1279013457}
   moveProbability: 1
-  isInOffice: 1
+  officeDoorId: -1
 --- !u!1 &637465808
 GameObject:
   m_ObjectHideFlags: 0
@@ -12663,7 +12663,7 @@ MonoBehaviour:
   prevPathNodes:
   - {fileID: 435448142}
   moveProbability: 0
-  isInOffice: 0
+  officeDoorId: -1
 --- !u!1 &728154562
 GameObject:
   m_ObjectHideFlags: 0
@@ -14615,31 +14615,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9999661
+      value: 0.9999606
       objectReference: {fileID: 0}
     - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00043157782
+      value: -0.003093792
       objectReference: {fileID: 0}
     - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.008228652
+      value: 0.0082696
       objectReference: {fileID: 0}
     - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000058010355
+      value: 0.00094046624
       objectReference: {fileID: 0}
     - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.05
+      value: -0.355
       objectReference: {fileID: 0}
     - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.943
+      value: 0.947
       objectReference: {fileID: 0}
     - target: {fileID: 3916377247472339407, guid: f38e6e8f577a7ae4381e64f57259b3bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.006
+      value: 0.105
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18521,7 +18521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeTxt: {fileID: 1834396817}
   nightIdTxt: {fileID: 278925437}
-  nightTimeInSec: 30
+  nightTimeInSec: 2
 --- !u!1 &1084260956
 GameObject:
   m_ObjectHideFlags: 0
@@ -22054,7 +22054,7 @@ MonoBehaviour:
   - {fileID: 435448142}
   - {fileID: 727302709}
   moveProbability: 0.65
-  isInOffice: 0
+  officeDoorId: -1
 --- !u!1 &1287995358
 GameObject:
   m_ObjectHideFlags: 1
@@ -27705,7 +27705,7 @@ MonoBehaviour:
   prevPathNodes:
   - {fileID: 580544237}
   moveProbability: 0
-  isInOffice: 0
+  officeDoorId: -1
 --- !u!1 &1629494442
 GameObject:
   m_ObjectHideFlags: 0
@@ -32842,7 +32842,7 @@ MonoBehaviour:
   obj: {fileID: 980756119}
   screamer: {fileID: 1493421130}
   screamerTime: 1.5
-  perNightAI: 1400000007000000070000000700000007000000
+  perNightAI: 0700000007000000070000000700000007000000
   moveChanceTime: 8
   pathNodes:
   - {fileID: 580544237}

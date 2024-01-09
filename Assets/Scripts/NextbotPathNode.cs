@@ -7,7 +7,7 @@ public class NextbotPathNode : MonoBehaviour
     public NextbotPathNode[] nextPathNodes;
     public NextbotPathNode[] prevPathNodes;
     [Range(0f, 1f)] public float moveProbability;
-    public bool isInOffice = false;
+    public int officeDoorId = -1;
 
     private Transform trans;
 

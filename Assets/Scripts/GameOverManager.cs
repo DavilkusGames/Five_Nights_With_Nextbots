@@ -22,6 +22,18 @@ public class GameOverManager : MonoBehaviour
         gameOverPanel.SetActive(true);
     }
 
+    public void RetryRequest()
+    {
+        if (YandexGames.Instance != null) YandexGames.Instance.ShowAd(Retry);
+        else Retry();
+    }
+
+    public void ToMainMenuRequest()
+    {
+        if (YandexGames.Instance != null) YandexGames.Instance.ShowAd(ToMainMenu);
+        else ToMainMenu();
+    }
+
     public void Retry()
     {
         SceneManager.LoadScene(1);
