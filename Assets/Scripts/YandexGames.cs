@@ -46,6 +46,7 @@ public class YandexGames : MonoBehaviour
     private static string[] RusLangDomens = { "ru", "be", "kk", "uk", "uz" };
     private List<TextTranslator> translateQueue = new List<TextTranslator>();
     private Action adCallback;
+    private float prevAdShowTime = 0f;
 
     private void Awake()
     {
@@ -91,13 +92,23 @@ public class YandexGames : MonoBehaviour
     public void ShowAd(Action callback) {
         if (Application.isEditor || !IsInit)
         {
-            Debug.Log("Ad cannot be shown in editor");
+            Debug.Log("Ad cannot be shown in editor or SDK not initialized");
             callback();
             return;
         }
-        adCallback = callback;
-        AudioListener.volume = 0f;
-        ShowFullscreenAd();
+
+        if (Time.time - prevAdShowTime > 60f)
+        {
+            adCallback = callback;
+            AudioListener.volume = 0f;
+            ShowFullscreenAd();
+        }
+        else
+        {
+            Debug.Log("Ad called too early. Skipped");
+            callback();
+            return;
+        }
     }
 
     public void AdShown()
@@ -165,6 +176,7 @@ public class YandexGames : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         while (!SDKInit()) yield return new WaitForSeconds(0.2f);
         IsInit = true;
+        prevAdShowTime = Time.time;
         IsRus = RusLangDomens.Contains(GetLang());
         IsMobile = IsMobilePlatform();
         Debug.Log("IsRus: " + IsRus.ToString());
