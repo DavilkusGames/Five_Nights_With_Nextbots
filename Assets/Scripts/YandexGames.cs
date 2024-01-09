@@ -101,6 +101,7 @@ public class YandexGames : MonoBehaviour
         {
             adCallback = callback;
             AudioListener.volume = 0f;
+            prevAdShowTime = Time.time;
             ShowFullscreenAd();
         }
         else
