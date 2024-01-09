@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -97,7 +97,7 @@ public class YandexGames : MonoBehaviour
             return;
         }
 
-        if (Time.time - prevAdShowTime > 60f)
+        if (Time.time - prevAdShowTime > 61f)
         {
             adCallback = callback;
             AudioListener.volume = 0f;

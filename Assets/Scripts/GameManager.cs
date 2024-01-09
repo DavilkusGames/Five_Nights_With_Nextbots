@@ -51,15 +51,15 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(adDelay-5);
+            yield return new WaitForSeconds(adDelay-3);
+            Pause();
             adNotificationPanel.SetActive(true);
-            for (int i = 5; i > 0; i--)
+            for (int i = 3; i > 0; i--)
             {
                 adNotificationTxt.AddAdditionalText(' ' + i.ToString() + "...");
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSecondsRealtime(1f);
             }
             adNotificationPanel.SetActive(false);
-            Pause();
             YandexGames.Instance.ShowAd(Resume);
         }
     }
@@ -67,10 +67,12 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
+        AudioListener.volume = 0f;
     }
 
     public void Resume()
     {
         Time.timeScale = 1f;
+        AudioListener.volume = 1f;
     }
 }
