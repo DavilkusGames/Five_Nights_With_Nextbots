@@ -8040,7 +8040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21cb791ac0d7349b42679f32e006f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   obj: {fileID: 1144609516}
   screamer: {fileID: 1894790204}
   screamerTime: 1.5
@@ -8303,7 +8303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21cb791ac0d7349b42679f32e006f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 2
   obj: {fileID: 1169168773}
   screamer: {fileID: 2012978045}
   screamerTime: 1.5
@@ -18901,7 +18901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeTxt: {fileID: 1834396817}
   nightIdTxt: {fileID: 278925437}
-  nightTimeInSec: 5
+  nightTimeInSec: 45
 --- !u!1 &1084260956
 GameObject:
   m_ObjectHideFlags: 0
@@ -27457,7 +27457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21cb791ac0d7349b42679f32e006f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 3
   obj: {fileID: 1794906842}
   screamer: {fileID: 2004432869}
   screamerTime: 1.5
@@ -33223,7 +33223,7 @@ MonoBehaviour:
   obj: {fileID: 980756119}
   screamer: {fileID: 1493421130}
   screamerTime: 1.5
-  perNightAI: 0700000007000000070000000700000007000000
+  perNightAI: 0100000001000000010000000100000001000000
   moveChanceTime: 8
   pathNodes:
   - {fileID: 580544237}
