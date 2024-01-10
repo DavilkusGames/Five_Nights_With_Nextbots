@@ -88,7 +88,7 @@ public class NextbotCntrl : MonoBehaviour
             {
                 if (!NextbotManager.Instance.IsPlayerWatching(pathNodes[nodeId].camId) ||
                     moveType == NextbotCamMoveType.IgnoreCams || 
-                    (moveType == NextbotCamMoveType.Random && Random.Range(0, 10) > 6))
+                    (moveType == NextbotCamMoveType.Random && Random.Range(0, 10) > 4))
                 {
                     MoveNextNode();
                     if (pathNodes[nodeId].officeDoorId != -1)
