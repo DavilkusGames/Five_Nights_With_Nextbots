@@ -60,7 +60,7 @@ public class NextbotManager : MonoBehaviour
 
     public bool CanEnterDoor(int doorId)
     {
-        return !(doors[doorId].IsOccupied() || (doors[doorId].GetLightState() && TabletCntrl.Instance.IsTabletUp()));
+        return !(doors[doorId].IsOccupied() || (doors[doorId].GetLightState() && !TabletCntrl.Instance.IsTabletUp()));
     }
 
     public void NextbotLeftDoor(int doorId)

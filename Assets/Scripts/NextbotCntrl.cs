@@ -86,7 +86,7 @@ public class NextbotCntrl : MonoBehaviour
             yield return new WaitForSeconds(moveChanceTime);
             if (isEnabled && Random.Range(1, 21) <= ai)
             {
-                if (NextbotManager.Instance.IsPlayerWatching(pathNodes[nodeId].camId) ||
+                if (!NextbotManager.Instance.IsPlayerWatching(pathNodes[nodeId].camId) ||
                     moveType == NextbotCamMoveType.IgnoreCams || 
                     (moveType == NextbotCamMoveType.Random && Random.Range(0, 10) > 6))
                 {

@@ -87,6 +87,7 @@ public class DoorCntrl : MonoBehaviour
     public void NextbotEntered(NextbotCntrl nextbot)
     {
         nextbotInDoorway = nextbot;
+        nextbot.obj.SetActive(isLightOn && !isLightBlinked);
         isNextbotUnspotted = true;
     }
 
