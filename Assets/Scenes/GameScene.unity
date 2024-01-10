@@ -8312,7 +8312,7 @@ MonoBehaviour:
   id: 2
   obj: {fileID: 1169168773}
   screamer: {fileID: 2012978045}
-  moveType: 2
+  moveType: 0
   attackType: 0
   screamerTime: 1.5
   perNightAI: 0000000000000000000000000000000000000000
@@ -27658,7 +27658,7 @@ MonoBehaviour:
   id: 3
   obj: {fileID: 1794906842}
   screamer: {fileID: 2004432869}
-  moveType: 0
+  moveType: 1
   attackType: 0
   screamerTime: 1.5
   perNightAI: 0000000000000000000000000000000000000000
@@ -33553,11 +33553,11 @@ MonoBehaviour:
   id: 0
   obj: {fileID: 980756119}
   screamer: {fileID: 1493421130}
-  moveType: 1
+  moveType: 2
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 1400000001000000010000000100000001000000
-  moveChanceTime: 5
+  perNightAI: 0a00000001000000010000000100000001000000
+  moveChanceTime: 7
   pathNodes:
   - {fileID: 580544237}
   - {fileID: 1611552213}
