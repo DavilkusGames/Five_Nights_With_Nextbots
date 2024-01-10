@@ -36,7 +36,12 @@ public class NextbotManager : MonoBehaviour
     {
         doors[doorId].NextbotEntered(nextbots[nextbotId]);
     }
-
+    
+    public bool IsPlayerWatching(int camId)
+    {
+        return (TabletCntrl.Instance.IsTabletUp() && TabletCntrl.Instance.GetCameraId() == camId);
+    }
+    
     public bool IsDoorClosed(int doorId)
     {
         return doors[doorId].GetDoorState();
@@ -54,7 +59,7 @@ public class NextbotManager : MonoBehaviour
 
     public bool CanEnterDoor(int doorId)
     {
-        return !doors[doorId].IsOccupied();
+        return !(doors[doorId].IsOccupied() || (doors[doorId].GetLightState() && TabletCntrl.Instance.IsTabletUp()));
     }
 
     public void NextbotLeftDoor(int doorId)

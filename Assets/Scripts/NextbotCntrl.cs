@@ -71,8 +71,8 @@ public class NextbotCntrl : MonoBehaviour
         if (nextNodeLocalId == -1) return false;
 
         int nextNodeGlobalId = pathNodes[nodeId].nextPathNodes[nextNodeLocalId].id;
-        if (TabletCntrl.Instance.GetCameraId() == pathNodes[nodeId].camId ||
-            TabletCntrl.Instance.GetCameraId() == pathNodes[nextNodeGlobalId].camId) TabletCntrl.Instance.DisableCams();
+        if (TabletCntrl.Instance.IsTabletUp() && (TabletCntrl.Instance.GetCameraId() == pathNodes[nodeId].camId ||
+            TabletCntrl.Instance.GetCameraId() == pathNodes[nextNodeGlobalId].camId)) TabletCntrl.Instance.DisableCams();
         nodeId = nextNodeGlobalId;
         trans.position = pathNodes[nodeId].transform.position;
         transform.rotation = pathNodes[nodeId].transform.rotation;
@@ -86,16 +86,19 @@ public class NextbotCntrl : MonoBehaviour
             yield return new WaitForSeconds(moveChanceTime);
             if (isEnabled && Random.Range(1, 21) <= ai)
             {
-                MoveNextNode();
-                if (pathNodes[nodeId].officeDoorId != -1)
+                if (moveType == NextbotCamMoveType.IgnoreCams || (moveType == NextbotCamMoveType.Random && Random.Range(0, 10) > 6))
                 {
-                    if (NextbotManager.Instance.CanEnterDoor(pathNodes[nodeId].officeDoorId))
+                    MoveNextNode();
+                    if (pathNodes[nodeId].officeDoorId != -1)
                     {
-                        isEnabled = false;
-                        NextbotManager.Instance.NextbotEnteredDoor(pathNodes[nodeId].officeDoorId, id);
-                        StartCoroutine(nameof(InOfficeTimer));
+                        if (NextbotManager.Instance.CanEnterDoor(pathNodes[nodeId].officeDoorId))
+                        {
+                            isEnabled = false;
+                            NextbotManager.Instance.NextbotEnteredDoor(pathNodes[nodeId].officeDoorId, id);
+                            StartCoroutine(nameof(InOfficeTimer));
+                        }
+                        else MovePrevNode();
                     }
-                    else MovePrevNode();
                 }
             }
         }

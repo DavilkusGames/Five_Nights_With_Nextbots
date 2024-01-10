@@ -100,6 +100,11 @@ public class TabletCntrl : MonoBehaviour
         camsDisabled = false;
     }
 
+    public bool IsTabletUp()
+    {
+        return isTabletUp;
+    }
+
     public int GetCameraId()
     {
         if (!isTabletUp) return -1;
