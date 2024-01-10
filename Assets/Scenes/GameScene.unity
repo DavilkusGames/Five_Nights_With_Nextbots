@@ -33553,10 +33553,10 @@ MonoBehaviour:
   id: 0
   obj: {fileID: 980756119}
   screamer: {fileID: 1493421130}
-  moveType: 2
+  moveType: 1
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 0a00000001000000010000000100000001000000
+  perNightAI: 1400000001000000010000000100000001000000
   moveChanceTime: 7
   pathNodes:
   - {fileID: 580544237}

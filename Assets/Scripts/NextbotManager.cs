@@ -39,6 +39,7 @@ public class NextbotManager : MonoBehaviour
     
     public bool IsPlayerWatching(int camId)
     {
+        if (camId == -1) return false;
         return (TabletCntrl.Instance.IsTabletUp() && TabletCntrl.Instance.GetCameraId() == camId);
     }
     
