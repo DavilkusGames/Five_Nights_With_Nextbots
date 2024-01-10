@@ -14,6 +14,7 @@ public class DoorCntrl : MonoBehaviour
     public GameObject light;
     public GameObject blackImitation;
     public SourceAudio lightAudio;
+    public SourceAudio doorScreamerAudio;
 
     public float minLightBlinkDelay = 0.3f;
     public float maxLightBlinkDelay = 0.7f;
@@ -30,6 +31,7 @@ public class DoorCntrl : MonoBehaviour
 
     private NextbotCntrl nextbotInDoorway;
     private Action lightBlinkCallback;
+    private bool isNextbotUnspotted = false;
 
     void Start()
     {
@@ -85,6 +87,7 @@ public class DoorCntrl : MonoBehaviour
     public void NextbotEntered(NextbotCntrl nextbot)
     {
         nextbotInDoorway = nextbot;
+        isNextbotUnspotted = true;
     }
 
     public void NextbotLeft()
@@ -119,6 +122,11 @@ public class DoorCntrl : MonoBehaviour
         {
             lightAudio.Play("lights");
             nextLightBlinkTime = Time.time + UnityEngine.Random.Range(minLightBlinkDelay, maxLightBlinkDelay);
+            if (isNextbotUnspotted)
+            {
+                doorScreamerAudio.Play("doorScreamer");
+                isNextbotUnspotted = false;
+            }
         }
         if (nextbotInDoorway != null) nextbotInDoorway.obj.SetActive(isLightOn);
 
