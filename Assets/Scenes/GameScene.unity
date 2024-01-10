@@ -11478,11 +11478,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   camId: -1
-  nextPathNodes: []
+  nextPathNodes:
+  - {fileID: 435448142}
   prevPathNodes:
   - {fileID: 1279013457}
   moveProbability: 1
-  officeDoorId: -1
+  officeDoorId: 0
 --- !u!1 &637465808
 GameObject:
   m_ObjectHideFlags: 0
@@ -30469,6 +30470,9 @@ MonoBehaviour:
   - {fileID: 442118172}
   - {fileID: 448458505}
   - {fileID: 1566072372}
+  doors:
+  - {fileID: 1425116074}
+  - {fileID: 1670637461}
 --- !u!114 &1795527170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33223,8 +33227,8 @@ MonoBehaviour:
   obj: {fileID: 980756119}
   screamer: {fileID: 1493421130}
   screamerTime: 1.5
-  perNightAI: 0100000001000000010000000100000001000000
-  moveChanceTime: 8
+  perNightAI: 0700000001000000010000000100000001000000
+  moveChanceTime: 3.7
   pathNodes:
   - {fileID: 580544237}
   - {fileID: 1611552213}

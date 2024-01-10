@@ -1,5 +1,6 @@
 using UnityEngine;
 using Plugins.Audio.Core;
+using System;
 
 public class DoorCntrl : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class DoorCntrl : MonoBehaviour
     private bool isLightBlinked = false;
     private bool isAnimationPlaying = false;
 
+    private NextbotCntrl nextbotInDoorway;
+    private Action lightBlinkCallback;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -42,10 +46,25 @@ public class DoorCntrl : MonoBehaviour
         {
             isLightBlinked = !isLightBlinked;
             light.SetActive(!isLightBlinked);
+            if (nextbotInDoorway != null) nextbotInDoorway.obj.SetActive(!isLightBlinked);
+            if (isLightBlinked && lightBlinkCallback != null)
+            {
+                lightBlinkCallback();
+                lightBlinkCallback = null;
+            }
             lightAudio.Volume = ((isLightBlinked) ? 0f : 1f);
-            if (!isLightBlinked) nextLightBlinkTime = Time.time + Random.Range(minLightBlinkDelay, maxLightBlinkDelay);
-            else nextLightBlinkTime = Time.time + Random.Range(minLightBlinkTime, maxLightBlinkTime);
+            if (!isLightBlinked) nextLightBlinkTime = Time.time + UnityEngine.Random.Range(minLightBlinkDelay, maxLightBlinkDelay);
+            else nextLightBlinkTime = Time.time + UnityEngine.Random.Range(minLightBlinkTime, maxLightBlinkTime);
         }
+    }
+
+    public bool GetDoorState() { return isClosed; }
+    public bool GetLightState() { return isLightOn; }
+    public bool IsOccupied() { return (nextbotInDoorway != null); }
+
+    public void SetLightBlinkCallback(Action callback)
+    {
+        lightBlinkCallback = callback;
     }
 
     public void Poweroff()
@@ -61,6 +80,16 @@ public class DoorCntrl : MonoBehaviour
         if (isLightOn) ToggleLight();
         this.enabled = false;
         officeRecIndBehindDoor.SetState(false);
+    }
+
+    public void NextbotEntered(NextbotCntrl nextbot)
+    {
+        nextbotInDoorway = nextbot;
+    }
+
+    public void NextbotLeft()
+    {
+        nextbotInDoorway = null;
     }
 
     public void ToggleDoor(bool isSilent)
@@ -89,8 +118,9 @@ public class DoorCntrl : MonoBehaviour
         if (isLightOn)
         {
             lightAudio.Play("lights");
-            nextLightBlinkTime = Time.time + Random.Range(minLightBlinkDelay, maxLightBlinkDelay);
+            nextLightBlinkTime = Time.time + UnityEngine.Random.Range(minLightBlinkDelay, maxLightBlinkDelay);
         }
+        if (nextbotInDoorway != null) nextbotInDoorway.obj.SetActive(isLightOn);
 
         if (isLightOn) EnergyManager.Instance.IncreaseUsage();
         else EnergyManager.Instance.DecreaseUsage();

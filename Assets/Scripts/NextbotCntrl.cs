@@ -31,7 +31,6 @@ public class NextbotCntrl : MonoBehaviour
 
     private bool MovePrevNode()
     {
-        if (nodeId <= 0) return false;
         int prevNodeLocalId = -1;
         while (prevNodeLocalId < pathNodes[nodeId].prevPathNodes.Length - 1)
         {
@@ -51,7 +50,6 @@ public class NextbotCntrl : MonoBehaviour
 
     private bool MoveNextNode()
     {
-        if (nodeId >= pathNodes.Count-1) return false;
         int nextNodeLocalId = -1;
         while (nextNodeLocalId < pathNodes[nodeId].nextPathNodes.Length-1)
         {
@@ -71,19 +69,49 @@ public class NextbotCntrl : MonoBehaviour
 
     private IEnumerator MoveTimer()
     {
-        while (isEnabled)
+        while (true)
         {
             yield return new WaitForSeconds(moveChanceTime);
             if (isEnabled && Random.Range(1, 21) <= ai)
             {
-                if (pathNodes[nodeId].officeDoorId == -1) MoveNextNode();
-                else
+                MoveNextNode();
+                if (pathNodes[nodeId].officeDoorId != -1)
                 {
-                    obj.SetActive(false);
-                    NextbotManager.Instance.Screamer(id);
+                    if (NextbotManager.Instance.CanEnterDoor(pathNodes[nodeId].officeDoorId))
+                    {
+                        isEnabled = false;
+                        NextbotManager.Instance.NextbotEnteredDoor(pathNodes[nodeId].officeDoorId, id);
+                        StartCoroutine(nameof(InOfficeTimer));
+                    }
+                    else MovePrevNode();
                 }
             }
         }
+    }
+
+    private IEnumerator InOfficeTimer()
+    {
+        float attackTimeK = 1f;
+        if (ai > 7) attackTimeK = 0.85f;
+        if (ai > 13) attackTimeK = 0.75f;
+        yield return new WaitForSeconds(Random.Range(6, 12) * attackTimeK);
+        if (!NextbotManager.Instance.IsDoorClosed(pathNodes[nodeId].officeDoorId))
+        {
+            obj.SetActive(false);
+            NextbotManager.Instance.Screamer(id);
+        }
+        else
+        {
+            NextbotManager.Instance.WaitForLightBlink(pathNodes[nodeId].officeDoorId, MoveOutOfOffice);
+        }
+    }
+
+    public void MoveOutOfOffice()
+    {
+        isEnabled = true;
+        obj.SetActive(true);
+        NextbotManager.Instance.NextbotLeftDoor(pathNodes[nodeId].officeDoorId);
+        MoveNextNode();
     }
 
     public void Disable()

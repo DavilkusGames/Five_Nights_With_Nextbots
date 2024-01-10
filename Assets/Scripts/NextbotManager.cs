@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Plugins.Audio.Core;
+using System;
 
 public class NextbotManager : MonoBehaviour
 {
     public NextbotCntrl[] nextbots;
+    public DoorCntrl[] doors;
     public static NextbotManager Instance;
 
     private SourceAudio screamerAudio;
@@ -30,10 +32,40 @@ public class NextbotManager : MonoBehaviour
         if (Instance == this) Instance = null;
     }
 
+    public void NextbotEnteredDoor(int doorId, int nextbotId)
+    {
+        doors[doorId].NextbotEntered(nextbots[nextbotId]);
+    }
+
+    public bool IsDoorClosed(int doorId)
+    {
+        return doors[doorId].GetDoorState();
+    }
+
+    public bool IsLightOff(int doorId)
+    {
+        return doors[doorId].GetLightState();
+    }
+
+    public void WaitForLightBlink(int doorId, Action callback)
+    {
+        doors[doorId].SetLightBlinkCallback(callback);
+    }
+
+    public bool CanEnterDoor(int doorId)
+    {
+        return !doors[doorId].IsOccupied();
+    }
+
+    public void NextbotLeftDoor(int doorId)
+    {
+        doors[doorId].NextbotLeft();
+    }
+
     public void LightsOff()
     {
         isLightsOff = true;
-        Invoke(nameof(LightsOffScreamer), Random.Range(4.0f, 8.0f));
+        Invoke(nameof(LightsOffScreamer), UnityEngine.Random.Range(4.0f, 8.0f));
     }
 
     private void LightsOffScreamer()
