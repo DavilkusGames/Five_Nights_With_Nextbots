@@ -2,11 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine; 
 
+public enum NextbotCamMoveType
+{
+    IgnoreCams, StunIfWatching, Random
+}
+
+public enum NextbotAttackType
+{
+    IgnoreTablet, AttackOnTabletDown
+}
+
 public class NextbotCntrl : MonoBehaviour
 {
     public int id;
     public GameObject obj;
     public GameObject screamer;
+    public NextbotCamMoveType moveType;
+    public NextbotAttackType attackType;
     public float screamerTime;
     public int[] perNightAI;
     public float moveChanceTime;

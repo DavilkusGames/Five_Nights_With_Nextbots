@@ -8047,6 +8047,8 @@ MonoBehaviour:
   id: 1
   obj: {fileID: 1144609516}
   screamer: {fileID: 1894790204}
+  moveType: 0
+  attackType: 1
   screamerTime: 1.5
   perNightAI: 0000000000000000000000000000000000000000
   moveChanceTime: 0
@@ -8310,6 +8312,8 @@ MonoBehaviour:
   id: 2
   obj: {fileID: 1169168773}
   screamer: {fileID: 2012978045}
+  moveType: 2
+  attackType: 0
   screamerTime: 1.5
   perNightAI: 0000000000000000000000000000000000000000
   moveChanceTime: 0
@@ -27654,6 +27658,8 @@ MonoBehaviour:
   id: 3
   obj: {fileID: 1794906842}
   screamer: {fileID: 2004432869}
+  moveType: 0
+  attackType: 0
   screamerTime: 1.5
   perNightAI: 0000000000000000000000000000000000000000
   moveChanceTime: 0
@@ -33547,6 +33553,8 @@ MonoBehaviour:
   id: 0
   obj: {fileID: 980756119}
   screamer: {fileID: 1493421130}
+  moveType: 1
+  attackType: 0
   screamerTime: 1.5
   perNightAI: 1400000001000000010000000100000001000000
   moveChanceTime: 5
