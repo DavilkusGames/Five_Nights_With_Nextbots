@@ -60,7 +60,8 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForSecondsRealtime(1f);
             }
             adNotificationPanel.SetActive(false);
-            YandexGames.Instance.ShowAd(Resume);
+            if (YandexGames.Instance != null) YandexGames.Instance.ShowAd(Resume);
+            else Resume();
         }
     }
 

@@ -7026,7 +7026,7 @@ MonoBehaviour:
   - {fileID: 1670637461}
   adNotificationPanel: {fileID: 919713107}
   adNotificationTxt: {fileID: 412454195}
-  adDelay: 65
+  adDelay: 90
 --- !u!1 &385851205
 GameObject:
   m_ObjectHideFlags: 1

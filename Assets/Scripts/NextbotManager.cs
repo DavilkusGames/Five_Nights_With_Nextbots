@@ -70,7 +70,7 @@ public class NextbotManager : MonoBehaviour
     public void LightsOff()
     {
         isLightsOff = true;
-        Invoke(nameof(LightsOffScreamer), UnityEngine.Random.Range(4.0f, 8.0f));
+        Invoke(nameof(LightsOffScreamer), UnityEngine.Random.Range(10.0f, 15.0f));
     }
 
     private void LightsOffScreamer()
