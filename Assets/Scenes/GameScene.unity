@@ -33936,7 +33936,7 @@ MonoBehaviour:
   attackType: 0
   screamerTime: 1.5
   perNightAI: 140000000300000005000000080000000d000000
-  moveChanceTime: 3.6
+  moveChanceTime: 10
   attackTimeRange: {x: 7, y: 12}
   pathNodes:
   - {fileID: 580544237}
