@@ -26,6 +26,7 @@ public class NextbotCntrl : MonoBehaviour
     public List<NextbotPathNode> pathNodes;
 
     private Transform trans;
+    private float activateTime = 0f;
     private int ai = 0;
     private int nodeId = 0;
     private bool isEnabled = false;
@@ -82,6 +83,7 @@ public class NextbotCntrl : MonoBehaviour
 
     private IEnumerator MoveTimer()
     {
+        yield return new WaitForSeconds(activateTime);
         while (true)
         {
             yield return new WaitForSeconds(moveChanceTime);
