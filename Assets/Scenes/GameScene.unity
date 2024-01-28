@@ -8365,6 +8365,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927c61b5867357441a8f72a3e1beaf26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ees:
+  - obj: {fileID: 0}
+    camId: 4
+    showTime: 10
+  chanceDelay: 30
+  eeChance: 0.2
 --- !u!1 &450548906
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,9 @@ using UnityEngine;
 [Serializable]
 public class EE
 {
-    public GameObject obj;
+    public GameObject enableObj;
+    public GameObject disableObj;
+
     public int camId;
     public float showTime = 10f;
 }
@@ -31,10 +33,15 @@ public class EasterEggManager : MonoBehaviour
             {
                 int eeId = UnityEngine.Random.Range(0, ees.Length);
                 if (TabletCntrl.Instance.IsTabletUp() && TabletCntrl.Instance.GetCameraId() == ees[eeId].camId) TabletCntrl.Instance.DisableCams();
-                ees[eeId].obj.SetActive(true);
+
+                if (ees[eeId].enableObj != null) ees[eeId].enableObj.SetActive(true);
+                if (ees[eeId].disableObj != null) ees[eeId].disableObj.SetActive(false);
+
                 yield return new WaitForSeconds(ees[eeId].showTime);
                 if (TabletCntrl.Instance.IsTabletUp() && TabletCntrl.Instance.GetCameraId() == ees[eeId].camId) TabletCntrl.Instance.DisableCams();
-                ees[eeId].obj.SetActive(false);
+
+                if (ees[eeId].enableObj != null) ees[eeId].enableObj.SetActive(false);
+                if (ees[eeId].disableObj != null) ees[eeId].disableObj.SetActive(true);
             }
         }
     }
