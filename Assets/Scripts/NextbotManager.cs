@@ -74,6 +74,11 @@ public class NextbotManager : MonoBehaviour
         Invoke(nameof(LightsOffScreamer), UnityEngine.Random.Range(10.0f, 15.0f));
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L)) Screamer(UnityEngine.Random.Range(0, 4));
+    }
+
     private void LightsOffScreamer()
     {
         Screamer(0);
@@ -87,6 +92,7 @@ public class NextbotManager : MonoBehaviour
         UIManager.Instance.GameOver();
         if (!isLightsOff) GameManager.Instance.GameOver();
         Invoke(nameof(ScreamerEnd), nextbots[id].screamerTime);
+        GameOverManager.killerId = id;
     }
 
     public void ScreamerEnd()
