@@ -8321,6 +8321,50 @@ MonoBehaviour:
   moveChanceTime: 4
   attackTimeRange: {x: 6, y: 9}
   pathNodes: []
+--- !u!1 &449689168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 449689169}
+  - component: {fileID: 449689170}
+  m_Layer: 0
+  m_Name: _eeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &449689169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449689168}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &449689170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449689168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927c61b5867357441a8f72a3e1beaf26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &450548906
 GameObject:
   m_ObjectHideFlags: 0
@@ -11784,6 +11828,7 @@ MonoBehaviour:
   camId: -1
   nextPathNodes:
   - {fileID: 435448142}
+  - {fileID: 935191480}
   prevPathNodes:
   - {fileID: 2068616096}
   moveProbability: 0.8
@@ -13462,7 +13507,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
-    m_Resolution: -1
+    m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -22823,7 +22868,7 @@ MonoBehaviour:
   prevPathNodes:
   - {fileID: 435448142}
   - {fileID: 727302709}
-  moveProbability: 0.55
+  moveProbability: 0.5
   officeDoorId: -1
 --- !u!1 &1287995358
 GameObject:
@@ -33935,8 +33980,8 @@ MonoBehaviour:
   moveType: 0
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 140000000300000005000000080000000d000000
-  moveChanceTime: 10
+  perNightAI: 020000000300000005000000080000000d000000
+  moveChanceTime: 3.6
   attackTimeRange: {x: 7, y: 12}
   pathNodes:
   - {fileID: 580544237}
@@ -33945,10 +33990,6 @@ MonoBehaviour:
   - {fileID: 727302709}
   - {fileID: 1279013457}
   - {fileID: 635928708}
-  - {fileID: 1605568907}
-  - {fileID: 935191480}
-  - {fileID: 2068616096}
-  - {fileID: 642155737}
 --- !u!1 &1958773832
 GameObject:
   m_ObjectHideFlags: 0
@@ -37022,6 +37063,7 @@ SceneRoots:
   - {fileID: 2007313721}
   - {fileID: 1682899824}
   - {fileID: 1795527168}
+  - {fileID: 449689169}
   - {fileID: 595686273}
   - {fileID: 721735150}
   - {fileID: 1547143946}
