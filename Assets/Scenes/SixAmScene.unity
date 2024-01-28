@@ -1442,6 +1442,7 @@ GameObject:
   - component: {fileID: 1406866771}
   - component: {fileID: 1406866773}
   - component: {fileID: 1406866772}
+  - component: {fileID: 1406866774}
   m_Layer: 5
   m_Name: timeTxt
   m_TagString: Untagged
@@ -1488,7 +1489,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6 AM
+  m_text: 06:00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c0a3a821e03b50d45bf8950914b96851, type: 2}
   m_sharedMaterial: {fileID: 8711286992357248100, guid: c0a3a821e03b50d45bf8950914b96851, type: 2}
@@ -1565,6 +1566,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406866770}
   m_CullTransparentMesh: 1
+--- !u!114 &1406866774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406866770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0abd5df872941442977632f70844804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txt: {fileID: 1406866772}
+  engStr: 6 AM
 --- !u!1 &1453372474
 GameObject:
   m_ObjectHideFlags: 1

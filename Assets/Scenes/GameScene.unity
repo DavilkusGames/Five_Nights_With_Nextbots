@@ -8453,9 +8453,9 @@ MonoBehaviour:
   - enableObj: {fileID: 332854235}
     disableObj: {fileID: 0}
     camId: 4
-    showTime: 10
-  chanceDelay: 60
-  eeChance: 0.3
+    showTime: 15
+  chanceDelay: 180
+  eeChance: 0.2
 --- !u!1 &450548906
 GameObject:
   m_ObjectHideFlags: 0
@@ -13590,7 +13590,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.9716981, g: 0.96940476, b: 0.875445, a: 1}
+  m_Color: {r: 0.8745098, g: 0.972549, b: 0.96384275, a: 1}
   m_Intensity: 9
   m_Range: 4.39
   m_SpotAngle: 30
@@ -34068,7 +34068,7 @@ MonoBehaviour:
   id: 0
   obj: {fileID: 980756119}
   screamer: {fileID: 1493421130}
-  moveType: 0
+  moveType: 2
   attackType: 0
   screamerTime: 1.5
   perNightAI: 020000000300000005000000080000000d000000
