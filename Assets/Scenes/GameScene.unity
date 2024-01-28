@@ -8051,8 +8051,9 @@ MonoBehaviour:
   moveType: 0
   attackType: 1
   screamerTime: 1.5
-  perNightAI: 0000000000000000000000000000000000000000
-  moveChanceTime: 0
+  perNightAI: 0000000005000000080000000a0000000d000000
+  moveChanceTime: 5
+  attackTimeRange: {x: 5, y: 8}
   pathNodes: []
 --- !u!1 &446123946
 GameObject:
@@ -8316,8 +8317,9 @@ MonoBehaviour:
   moveType: 0
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 0000000000000000000000000000000000000000
-  moveChanceTime: 0
+  perNightAI: 0000000000000000030000000500000007000000
+  moveChanceTime: 4
+  attackTimeRange: {x: 6, y: 9}
   pathNodes: []
 --- !u!1 &450548906
 GameObject:
@@ -9669,7 +9671,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ac7e954ef25ec7d4098797772bc5ee32, type: 2}
+  - {fileID: 2100000, guid: 43966692809948e469cb6792fa351560, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22821,7 +22823,7 @@ MonoBehaviour:
   prevPathNodes:
   - {fileID: 435448142}
   - {fileID: 727302709}
-  moveProbability: 0.65
+  moveProbability: 0.55
   officeDoorId: -1
 --- !u!1 &1287995358
 GameObject:
@@ -27850,8 +27852,9 @@ MonoBehaviour:
   moveType: 1
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 0000000000000000000000000000000000000000
-  moveChanceTime: 0
+  perNightAI: 0000000001000000030000000500000007000000
+  moveChanceTime: 6
+  attackTimeRange: {x: 1, y: 2}
   pathNodes: []
 --- !u!1 &1572674073
 GameObject:
@@ -33929,11 +33932,12 @@ MonoBehaviour:
   id: 0
   obj: {fileID: 980756119}
   screamer: {fileID: 1493421130}
-  moveType: 2
+  moveType: 0
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 0800000001000000010000000100000001000000
+  perNightAI: 140000000300000005000000080000000d000000
   moveChanceTime: 3.6
+  attackTimeRange: {x: 7, y: 12}
   pathNodes:
   - {fileID: 580544237}
   - {fileID: 1611552213}
@@ -33941,6 +33945,10 @@ MonoBehaviour:
   - {fileID: 727302709}
   - {fileID: 1279013457}
   - {fileID: 635928708}
+  - {fileID: 1605568907}
+  - {fileID: 935191480}
+  - {fileID: 2068616096}
+  - {fileID: 642155737}
 --- !u!1 &1958773832
 GameObject:
   m_ObjectHideFlags: 0

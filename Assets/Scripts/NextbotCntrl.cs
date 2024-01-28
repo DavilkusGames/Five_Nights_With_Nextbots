@@ -22,6 +22,7 @@ public class NextbotCntrl : MonoBehaviour
     public float screamerTime;
     public int[] perNightAI;
     public float moveChanceTime;
+    public Vector2 attackTimeRange;
     public List<NextbotPathNode> pathNodes;
 
     private Transform trans;
@@ -111,7 +112,7 @@ public class NextbotCntrl : MonoBehaviour
         float attackTimeK = 1f;
         if (ai > 7) attackTimeK = 0.85f;
         if (ai > 13) attackTimeK = 0.75f;
-        yield return new WaitForSeconds(Random.Range(6, 12) * attackTimeK);
+        yield return new WaitForSeconds(Random.Range(attackTimeRange[0], attackTimeRange[1]) * attackTimeK);
         if (!NextbotManager.Instance.IsDoorClosed(pathNodes[nodeId].officeDoorId))
         {
             obj.SetActive(false);
