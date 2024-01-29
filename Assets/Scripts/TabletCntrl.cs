@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Plugins.Audio.Core;
+using System;
 
 public class TabletCntrl : MonoBehaviour
 {
@@ -20,19 +21,19 @@ public class TabletCntrl : MonoBehaviour
     public Transform playerT;
     public DustFX dustFX;
 
-    private Animator anim;
-    private bool isTabletUp = false;
-    private bool isAnimPlaying = false;
-    private bool camsDisabled = false;
-    private int selectedCamId = 0;
-
     public List<GameObject> staticScanLines;
     public int minScanLineCount = 2;
     public int maxScanLineCount = 4;
     public int scanLineAnimCycles = 3;
     public float scanLineAnimDelay = 0.2f;
-
     public float disableTime = 4.0f;
+
+    private Animator anim;
+    private bool isTabletUp = false;
+    private bool isAnimPlaying = false;
+    private bool camsDisabled = false;
+    private int selectedCamId = 0;
+    private Action downCallback = null;
 
     public static TabletCntrl Instance;
 
@@ -57,6 +58,11 @@ public class TabletCntrl : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(tabletKey)) ToggleTablet();
+    }
+
+    public void SetDownCallback(Action callback)
+    {
+        downCallback = callback;
     }
 
     public void ChangeCam(int id)
@@ -90,7 +96,7 @@ public class TabletCntrl : MonoBehaviour
         camRender.SetActive(false);
         StartCoroutine(nameof(ScanLinesAnimation));
         camAudio.Stop();
-        camAudio.PlayOneShot("camsDisabled_" + Random.Range(0, 3).ToString());
+        camAudio.PlayOneShot("camsDisabled_" + UnityEngine.Random.Range(0, 3).ToString());
         camsDisabled = true;
         Invoke(nameof(EnableCams), disableTime);
     }
@@ -125,7 +131,7 @@ public class TabletCntrl : MonoBehaviour
             anim.Play("tabletUp");
             camAudio.Play("tabletUp");
             if (!camsDisabled) camAudio.PlayOneShot("camWorking");
-            else camAudio.PlayOneShot("camsDisabled_" + Random.Range(0, 3).ToString());
+            else camAudio.PlayOneShot("camsDisabled_" + UnityEngine.Random.Range(0, 3).ToString());
             foreach (var ind in officeRecInds) ind.SetState(false);
             dustFX.TeleportTo(cams[selectedCamId].transform);
         }
@@ -137,6 +143,12 @@ public class TabletCntrl : MonoBehaviour
             camAudio.Stop();
             camAudio.Play("tabletDown");
             dustFX.TeleportTo(playerT);
+
+            if (downCallback != null)
+            {
+                downCallback();
+                downCallback = null;
+            }
         }
         isAnimPlaying = true;
 
@@ -167,12 +179,12 @@ public class TabletCntrl : MonoBehaviour
         for (int i = 0; i < scanLineAnimCycles; i++)
         {
             yield return new WaitForSeconds(scanLineAnimDelay);
-            int lineCount = Random.Range(minScanLineCount, maxScanLineCount);
+            int lineCount = UnityEngine.Random.Range(minScanLineCount, maxScanLineCount);
             List<GameObject> tmpScanLines = new List<GameObject>();
             tmpScanLines.AddRange(staticScanLines);
             for (int j = 0; j < lineCount; j++)
             {
-                int scanLineId = Random.Range(0, tmpScanLines.Count);
+                int scanLineId = UnityEngine.Random.Range(0, tmpScanLines.Count);
                 tmpScanLines[scanLineId].SetActive(true);
                 tmpScanLines.RemoveAt(scanLineId);
             }

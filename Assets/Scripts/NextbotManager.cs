@@ -73,6 +73,11 @@ public class NextbotManager : MonoBehaviour
         doors[doorId].Break();
     }
 
+    public void TabletDownCallback(Action callback)
+    {
+        TabletCntrl.Instance.SetDownCallback(callback);
+    }
+
     public void LightsOff()
     {
         isLightsOff = true;

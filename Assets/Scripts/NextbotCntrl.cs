@@ -129,8 +129,9 @@ public class NextbotCntrl : MonoBehaviour
             else
             {
                 NextbotManager.Instance.BreakDoor(pathNodes[nodeId].officeDoorId);
-                yield return new WaitForSeconds(20f);
-                if (obj.activeSelf) Screamer();
+                NextbotManager.Instance.TabletDownCallback(Screamer);
+                yield return new WaitForSeconds(15f);
+                if (enabled) Screamer();
             }
         }
         else

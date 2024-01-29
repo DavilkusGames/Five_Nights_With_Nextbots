@@ -8474,7 +8474,7 @@ MonoBehaviour:
   attackType: 1
   screamerTime: 1.5
   perNightAI: 1400000005000000080000000a0000000d000000
-  moveChanceTime: 5
+  moveChanceTime: 10
   walkBackChance: 0.15
   attackTime: 8
   pathNodes:
