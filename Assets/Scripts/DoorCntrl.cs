@@ -66,7 +66,8 @@ public class DoorCntrl : MonoBehaviour
 
     public void SetLightBlinkCallback(Action callback)
     {
-        lightBlinkCallback = callback;
+        if (!isLightOn) callback();
+        else lightBlinkCallback = callback;
     }
 
     public void Poweroff()

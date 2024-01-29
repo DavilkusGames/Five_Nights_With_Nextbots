@@ -540,6 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 4059794826493273963}
   isDoorBtn: 0
+  hold: 1
 --- !u!1 &5741631133117017229
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,9 +705,15 @@ MonoBehaviour:
   lightBtnMats:
   - {fileID: 2100000, guid: 1f181c3555d2dfa4385a0e00025dcec7, type: 2}
   - {fileID: 2100000, guid: 1ad1e654afc4cb842a785aae46733c56, type: 2}
+  officeRecIndBehindDoor: {fileID: 0}
   light: {fileID: 0}
   blackImitation: {fileID: 0}
   lightAudio: {fileID: 0}
+  doorScreamerAudio: {fileID: 0}
+  minLightBlinkDelay: 0.3
+  maxLightBlinkDelay: 0.7
+  minLightBlinkTime: 0.3
+  maxLightBlinkTime: 0.7
 --- !u!114 &-5376036957164308573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,6 +947,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 4059794826493273963}
   isDoorBtn: 1
+  hold: 0
 --- !u!1 &9097778142721065496
 GameObject:
   m_ObjectHideFlags: 0

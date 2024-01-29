@@ -54,8 +54,8 @@ public class NextbotCntrl : MonoBehaviour
         if (prevNodeLocalId == -1) return false;
 
         int prevNodeGlobalId = pathNodes[nodeId].prevPathNodes[prevNodeLocalId].id;
-        if (TabletCntrl.Instance.GetCameraId() == pathNodes[nodeId].camId ||
-            TabletCntrl.Instance.GetCameraId() == pathNodes[prevNodeGlobalId].camId) TabletCntrl.Instance.DisableCams();
+        if (TabletCntrl.Instance.IsTabletUp() && (TabletCntrl.Instance.GetCameraId() == pathNodes[nodeId].camId ||
+            TabletCntrl.Instance.GetCameraId() == pathNodes[prevNodeGlobalId].camId)) TabletCntrl.Instance.DisableCams();
         nodeId = prevNodeGlobalId;
         trans.position = pathNodes[nodeId].transform.position;
         transform.rotation = pathNodes[nodeId].transform.rotation;
