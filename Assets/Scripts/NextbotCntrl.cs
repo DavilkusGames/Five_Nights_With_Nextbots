@@ -22,6 +22,7 @@ public class NextbotCntrl : MonoBehaviour
     public float screamerTime;
     public int[] perNightAI;
     public float moveChanceTime;
+    public float walkBackChance = 0f;
     public Vector2 attackTimeRange;
     public List<NextbotPathNode> pathNodes;
 
@@ -39,7 +40,7 @@ public class NextbotCntrl : MonoBehaviour
         else
         {
             isEnabled = true;
-            activateTime = (20 - ai) * 2.5f;
+            activateTime = (20 - ai) * 2f;
             StartCoroutine(nameof(MoveTimer));
         }
     }
@@ -94,16 +95,22 @@ public class NextbotCntrl : MonoBehaviour
                     moveType == NextbotCamMoveType.IgnoreCams || 
                     (moveType == NextbotCamMoveType.Random && Random.Range(0, 10) > 4))
                 {
-                    MoveNextNode();
-                    if (pathNodes[nodeId].officeDoorId != -1)
+                    if (Random.Range(0, 100) < (walkBackChance * 100f))
                     {
-                        if (NextbotManager.Instance.CanEnterDoor(pathNodes[nodeId].officeDoorId))
+                        MovePrevNode();
+                    }
+                    else {
+                        MoveNextNode();
+                        if (pathNodes[nodeId].officeDoorId != -1)
                         {
-                            isEnabled = false;
-                            NextbotManager.Instance.NextbotEnteredDoor(pathNodes[nodeId].officeDoorId, id);
-                            StartCoroutine(nameof(InOfficeTimer));
+                            if (NextbotManager.Instance.CanEnterDoor(pathNodes[nodeId].officeDoorId))
+                            {
+                                isEnabled = false;
+                                NextbotManager.Instance.NextbotEnteredDoor(pathNodes[nodeId].officeDoorId, id);
+                                StartCoroutine(nameof(InOfficeTimer));
+                            }
+                            else MovePrevNode();
                         }
-                        else MovePrevNode();
                     }
                 }
             }
