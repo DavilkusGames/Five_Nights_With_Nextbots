@@ -27,7 +27,7 @@ public class SixAmSceneManager : MonoBehaviour
     {
         if (GameData.data != null)
         {
-            GameData.data.nightId++;
+            if (GameData.data.nightId < 5) GameData.data.nightId++;
             GameData.data.survivedNightsCount++;
             GameData.SaveData();
         }
