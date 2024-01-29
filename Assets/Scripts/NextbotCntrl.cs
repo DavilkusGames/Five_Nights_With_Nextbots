@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum NextbotCamMoveType
 {
-    IgnoreCams, StunIfWatching, Random
+    IgnoreCams, StunIfWatching, Random, BackIfWatching
 }
 
 public enum NextbotAttackType
