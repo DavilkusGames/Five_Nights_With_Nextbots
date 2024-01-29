@@ -17,6 +17,9 @@ public class TabletCntrl : MonoBehaviour
     public Color selectedCamIconColor;
     public WhiteNoise noise;
     public SourceAudio camAudio;
+    public Transform playerT;
+    public DustFX dustFX;
+
     private Animator anim;
     private bool isTabletUp = false;
     private bool isAnimPlaying = false;
@@ -65,6 +68,7 @@ public class TabletCntrl : MonoBehaviour
         selectedCamId = id;
         camIcons[selectedCamId].color = selectedCamIconColor;
         cams[selectedCamId].SetActive(true);
+        dustFX.TeleportTo(cams[selectedCamId].transform);
         if (camRooms[selectedCamId] != null) camRooms[selectedCamId].SetActive(true);
 
         roomNameTxt.SetText(selectedCamId);
@@ -123,6 +127,7 @@ public class TabletCntrl : MonoBehaviour
             if (!camsDisabled) camAudio.PlayOneShot("camWorking");
             else camAudio.PlayOneShot("camsDisabled_" + Random.Range(0, 3).ToString());
             foreach (var ind in officeRecInds) ind.SetState(false);
+            dustFX.TeleportTo(cams[selectedCamId].transform);
         }
         else
         {
@@ -131,6 +136,7 @@ public class TabletCntrl : MonoBehaviour
             anim.Play("tabletDown");
             camAudio.Stop();
             camAudio.Play("tabletDown");
+            dustFX.TeleportTo(playerT);
         }
         isAnimPlaying = true;
 
