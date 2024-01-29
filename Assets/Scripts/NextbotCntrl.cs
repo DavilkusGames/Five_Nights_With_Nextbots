@@ -39,6 +39,7 @@ public class NextbotCntrl : MonoBehaviour
         else
         {
             isEnabled = true;
+            activateTime = (20 - ai) * 2.5f;
             StartCoroutine(nameof(MoveTimer));
         }
     }

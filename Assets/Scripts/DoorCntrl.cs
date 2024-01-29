@@ -42,7 +42,7 @@ public class DoorCntrl : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(toggleDoorKey)) ToggleDoor(false);
-        if (Input.GetKeyDown(toggleLightKey)) ToggleLight();
+        if (Input.GetKeyDown(toggleLightKey) || Input.GetKeyUp(toggleLightKey)) ToggleLight();
 
         if (isLightOn && Time.time >= nextLightBlinkTime)
         {

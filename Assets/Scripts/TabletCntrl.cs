@@ -79,7 +79,7 @@ public class TabletCntrl : MonoBehaviour
     public void GameOver()
     {
         camAudio.Volume = 0f;
-        if (isTabletUp) ToggleTablet();
+        if (isTabletUp || isAnimPlaying) ToggleTablet();
         this.enabled = false;
     }
 

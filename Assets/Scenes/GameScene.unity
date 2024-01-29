@@ -41182,7 +41182,7 @@ MonoBehaviour:
   screamer: {fileID: 1493421130}
   moveType: 2
   attackType: 0
-  screamerTime: 5
+  screamerTime: 1.5
   perNightAI: 010000000300000005000000080000000d000000
   moveChanceTime: 3.6
   attackTimeRange: {x: 7, y: 12}
