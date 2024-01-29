@@ -68,15 +68,15 @@ public class NextbotManager : MonoBehaviour
         doors[doorId].NextbotLeft();
     }
 
+    public void BreakDoor(int doorId)
+    {
+        doors[doorId].Break();
+    }
+
     public void LightsOff()
     {
         isLightsOff = true;
         Invoke(nameof(LightsOffScreamer), UnityEngine.Random.Range(10.0f, 15.0f));
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L)) Screamer(UnityEngine.Random.Range(0, 4));
     }
 
     private void LightsOffScreamer()

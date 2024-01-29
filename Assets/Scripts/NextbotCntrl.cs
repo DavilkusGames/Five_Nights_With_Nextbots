@@ -23,7 +23,7 @@ public class NextbotCntrl : MonoBehaviour
     public int[] perNightAI;
     public float moveChanceTime;
     public float walkBackChance = 0f;
-    public Vector2 attackTimeRange;
+    public float attackTime = 10f;
     public List<NextbotPathNode> pathNodes;
 
     private Transform trans;
@@ -40,7 +40,7 @@ public class NextbotCntrl : MonoBehaviour
         else
         {
             isEnabled = true;
-            activateTime = (20 - ai) * 2f;
+            activateTime = (20 - ai) * 1.5f;
             StartCoroutine(nameof(MoveTimer));
         }
     }
@@ -119,19 +119,30 @@ public class NextbotCntrl : MonoBehaviour
 
     private IEnumerator InOfficeTimer()
     {
-        float attackTimeK = 1f;
-        if (ai > 7) attackTimeK = 0.85f;
-        if (ai > 13) attackTimeK = 0.75f;
-        yield return new WaitForSeconds(Random.Range(attackTimeRange[0], attackTimeRange[1]) * attackTimeK);
+        yield return new WaitForSeconds(attackTime - (ai * 0.18f));
         if (!NextbotManager.Instance.IsDoorClosed(pathNodes[nodeId].officeDoorId))
         {
-            obj.SetActive(false);
-            NextbotManager.Instance.Screamer(id);
+            if (attackType == NextbotAttackType.IgnoreTablet)
+            {
+                Screamer();
+            }
+            else
+            {
+                NextbotManager.Instance.BreakDoor(pathNodes[nodeId].officeDoorId);
+                yield return new WaitForSeconds(20f);
+                if (obj.activeSelf) Screamer();
+            }
         }
         else
         {
             NextbotManager.Instance.WaitForLightBlink(pathNodes[nodeId].officeDoorId, MoveOutOfOffice);
         }
+    }
+
+    public void Screamer()
+    {
+        obj.SetActive(false);
+        NextbotManager.Instance.Screamer(id);
     }
 
     public void MoveOutOfOffice()

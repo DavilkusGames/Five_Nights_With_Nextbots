@@ -8473,10 +8473,10 @@ MonoBehaviour:
   moveType: 0
   attackType: 1
   screamerTime: 1.5
-  perNightAI: 0200000005000000080000000a0000000d000000
+  perNightAI: 1400000005000000080000000a0000000d000000
   moveChanceTime: 5
-  walkBackChance: 0
-  attackTimeRange: {x: 5, y: 8}
+  walkBackChance: 0.15
+  attackTime: 8
   pathNodes:
   - {fileID: 1919373581}
   - {fileID: 290953077}
@@ -8485,6 +8485,10 @@ MonoBehaviour:
   - {fileID: 1925907634}
   - {fileID: 752887919}
   - {fileID: 1877048961}
+  - {fileID: 2056371210}
+  - {fileID: 614464451}
+  - {fileID: 41360950}
+  - {fileID: 6596056}
 --- !u!1 &446123946
 GameObject:
   m_ObjectHideFlags: 0
@@ -8749,8 +8753,8 @@ MonoBehaviour:
   screamerTime: 1.5
   perNightAI: 0000000000000000030000000500000007000000
   moveChanceTime: 4
-  walkBackChance: 0
-  attackTimeRange: {x: 6, y: 9}
+  walkBackChance: 0.05
+  attackTime: 10
   pathNodes: []
 --- !u!1 &449689168
 GameObject:
@@ -29614,7 +29618,7 @@ MonoBehaviour:
   perNightAI: 0000000001000000030000000500000007000000
   moveChanceTime: 6
   walkBackChance: 0
-  attackTimeRange: {x: 1, y: 2}
+  attackTime: 10
   pathNodes: []
 --- !u!1 &1572674073
 GameObject:
@@ -41354,10 +41358,10 @@ MonoBehaviour:
   moveType: 2
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 010000000300000005000000080000000d000000
+  perNightAI: 000000000300000005000000080000000d000000
   moveChanceTime: 3.6
-  walkBackChance: 0
-  attackTimeRange: {x: 7, y: 12}
+  walkBackChance: 0.15
+  attackTime: 10
   pathNodes:
   - {fileID: 580544237}
   - {fileID: 1611552213}

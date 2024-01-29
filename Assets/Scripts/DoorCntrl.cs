@@ -28,6 +28,7 @@ public class DoorCntrl : MonoBehaviour
     private bool isLightOn = false;
     private bool isLightBlinked = false;
     private bool isAnimationPlaying = false;
+    private bool isBroken = false;
 
     private NextbotCntrl nextbotInDoorway;
     private Action lightBlinkCallback;
@@ -42,7 +43,8 @@ public class DoorCntrl : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(toggleDoorKey)) ToggleDoor(false);
-        if (Input.GetKeyDown(toggleLightKey) || Input.GetKeyUp(toggleLightKey)) ToggleLight();
+        if (Input.GetKeyDown(toggleLightKey)) ToggleLight(true);
+        if (Input.GetKeyUp(toggleLightKey)) ToggleLight(false);
 
         if (isLightOn && Time.time >= nextLightBlinkTime)
         {
@@ -64,6 +66,11 @@ public class DoorCntrl : MonoBehaviour
     public bool GetLightState() { return isLightOn; }
     public bool IsOccupied() { return (nextbotInDoorway != null); }
 
+    public void Break()
+    {
+        isBroken = true;
+    }
+
     public void SetLightBlinkCallback(Action callback)
     {
         if (!isLightOn) callback();
@@ -73,14 +80,14 @@ public class DoorCntrl : MonoBehaviour
     public void Poweroff()
     {
         if (isClosed) ToggleDoor(true);
-        if (isLightOn) ToggleLight();
+        if (isLightOn) ToggleLight(false);
         this.enabled = false;
         officeRecIndBehindDoor.SetState(false);
     }
 
     public void GameOver()
     {
-        if (isLightOn) ToggleLight();
+        if (isLightOn) ToggleLight(false);
         this.enabled = false;
         officeRecIndBehindDoor.SetState(false);
     }
@@ -100,6 +107,12 @@ public class DoorCntrl : MonoBehaviour
     public void ToggleDoor(bool isSilent)
     {
         if (isAnimationPlaying || !this.enabled) return;
+        if (isBroken)
+        {
+            doorAudio.Play("doorError");
+            return;
+        }
+
         isClosed = !isClosed;
         doorBtn.material = doorBtnMats[((isClosed) ? 1 : 0)];
         if (isClosed) anim.Play("doorClose");
@@ -112,10 +125,18 @@ public class DoorCntrl : MonoBehaviour
         else EnergyManager.Instance.DecreaseUsage();
     }
 
-    public void ToggleLight()
+    public void ToggleLight(bool state)
     {
         if (!this.enabled) return;
-        isLightOn = !isLightOn;
+        if (isBroken)
+        {
+            doorAudio.Play("doorError");
+            return;
+        }
+
+        if (isLightOn != state) isLightOn = state;
+        else return;
+
         lightBtn.material = lightBtnMats[((isLightOn) ? 1 : 0)];
         light.SetActive(isLightOn);
         blackImitation.SetActive(!isLightOn);

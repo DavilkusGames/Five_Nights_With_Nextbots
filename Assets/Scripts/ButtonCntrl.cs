@@ -4,18 +4,16 @@ public class ButtonCntrl : MonoBehaviour
 {
     public DoorCntrl door;
     public bool isDoorBtn = true;
-    public bool hold = false;
 
     void OnMouseDown()
     {
         if (isDoorBtn) door.ToggleDoor(false);
-        else door.ToggleLight();
+        else door.ToggleLight(true);
     }
 
     private void OnMouseUp()
     {
-        if (!hold) return;
-        if (isDoorBtn) door.ToggleDoor(false);
-        else door.ToggleLight();
+        if (isDoorBtn) return;
+        door.ToggleLight(false);
     }
 }
