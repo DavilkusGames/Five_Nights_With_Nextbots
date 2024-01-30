@@ -540,7 +540,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 4059794826493273963}
   isDoorBtn: 0
-  hold: 1
 --- !u!1 &5741631133117017229
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,7 +946,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 4059794826493273963}
   isDoorBtn: 1
-  hold: 0
 --- !u!1 &9097778142721065496
 GameObject:
   m_ObjectHideFlags: 0
