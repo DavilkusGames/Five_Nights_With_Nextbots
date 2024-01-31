@@ -39,7 +39,7 @@ public class NextbotCntrl : MonoBehaviour
     private bool isEnabled = false;
 
     [Header("Amogus")]
-    public NextbotPathNode[] randomSpawns;
+    public int[] randomSpawnsId;
     public Vector2 standardSpawnTimeRange = Vector2.zero;
     public float aiSpawnTimeMultiplier = 1.0f;
 
