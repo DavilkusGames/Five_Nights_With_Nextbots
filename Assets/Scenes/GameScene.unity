@@ -8470,6 +8470,7 @@ MonoBehaviour:
   id: 1
   obj: {fileID: 1144609516}
   screamer: {fileID: 1894790204}
+  type: 0
   moveType: 0
   attackType: 1
   screamerTime: 1.5
@@ -8489,6 +8490,7 @@ MonoBehaviour:
   - {fileID: 614464451}
   - {fileID: 41360950}
   - {fileID: 6596056}
+  randomSpawns: {fileID: 0}
 --- !u!1 &446123946
 GameObject:
   m_ObjectHideFlags: 0
@@ -8748,6 +8750,7 @@ MonoBehaviour:
   id: 2
   obj: {fileID: 1169168773}
   screamer: {fileID: 2012978045}
+  type: 1
   moveType: 0
   attackType: 0
   screamerTime: 1.5
@@ -8756,6 +8759,7 @@ MonoBehaviour:
   walkBackChance: 0.05
   attackTime: 10
   pathNodes: []
+  randomSpawns: {fileID: 0}
 --- !u!1 &449689168
 GameObject:
   m_ObjectHideFlags: 0
@@ -29463,7 +29467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -234, y: -54.000244}
+  m_AnchoredPosition: {x: -234, y: -54.00023}
   m_SizeDelta: {x: 500, y: -220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1539820579
@@ -30124,6 +30128,7 @@ MonoBehaviour:
   id: 3
   obj: {fileID: 1794906842}
   screamer: {fileID: 2004432869}
+  type: 2
   moveType: 3
   attackType: 0
   screamerTime: 1.5
@@ -30132,6 +30137,7 @@ MonoBehaviour:
   walkBackChance: 0
   attackTime: 0
   pathNodes: []
+  randomSpawns: {fileID: 0}
 --- !u!1 &1572674073
 GameObject:
   m_ObjectHideFlags: 0
@@ -41995,6 +42001,7 @@ MonoBehaviour:
   id: 0
   obj: {fileID: 980756119}
   screamer: {fileID: 1493421130}
+  type: 0
   moveType: 2
   attackType: 0
   screamerTime: 1.5
@@ -42013,6 +42020,7 @@ MonoBehaviour:
   - {fileID: 935191480}
   - {fileID: 2068616096}
   - {fileID: 642155737}
+  randomSpawns: {fileID: 0}
 --- !u!1 &1958773832
 GameObject:
   m_ObjectHideFlags: 0

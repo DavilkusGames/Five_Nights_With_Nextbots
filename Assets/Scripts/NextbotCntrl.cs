@@ -2,21 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine; 
 
+public enum NextbotType
+{
+    Normal, Raider, Runner
+};
+
 public enum NextbotCamMoveType
 {
     IgnoreCams, StunIfWatching, Random, BackIfWatching
-}
+};
 
 public enum NextbotAttackType
 {
     IgnoreTablet, AttackOnTabletDown
-}
+};
 
 public class NextbotCntrl : MonoBehaviour
 {
     public int id;
     public GameObject obj;
     public GameObject screamer;
+    public NextbotType type;
     public NextbotCamMoveType moveType;
     public NextbotAttackType attackType;
     public float screamerTime;
@@ -31,6 +37,11 @@ public class NextbotCntrl : MonoBehaviour
     private int ai = 0;
     private int nodeId = 0;
     private bool isEnabled = false;
+
+    [Header("Amogus")]
+    public NextbotPathNode[] randomSpawns;
+    public Vector2 standardSpawnTimeRange = Vector2.zero;
+    public float aiSpawnTimeMultiplier = 1.0f;
 
     private void Start()
     {
