@@ -4050,8 +4050,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "!\u0421\u041A\u041E\u041B\u042C\u0417\u041A\u0418\u0419 \u041F\u041E\u041B!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d4373fbd5f10b8842836ab6804e60721, type: 2}
+  m_sharedMaterial: {fileID: -8818941094383969259, guid: d4373fbd5f10b8842836ab6804e60721, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4140,7 +4140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: -8818941094383969259, guid: d4373fbd5f10b8842836ab6804e60721, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8474,10 +8474,11 @@ MonoBehaviour:
   moveType: 0
   attackType: 1
   screamerTime: 1.5
-  perNightAI: 0700000007000000070000000700000007000000
+  perNightAI: 0000000007000000070000000700000007000000
   moveChanceTime: 4
   walkBackChance: 0.15
   attackTime: 8
+  moveMinPeriod: 8
   pathNodes:
   - {fileID: 1919373581}
   - {fileID: 290953077}
@@ -8754,12 +8755,13 @@ MonoBehaviour:
   screamer: {fileID: 2012978045}
   type: 1
   moveType: 0
-  attackType: 0
+  attackType: 1
   screamerTime: 1.5
   perNightAI: 0000000000000000000000000000000000000000
-  moveChanceTime: 4
-  walkBackChance: 0.05
-  attackTime: 10
+  moveChanceTime: 4.2
+  walkBackChance: 0.1
+  attackTime: 8.5
+  moveMinPeriod: 15
   pathNodes: []
   randomSpawnsId: 
   standardSpawnTimeRange: {x: 0, y: 0}
@@ -10815,8 +10817,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u041E\u0421\u0422\u041E\u0420\u041E\u0416\u041D\u041E"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d4373fbd5f10b8842836ab6804e60721, type: 2}
+  m_sharedMaterial: {fileID: -8818941094383969259, guid: d4373fbd5f10b8842836ab6804e60721, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10905,7 +10907,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: -8818941094383969259, guid: d4373fbd5f10b8842836ab6804e60721, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30140,6 +30142,7 @@ MonoBehaviour:
   moveChanceTime: 6
   walkBackChance: 0
   attackTime: 0
+  moveMinPeriod: 8
   pathNodes: []
   randomSpawnsId: 
   standardSpawnTimeRange: {x: 0, y: 0}
@@ -42011,10 +42014,11 @@ MonoBehaviour:
   moveType: 2
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 0700000007000000070000000700000007000000
+  perNightAI: 1400000007000000070000000700000007000000
   moveChanceTime: 3.6
   walkBackChance: 0.15
   attackTime: 9
+  moveMinPeriod: 8
   pathNodes:
   - {fileID: 580544237}
   - {fileID: 1611552213}

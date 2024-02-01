@@ -30,9 +30,11 @@ public class NextbotCntrl : MonoBehaviour
     public float moveChanceTime;
     public float walkBackChance = 0f;
     public float attackTime = 10f;
+    public float moveMinPeriod = 8.0f;
     public List<NextbotPathNode> pathNodes;
 
     private Transform trans;
+    private float prevMoveTime = 0f;
     private float activateTime = 0f;
     private int ai = 0;
     private int nodeId = 0;
@@ -41,12 +43,15 @@ public class NextbotCntrl : MonoBehaviour
     [Header("Amogus")]
     public int[] randomSpawnsId;
     public Vector2 standardSpawnTimeRange = Vector2.zero;
+    public float spawnTimeRangeAiK = 1f;
     public float aiSpawnTimeMultiplier = 1.0f;
 
     private void Start()
     {
         trans = transform;
         ai = perNightAI[GameData.SelectedNightId];
+        standardSpawnTimeRange = new Vector2(standardSpawnTimeRange.x - ai * spawnTimeRangeAiK, 
+            standardSpawnTimeRange.y - ai * spawnTimeRangeAiK);
         if (ai == 0) obj.SetActive(false);
         else
         {
@@ -106,6 +111,9 @@ public class NextbotCntrl : MonoBehaviour
                     moveType == NextbotCamMoveType.IgnoreCams || 
                     (moveType == NextbotCamMoveType.Random && Random.Range(0, 10) > 4))
                 {
+                    if (Time.time < prevMoveTime + moveMinPeriod) yield return new WaitForSeconds((prevMoveTime + moveMinPeriod) - Time.time);
+                    prevMoveTime = Time.time;
+
                     if (Random.Range(0, 100) < (walkBackChance * 100f))
                     {
                         MovePrevNode();
