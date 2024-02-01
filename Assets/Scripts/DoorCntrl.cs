@@ -130,7 +130,7 @@ public class DoorCntrl : MonoBehaviour
         if (!this.enabled) return;
         if (isBroken)
         {
-            doorAudio.Play("doorError");
+            if (state) doorAudio.Play("doorError");
             return;
         }
 

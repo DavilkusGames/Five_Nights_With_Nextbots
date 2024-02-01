@@ -54,7 +54,9 @@ public class NextbotCntrl : MonoBehaviour
         if (ai == 0) obj.SetActive(false);
         else
         {
-            isEnabled = true;
+            isEnabled = (type != NextbotType.Raider);
+            obj.SetActive(type != NextbotType.Raider);
+            if (type == NextbotType.Raider) Invoke(nameof(RaiderRespawn), Random.Range(standardSpawnTimeRange.x, standardSpawnTimeRange.y));
             activateTime = (20 - ai) * 1.5f;
             StartCoroutine(nameof(MoveTimer));
         }
@@ -100,7 +102,7 @@ public class NextbotCntrl : MonoBehaviour
 
     private IEnumerator MoveTimer()
     {
-        yield return new WaitForSeconds(activateTime);
+        if (type != NextbotType.Raider) yield return new WaitForSeconds(activateTime);
         while (true)
         {
             yield return new WaitForSeconds(moveChanceTime);
@@ -113,7 +115,7 @@ public class NextbotCntrl : MonoBehaviour
                     if (Time.time < prevMoveTime + moveMinPeriod) yield return new WaitForSeconds((prevMoveTime + moveMinPeriod) - Time.time);
                     prevMoveTime = Time.time;
 
-                    if (Random.Range(0, 100) < (walkBackChance * 100f))
+                    if (pathNodes[nodeId].prevPathNodes.Length > 0 && Random.Range(0, 100) < (walkBackChance * 100f))
                     {
                         MovePrevNode();
                     }
@@ -166,10 +168,23 @@ public class NextbotCntrl : MonoBehaviour
 
     public void MoveOutOfOffice()
     {
-        isEnabled = true;
-        obj.SetActive(true);
         NextbotManager.Instance.NextbotLeftDoor(pathNodes[nodeId].officeDoorId);
+        isEnabled = (type != NextbotType.Raider);
+        obj.SetActive(type != NextbotType.Raider);
+        if (type == NextbotType.Raider) Invoke(nameof(RaiderRespawn), Random.Range(standardSpawnTimeRange.x, standardSpawnTimeRange.y));
         MoveNextNode();
+    }
+
+    private void RaiderRespawn()
+    {
+        int spawnId = Random.Range(0, randomSpawnsId.Length);
+        nodeId = pathNodes[randomSpawnsId[spawnId]].id;
+        trans.position = pathNodes[nodeId].transform.position;
+        trans.rotation = pathNodes[nodeId].transform.rotation;
+        if (TabletCntrl.Instance.IsTabletUp() && (TabletCntrl.Instance.GetCameraId() == pathNodes[nodeId].camId)) TabletCntrl.Instance.DisableCams();
+        prevMoveTime = Time.time;
+        obj.SetActive(true);
+        isEnabled = true;
     }
 
     public void Disable()

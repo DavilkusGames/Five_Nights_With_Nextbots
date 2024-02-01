@@ -2188,12 +2188,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd62bb705af51941a7ca21678a663c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  camId: 0
-  nextPathNodes: []
-  prevPathNodes: []
+  id: 9
+  camId: -1
+  nextPathNodes:
+  - {fileID: 731158567}
+  prevPathNodes:
+  - {fileID: 1078670974}
   moveProbability: 0
-  officeDoorId: -1
+  officeDoorId: 1
 --- !u!1 &86268791
 GameObject:
   m_ObjectHideFlags: 0
@@ -6448,7 +6450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &333132123
 Transform:
   m_ObjectHideFlags: 0
@@ -6912,7 +6914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &343488712
 Transform:
   m_ObjectHideFlags: 0
@@ -7151,11 +7153,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd62bb705af51941a7ca21678a663c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  camId: 0
-  nextPathNodes: []
+  id: 1
+  camId: 3
+  nextPathNodes:
+  - {fileID: 850893759}
+  - {fileID: 1746375305}
   prevPathNodes: []
-  moveProbability: 0
+  moveProbability: 0.9
   officeDoorId: -1
 --- !u!1001 &363291114
 PrefabInstance:
@@ -8393,6 +8397,7 @@ Transform:
   - {fileID: 1527348971}
   - {fileID: 1816418774}
   - {fileID: 79929896}
+  - {fileID: 731158566}
   m_Father: {fileID: 422436879}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &435448140
@@ -8584,9 +8589,9 @@ MonoBehaviour:
   moveType: 0
   attackType: 1
   screamerTime: 1.5
-  perNightAI: 0000000007000000070000000700000007000000
+  perNightAI: 0700000007000000070000000700000007000000
   moveChanceTime: 4
-  walkBackChance: 0.15
+  walkBackChance: 0.1
   attackTime: 8
   moveMinPeriod: 8
   pathNodes:
@@ -8604,7 +8609,6 @@ MonoBehaviour:
   randomSpawnsId: 
   standardSpawnTimeRange: {x: 0, y: 0}
   spawnTimeRangeAiK: 1
-  aiSpawnTimeMultiplier: 1
 --- !u!1 &446123946
 GameObject:
   m_ObjectHideFlags: 0
@@ -8868,11 +8872,11 @@ MonoBehaviour:
   moveType: 0
   attackType: 1
   screamerTime: 1.5
-  perNightAI: 0700000000000000000000000000000000000000
+  perNightAI: 0700000007000000070000000700000007000000
   moveChanceTime: 4.2
-  walkBackChance: 0.1
-  attackTime: 8.5
-  moveMinPeriod: 15
+  walkBackChance: 0.07
+  attackTime: 11
+  moveMinPeriod: 14
   pathNodes:
   - {fileID: 1362859758}
   - {fileID: 359741925}
@@ -8885,9 +8889,8 @@ MonoBehaviour:
   - {fileID: 1816418775}
   - {fileID: 79929897}
   randomSpawnsId: 00000000010000000200000003000000
-  standardSpawnTimeRange: {x: 75, y: 135}
+  standardSpawnTimeRange: {x: 80, y: 130}
   spawnTimeRangeAiK: 1
-  aiSpawnTimeMultiplier: 1
 --- !u!1 &449689168
 GameObject:
   m_ObjectHideFlags: 0
@@ -11155,7 +11158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &564965953
 Transform:
   m_ObjectHideFlags: 0
@@ -14233,6 +14236,56 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730215898}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &731158565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731158566}
+  - component: {fileID: 731158567}
+  m_Layer: 0
+  m_Name: despawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &731158566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731158565}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 433549598}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &731158567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731158565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd62bb705af51941a7ca21678a663c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 10
+  camId: -1
+  nextPathNodes: []
+  prevPathNodes: []
+  moveProbability: 1
+  officeDoorId: -1
 --- !u!1 &740395614
 GameObject:
   m_ObjectHideFlags: 0
@@ -14810,9 +14863,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd62bb705af51941a7ca21678a663c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 3
   camId: 0
-  nextPathNodes: []
+  nextPathNodes:
+  - {fileID: 359741925}
+  - {fileID: 1746375305}
   prevPathNodes: []
   moveProbability: 0
   officeDoorId: -1
@@ -16103,11 +16158,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd62bb705af51941a7ca21678a663c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  camId: 0
-  nextPathNodes: []
-  prevPathNodes: []
-  moveProbability: 0
+  id: 5
+  camId: 5
+  nextPathNodes:
+  - {fileID: 1527348972}
+  prevPathNodes:
+  - {fileID: 1362859758}
+  - {fileID: 359741925}
+  moveProbability: 0.9
   officeDoorId: -1
 --- !u!1 &853438093
 GameObject:
@@ -17145,7 +17203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &887818575
 Transform:
   m_ObjectHideFlags: 0
@@ -18873,7 +18931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &948091431
 Transform:
   m_ObjectHideFlags: 0
@@ -21044,10 +21102,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd62bb705af51941a7ca21678a663c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  camId: 0
-  nextPathNodes: []
-  prevPathNodes: []
+  id: 6
+  camId: 7
+  nextPathNodes:
+  - {fileID: 850893759}
+  - {fileID: 1816418775}
+  prevPathNodes:
+  - {fileID: 1222408302}
   moveProbability: 0
   officeDoorId: -1
 --- !u!1 &1082345549
@@ -23802,9 +23863,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd62bb705af51941a7ca21678a663c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  camId: 0
-  nextPathNodes: []
+  id: 2
+  camId: 6
+  nextPathNodes:
+  - {fileID: 1078670974}
   prevPathNodes: []
   moveProbability: 0
   officeDoorId: -1
@@ -26334,10 +26396,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  camId: 0
-  nextPathNodes: []
+  camId: 4
+  nextPathNodes:
+  - {fileID: 850893759}
   prevPathNodes: []
-  moveProbability: 0
+  moveProbability: 0.5
   officeDoorId: -1
 --- !u!1 &1368937387
 GameObject:
@@ -29626,11 +29689,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd62bb705af51941a7ca21678a663c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  camId: 0
-  nextPathNodes: []
-  prevPathNodes: []
-  moveProbability: 0
+  id: 7
+  camId: 2
+  nextPathNodes:
+  - {fileID: 79929897}
+  prevPathNodes:
+  - {fileID: 850893759}
+  moveProbability: 0.9
   officeDoorId: -1
 --- !u!1 &1531665529
 GameObject:
@@ -30569,7 +30634,6 @@ MonoBehaviour:
   randomSpawnsId: 
   standardSpawnTimeRange: {x: 0, y: 0}
   spawnTimeRangeAiK: 1
-  aiSpawnTimeMultiplier: 1
 --- !u!1 &1572674073
 GameObject:
   m_ObjectHideFlags: 0
@@ -32462,7 +32526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1675028314
 Transform:
   m_ObjectHideFlags: 0
@@ -33878,9 +33942,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd62bb705af51941a7ca21678a663c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  camId: 0
-  nextPathNodes: []
+  id: 4
+  camId: 1
+  nextPathNodes:
+  - {fileID: 79929897}
   prevPathNodes: []
   moveProbability: 0
   officeDoorId: -1
@@ -34942,12 +35007,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd62bb705af51941a7ca21678a663c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  camId: 0
-  nextPathNodes: []
-  prevPathNodes: []
+  id: 8
+  camId: -1
+  nextPathNodes:
+  - {fileID: 731158567}
+  prevPathNodes:
+  - {fileID: 780729710}
   moveProbability: 0
-  officeDoorId: -1
+  officeDoorId: 0
 --- !u!1 &1820776969
 GameObject:
   m_ObjectHideFlags: 0
@@ -37019,7 +37086,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1921997047
 Transform:
   m_ObjectHideFlags: 0
@@ -42537,9 +42604,9 @@ MonoBehaviour:
   moveType: 2
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 0000000007000000070000000700000007000000
+  perNightAI: 0700000007000000070000000700000007000000
   moveChanceTime: 3.6
-  walkBackChance: 0.15
+  walkBackChance: 0.1
   attackTime: 9
   moveMinPeriod: 8
   pathNodes:
@@ -42556,7 +42623,6 @@ MonoBehaviour:
   randomSpawnsId: 
   standardSpawnTimeRange: {x: 0, y: 0}
   spawnTimeRangeAiK: 1
-  aiSpawnTimeMultiplier: 1
 --- !u!1 &1958773832
 GameObject:
   m_ObjectHideFlags: 0
@@ -43727,7 +43793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2040554018
 Transform:
   m_ObjectHideFlags: 0
