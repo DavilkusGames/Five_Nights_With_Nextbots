@@ -44,7 +44,6 @@ public class NextbotCntrl : MonoBehaviour
     public int[] randomSpawnsId;
     public Vector2 standardSpawnTimeRange = Vector2.zero;
     public float spawnTimeRangeAiK = 1f;
-    public float aiSpawnTimeMultiplier = 1.0f;
 
     private void Start()
     {
