@@ -7,6 +7,8 @@ using System;
 
 public class TabletCntrl : MonoBehaviour
 {
+    public delegate void CamChangeCallback(int camId);
+
     public KeyCode tabletKey;
     public GameObject camPanel;
     public GameObject camRender;
@@ -34,6 +36,7 @@ public class TabletCntrl : MonoBehaviour
     private bool camsDisabled = false;
     private int selectedCamId = 0;
     private Action downCallback = null;
+    private CamChangeCallback camChangeCallback = null;
 
     public static TabletCntrl Instance;
 
@@ -65,6 +68,11 @@ public class TabletCntrl : MonoBehaviour
         downCallback = callback;
     }
 
+    public void SubscribeToCamChange(CamChangeCallback callback)
+    {
+        camChangeCallback += callback;
+    }
+
     public void ChangeCam(int id)
     {
         if (!isTabletUp || isAnimPlaying) return;
@@ -76,6 +84,7 @@ public class TabletCntrl : MonoBehaviour
         cams[selectedCamId].SetActive(true);
         dustFX.TeleportTo(cams[selectedCamId].transform);
         if (camRooms[selectedCamId] != null) camRooms[selectedCamId].SetActive(true);
+        if (camChangeCallback != null) camChangeCallback(selectedCamId);
 
         roomNameTxt.SetText(selectedCamId);
         camAudio.PlayOneShot("camChange");
@@ -134,6 +143,7 @@ public class TabletCntrl : MonoBehaviour
             else camAudio.PlayOneShot("camsDisabled_" + UnityEngine.Random.Range(0, 3).ToString());
             foreach (var ind in officeRecInds) ind.SetState(false);
             dustFX.TeleportTo(cams[selectedCamId].transform);
+            if (camChangeCallback != null) camChangeCallback(selectedCamId);
         }
         else
         {
@@ -149,6 +159,7 @@ public class TabletCntrl : MonoBehaviour
                 downCallback();
                 downCallback = null;
             }
+            if (camChangeCallback != null) camChangeCallback(-1);
         }
         isAnimPlaying = true;
 

@@ -1,3 +1,4 @@
+using Plugins.Audio.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine; 
@@ -45,6 +46,10 @@ public class NextbotCntrl : MonoBehaviour
     public Vector2 standardSpawnTimeRange = Vector2.zero;
     public float spawnTimeRangeAiK = 1f;
 
+    [Header("Sanic")]
+    public SourceAudio runAudio;
+    public SanicRoomCntrl room;
+
     private void Start()
     {
         trans = transform;
@@ -60,6 +65,7 @@ public class NextbotCntrl : MonoBehaviour
             activateTime = (20 - ai) * 1.5f;
             StartCoroutine(nameof(MoveTimer));
         }
+        TabletCntrl.Instance.SubscribeToCamChange(CamChanged);
     }
 
     private bool MovePrevNode()
@@ -158,6 +164,11 @@ public class NextbotCntrl : MonoBehaviour
         {
             NextbotManager.Instance.WaitForLightBlink(pathNodes[nodeId].officeDoorId, MoveOutOfOffice);
         }
+    }
+
+    public void CamChanged(int camId)
+    {
+
     }
 
     public void Screamer()
