@@ -29,6 +29,9 @@ public class YandexGames : MonoBehaviour
     private static extern void ShowFullscreenAd();
 
     [DllImport("__Internal")]
+    private static extern void ShowRewardedAd();
+
+    [DllImport("__Internal")]
     private static extern void SaveToLb(int score);
 
     [DllImport("__Internal")]

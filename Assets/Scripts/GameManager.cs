@@ -6,11 +6,15 @@ public class GameManager : MonoBehaviour
     public CameraController cam;
     public TabletCntrl tablet;
     public DoorCntrl[] doors;
+    public TimeManager gameTime;
 
     public GameObject adNotificationPanel;
     public TextTranslator adNotificationTxt;
 
+    public GameObject skipNightBtn;
+
     public float adDelay = 60;
+    public float skipNightBtnTime = 10f;
 
     public static GameManager Instance;
 
@@ -30,6 +34,12 @@ public class GameManager : MonoBehaviour
     {
         BlackPanel.Instance.FadeOut(null);
         StartCoroutine(nameof(AdTimer));
+
+        if (GameData.SelectedNightId == 0)
+        {
+            skipNightBtn.SetActive(true);
+            Invoke(nameof(SkipNightRequest), skipNightBtnTime);
+        }
     }
 
     public void GameOver()
@@ -45,6 +55,16 @@ public class GameManager : MonoBehaviour
         tablet.GameOver();
         for (int i = 0; i < doors.Length; i++) doors[i].Poweroff();
         AmbienceManager.Instance.Disable();
+    }
+
+    private void SkipNightBtnTimeout()
+    {
+        skipNightBtn.SetActive(false);
+    }
+
+    public void SkipNightRequest()
+    {
+        gameTime.SkipNight();
     }
 
     private IEnumerator AdTimer()

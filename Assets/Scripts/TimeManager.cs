@@ -28,15 +28,20 @@ public class TimeManager : MonoBehaviour
             if (YandexGames.Instance == null || !YandexGames.IsRus) timeTxt.text = time.ToString() + " AM";
             else timeTxt.text = ToTwoDigits(time.ToString()) + ":00";
         }
-        BlackPanel.Instance.SetUIBlock(true);
-        BlackPanel.Instance.SetFadeSpeed(10f);
-        BlackPanel.Instance.FadeIn(LoadSixAmScene);
+        SkipNight();
     }
 
     private string ToTwoDigits(string str)
     {
         if (str.Length >= 2) return str;
         else return '0' + str;
+    }
+
+    public void SkipNight()
+    {
+        BlackPanel.Instance.SetUIBlock(true);
+        BlackPanel.Instance.SetFadeSpeed(10f);
+        BlackPanel.Instance.FadeIn(LoadSixAmScene);
     }
 
     public void LoadSixAmScene()

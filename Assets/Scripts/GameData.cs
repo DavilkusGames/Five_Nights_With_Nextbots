@@ -5,12 +5,15 @@ public class GameData
     public static GameData data = null;
     public static bool dataLoaded = false;
     public static int SelectedNightId = 0;
+    public static int[] customAI = { 0, 0, 0, 0 };
 
     // SAVE DATA
     public int nightId = 0;
     public int survivedNightsCount = 0;
     public int score = 0;
+    public int starsCount = 0;
     public bool isCustomNightOpened = false;
+    public bool completedTwentyMode = false;
     // =======================
 
     public static void LoadData()
