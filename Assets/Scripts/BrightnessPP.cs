@@ -10,12 +10,22 @@ public class BrightnessPP : MonoBehaviour
 
     private void Start()
     {
-        mat = new Material(shader);
+        if (!shader.isSupported)
+        {
+            mat = new Material(shader);
+            Debug.Log("PP SHADER '" + shader.name + "' IS NOT SUPPORTED ON YOUR GPU. TURNED OFF.");
+            enabled = false;
+        }
+        else Debug.Log("PP Shader '" + shader.name + "' supported and active.");
     }
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        mat.SetFloat("_Brightness", brightness);
-        Graphics.Blit(source, destination, mat);
+        if (!shader.isSupported) destination = source;
+        else
+        {
+            mat.SetFloat("_Brightness", brightness);
+            Graphics.Blit(source, destination, mat);
+        }
     }
 }
