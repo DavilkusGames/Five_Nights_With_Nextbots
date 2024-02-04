@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class BrightnessPP : MonoBehaviour
 {
     public Shader shader;
@@ -10,13 +9,16 @@ public class BrightnessPP : MonoBehaviour
 
     private void Start()
     {
-        if (!shader.isSupported)
+        if (shader.isSupported)
         {
             mat = new Material(shader);
+            Debug.Log("PP Shader '" + shader.name + "' supported and active.");
+        }
+        else
+        {
             Debug.Log("PP SHADER '" + shader.name + "' IS NOT SUPPORTED ON YOUR GPU. TURNED OFF.");
             enabled = false;
         }
-        else Debug.Log("PP Shader '" + shader.name + "' supported and active.");
     }
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
