@@ -8,12 +8,15 @@ public class MainMenuManager : MonoBehaviour
     public GameObject continueBtn;
     public GameObject continueDisabledTxt;
     public GameObject newGameConfirmPanel;
+    public GameObject newspaper;
     public TextTranslator nightIdTxt;
     public TextTranslator survivedNightsCountTxt;
     public SourceAudio menuMusic;
 
     public TMP_Text verTxt;
     public GameObject loadingPanel;
+    public float newsTime = 3f;
+
     public static MainMenuManager Instance;
 
     private void Awake()
@@ -38,6 +41,7 @@ public class MainMenuManager : MonoBehaviour
     private void OnDestroy()
     {
         if (Instance == this) Instance = null;
+        CancelInvoke();
     }
 
     public void DataLoaded(bool firstTime)
@@ -64,9 +68,20 @@ public class MainMenuManager : MonoBehaviour
         else
         {
             BlackPanel.Instance.SetUIBlock(true);
-            BlackPanel.Instance.FadeIn(LoadGameScene);
+            BlackPanel.Instance.FadeIn(ShowNewspaper, 3f);
         }
-        
+    }
+
+    private void ShowNewspaper()
+    {
+        newspaper.SetActive(true);
+        Invoke(nameof(NewspaperTimer), newsTime);
+        BlackPanel.Instance.FadeOut(null);
+    }
+
+    private void NewspaperTimer()
+    {
+        BlackPanel.Instance.FadeIn(LoadGameScene);
     }
 
     public void ConfirmNewGame()

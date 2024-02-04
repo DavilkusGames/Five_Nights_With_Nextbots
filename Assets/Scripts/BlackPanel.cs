@@ -10,6 +10,7 @@ public class BlackPanel : MonoBehaviour
     private float alpha = 0f;
     private float targetAlpha = 0f;
     private ActionCallback callback = null;
+    private float currentFadeSpeed = 1f;
 
     public static BlackPanel Instance;
 
@@ -26,6 +27,7 @@ public class BlackPanel : MonoBehaviour
 
     void Start()
     {
+        currentFadeSpeed = fadeSpeed;
         img = GetComponent<Image>();
         SetUIBlock(false);
     }
@@ -34,7 +36,7 @@ public class BlackPanel : MonoBehaviour
     {
         if (alpha != targetAlpha)
         {
-            alpha = Mathf.Lerp(alpha, targetAlpha, fadeSpeed * Time.deltaTime);
+            alpha = Mathf.Lerp(alpha, targetAlpha, currentFadeSpeed * Time.deltaTime);
             if (Mathf.Abs(alpha - targetAlpha) <= 0.03f)
             {
                 alpha = targetAlpha;
@@ -48,16 +50,22 @@ public class BlackPanel : MonoBehaviour
         }
     }
 
-    public void FadeIn(ActionCallback callback)
+    public void FadeIn(ActionCallback callback, float fadeSpeed = -1f)
     {
+        if (fadeSpeed != -1) currentFadeSpeed = fadeSpeed;
+        else currentFadeSpeed = this.fadeSpeed;
+
         alpha = 0f;
         targetAlpha = 1f;
         SetUIBlock(true);
         this.callback = callback;
     }
 
-    public void FadeOut(ActionCallback callback)
+    public void FadeOut(ActionCallback callback, float fadeSpeed = -1f)
     {
+        if (fadeSpeed != -1) currentFadeSpeed = fadeSpeed;
+        else currentFadeSpeed = this.fadeSpeed;
+
         alpha = 1f;
         targetAlpha = 0f;
         this.callback = callback;
