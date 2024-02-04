@@ -26,7 +26,7 @@ public class YandexGames : MonoBehaviour
     private static extern bool IsMobilePlatform();
 
     [DllImport("__Internal")]
-    private static extern void ShowFullscreenAd();
+    private static extern void ShowFullscreenAd(bool gameInit);
 
     [DllImport("__Internal")]
     private static extern void SaveToLb(int score);
@@ -102,7 +102,7 @@ public class YandexGames : MonoBehaviour
             adCallback = callback;
             AudioListener.volume = 0f;
             prevAdShowTime = Time.time;
-            ShowFullscreenAd();
+            ShowFullscreenAd(true);
         }
         else
         {

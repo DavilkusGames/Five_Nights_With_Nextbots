@@ -2916,7 +2916,7 @@ MonoBehaviour:
   menuMusic: {fileID: 1459629044}
   verTxt: {fileID: 1048897749}
   loadingPanel: {fileID: 1871111109}
-  newsTime: 5
+  newsTime: 6
 --- !u!1 &1459629042
 GameObject:
   m_ObjectHideFlags: 0

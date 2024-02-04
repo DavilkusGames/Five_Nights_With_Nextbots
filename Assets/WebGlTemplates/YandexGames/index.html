@@ -109,7 +109,7 @@
                 .then(ysdk => {
                     console.log('Yandex SDK Initialized');
                     window.ysdk = ysdk;
-                    ysdk.adv.showFullscreenAdv();
+                    ysdk.adv.showFullscreenAdv(false);
                     InitPlayer();
                     InitLb();
                 });

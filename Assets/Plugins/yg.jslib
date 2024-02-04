@@ -49,17 +49,21 @@
     return isMobile;
   },
 
-  ShowFullscreenAd : function(score) {
+  ShowFullscreenAd : function(gameInit) {
     console.log("Show ad request...");
     ysdk.adv.showFullscreenAdv({
         callbacks: {
             onClose: function(wasShown) {
                 console.log("Ad shown");
-                myGameInstance.SendMessage("_yandexGames", "AdShown");
+                if (gameInit) {
+                    myGameInstance.SendMessage("_yandexGames", "AdShown");
+                }
             },
             onError: function(error) {
                 console.log("Ad error!");
-                myGameInstance.SendMessage("_yandexGames", "AdShown");
+                if (gameInit) {
+                    myGameInstance.SendMessage("_yandexGames", "AdShown");
+                }
             }
         }
     })
