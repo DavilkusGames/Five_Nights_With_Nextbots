@@ -27,7 +27,7 @@ public class SixAmSceneManager : MonoBehaviour
     {
         if (GameData.data != null)
         {
-            if (GameData.data.nightId < 5) GameData.data.nightId++;
+            if (GameData.data.nightId < 6) GameData.data.nightId++;
             GameData.data.survivedNightsCount++;
             GameData.SaveData();
         }
@@ -44,12 +44,14 @@ public class SixAmSceneManager : MonoBehaviour
 
     public void ExitFromSceneRequest()
     {
-        if (YandexGames.Instance != null) YandexGames.Instance.ShowAd(ExitFromScene);
+        if (YandexGames.Instance != null && GameData.data.nightId < 6) YandexGames.Instance.ShowAd(ExitFromScene);
         else ExitFromScene();
     }
 
     public void ExitFromScene()
     {
-        SceneManager.LoadScene(0);
+        if (GameData.data.nightId < 6) SceneManager.LoadScene(0);
+        else if (GameData.data.nightId == 6) SceneManager.LoadScene(5);
+        else if (GameData.data.nightId == 7) SceneManager.LoadScene(7);
     }
 }

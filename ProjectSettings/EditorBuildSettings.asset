@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: 380ffa779ffa0b040aeb6782edc2622a
+  - enabled: 1
+    path: Assets/Scenes/FifthNightOver.unity
+    guid: bcd7f1f1bffa4fe478a7bfb20165f576
+  - enabled: 1
+    path: Assets/Scenes/SixthNightOver.unity
+    guid: 76081f713c7468b44824ccca8987c075
   m_configObjects: {}

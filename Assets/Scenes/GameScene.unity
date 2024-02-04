@@ -8939,7 +8939,7 @@ MonoBehaviour:
   moveType: 0
   attackType: 1
   screamerTime: 1.5
-  perNightAI: 0700000007000000070000000700000007000000
+  perNightAI: 070000000700000007000000070000000700000007000000
   moveChanceTime: 4
   walkBackChance: 0.1
   attackTime: 8
@@ -9224,7 +9224,7 @@ MonoBehaviour:
   moveType: 0
   attackType: 1
   screamerTime: 1.2
-  perNightAI: 0700000007000000070000000700000007000000
+  perNightAI: 070000000700000007000000070000000700000007000000
   moveChanceTime: 4.2
   walkBackChance: 0.07
   attackTime: 11
@@ -31385,7 +31385,7 @@ MonoBehaviour:
   moveType: 3
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 0000000007000000070000000700000007000000
+  perNightAI: 000000000700000007000000070000000700000007000000
   moveChanceTime: 6
   walkBackChance: 0
   attackTime: 0
@@ -43664,7 +43664,7 @@ MonoBehaviour:
   moveType: 2
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 0700000007000000070000000700000007000000
+  perNightAI: 070000000700000007000000070000000700000007000000
   moveChanceTime: 3.6
   walkBackChance: 0.1
   attackTime: 9
