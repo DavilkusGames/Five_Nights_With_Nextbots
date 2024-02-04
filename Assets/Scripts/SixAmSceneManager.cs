@@ -8,6 +8,8 @@ public class SixAmSceneManager : MonoBehaviour
     public float sceneTime = 5.0f;
     public float blinkDelay = 0.5f;
 
+    public int[] scoreForEachNight;
+
     private SourceAudio alarmAudio;
     private float nextBlinkTime = 0f;
     private bool isLblActive = true;
@@ -27,7 +29,7 @@ public class SixAmSceneManager : MonoBehaviour
     {
         if (GameData.data != null)
         {
-            if (GameData.data.nightId < 6) GameData.data.nightId++;
+            if (GameData.data.nightId < 5) GameData.data.nightId++;
             GameData.data.survivedNightsCount++;
             GameData.SaveData();
         }
@@ -50,8 +52,8 @@ public class SixAmSceneManager : MonoBehaviour
 
     public void ExitFromScene()
     {
-        if (GameData.data.nightId < 6) SceneManager.LoadScene(0);
-        else if (GameData.data.nightId == 6) SceneManager.LoadScene(5);
-        else if (GameData.data.nightId == 7) SceneManager.LoadScene(7);
+        if (GameData.data.nightId < 5) SceneManager.LoadScene(0);
+        else if (GameData.data.nightId == 5) SceneManager.LoadScene(5);
+        else if (GameData.data.nightId == 6) SceneManager.LoadScene(7);
     }
 }

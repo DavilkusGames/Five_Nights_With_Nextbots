@@ -9,6 +9,8 @@ public class GameData
     // SAVE DATA
     public int nightId = 0;
     public int survivedNightsCount = 0;
+    public int score = 0;
+    public bool isCustomNightOpened = false;
     // =======================
 
     public static void LoadData()

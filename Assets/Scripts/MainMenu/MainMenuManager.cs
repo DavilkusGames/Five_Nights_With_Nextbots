@@ -7,9 +7,14 @@ public class MainMenuManager : MonoBehaviour
 {
     public GameObject continueBtn;
     public GameObject continueDisabledTxt;
+
+    public GameObject customNightBtn;
+    public GameObject customNightDisabledTxt;
+
     public GameObject newGameConfirmPanel;
     public GameObject newspaper;
     public TextTranslator nightIdTxt;
+    public TextTranslator scoreTxt;
     public TextTranslator survivedNightsCountTxt;
     public SourceAudio menuMusic;
 
@@ -51,7 +56,12 @@ public class MainMenuManager : MonoBehaviour
 
         continueBtn.SetActive((GameData.data.nightId > 0));
         continueDisabledTxt.SetActive((GameData.data.nightId == 0));
+
+        customNightBtn.SetActive(GameData.data.isCustomNightOpened);
+        customNightDisabledTxt.SetActive(!GameData.data.isCustomNightOpened);
+
         nightIdTxt.AddAdditionalText(' ' + (GameData.data.nightId+1).ToString());
+        scoreTxt.AddAdditionalText(' ' + GameData.data.score.ToString());
         survivedNightsCountTxt.AddAdditionalText(' ' + GameData.data.survivedNightsCount.ToString());
     }
 
