@@ -1,22 +1,26 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Plugins.Audio.Core;
+using System.Linq;
 
 public class SixAmSceneManager : MonoBehaviour
 {
     public GameObject alarmTxt;
-    public float sceneTime = 5.0f;
+    public float clockTime = 5.0f;
     public float blinkDelay = 0.5f;
 
+    public ScoreTxtAnim scoreTxt;
     public int[] scoreForEachNight;
 
     private SourceAudio alarmAudio;
     private float nextBlinkTime = 0f;
     private bool isLblActive = true;
+    private bool showClock = true;
+    private int completedNightId = -1;
 
     void Update()
     {
-        if (Time.time >= nextBlinkTime)
+        if (showClock && Time.time >= nextBlinkTime)
         {
             isLblActive = !isLblActive;
             if (isLblActive) alarmAudio.PlayOneShot("clockAlarm");
@@ -29,19 +33,41 @@ public class SixAmSceneManager : MonoBehaviour
     {
         if (GameData.data != null)
         {
+            completedNightId = GameData.SelectedNightId;
+
+            int scoreInc = 0;
+            if (!GameData.IsCustomNight) scoreInc = scoreForEachNight[GameData.data.nightId];
+            else scoreInc = GameData.CustomAI.Sum() * 100;
+            scoreTxt.Init(this, GameData.data.score, scoreInc);
+            GameData.data.score += scoreInc;
+
             if (GameData.data.nightId < 5) GameData.data.nightId++;
             GameData.data.survivedNightsCount++;
             GameData.SaveData();
+
+            if (YandexGames.Instance != null) YandexGames.Instance.SaveToLeaderboard(GameData.data.score);
         }
-        if (YandexGames.Instance != null) YandexGames.Instance.SaveToLeaderboard(GameData.data.survivedNightsCount);
         nextBlinkTime = Time.time + blinkDelay;
         alarmAudio = GetComponent<SourceAudio>();
-        Invoke(nameof(StartExiting), sceneTime);
+        Invoke(nameof(ClockTimer), clockTime);
     }
 
-    private void StartExiting()
+    private void ClockTimer()
     {
-        BlackPanel.Instance.FadeIn(ExitFromSceneRequest);
+        BlackPanel.Instance.FadeIn(SwitchToScore, 2f);
+    }
+
+    public void SwitchToScore()
+    {
+        showClock = false;
+        isLblActive = false;
+        alarmTxt.SetActive(false);
+        BlackPanel.Instance.FadeOut(scoreTxt.StartAnim, 2f);
+    }
+
+    public void ScoreAnimDone()
+    {
+        BlackPanel.Instance.FadeIn(ExitFromSceneRequest, 2f);
     }
 
     public void ExitFromSceneRequest()
@@ -52,8 +78,8 @@ public class SixAmSceneManager : MonoBehaviour
 
     public void ExitFromScene()
     {
-        if (GameData.data.nightId < 5) SceneManager.LoadScene(0);
-        else if (GameData.data.nightId == 5) SceneManager.LoadScene(5);
-        else if (GameData.data.nightId == 6) SceneManager.LoadScene(7);
+        if (completedNightId < 4) SceneManager.LoadScene(0);
+        else if (completedNightId == 4) SceneManager.LoadScene(5);
+        else if (GameData.data.nightId == 5) SceneManager.LoadScene(7);
     }
 }
