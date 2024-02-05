@@ -44,8 +44,8 @@ public class EnergyManager : MonoBehaviour
     {
         if (energy > 0 && Time.time >= nextEnergyDecreaseTime)
         {
-            energy -= (staticDecreasePerH / timeManager.nightTimeInSec);
-            energy -= (powerUsage - 1) * 8.2f;
+            float energyDecreasePerH = staticDecreasePerH + (powerUsage - 1) * 6f;
+            energy -= (energyDecreasePerH / timeManager.nightTimeInSec);
             if (energy < 0) energy = 0;
             UpdateEnergyTxt();
             nextEnergyDecreaseTime = Time.time + 1f;

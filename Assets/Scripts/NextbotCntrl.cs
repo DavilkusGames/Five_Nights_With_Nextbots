@@ -50,6 +50,11 @@ public class NextbotCntrl : MonoBehaviour
     public SourceAudio runAudio;
     public SanicRoomCntrl room;
 
+    private void Awake()
+    {
+        TabletCntrl.Instance.SubscribeToCamChange(CamChanged);
+    }
+
     private void Start()
     {
         trans = transform;
@@ -65,7 +70,6 @@ public class NextbotCntrl : MonoBehaviour
             activateTime = (20 - ai) * 1.5f;
             StartCoroutine(nameof(MoveTimer));
         }
-        TabletCntrl.Instance.SubscribeToCamChange(CamChanged);
     }
 
     private bool MovePrevNode()
@@ -163,6 +167,17 @@ public class NextbotCntrl : MonoBehaviour
         else
         {
             NextbotManager.Instance.WaitForLightBlink(pathNodes[nodeId].officeDoorId, MoveOutOfOffice);
+        }
+    }
+
+    public void IncreaseAI()
+    {
+        if (ai < 20 && ai > 0)
+        {
+            ai++;
+            standardSpawnTimeRange = new Vector2(standardSpawnTimeRange.x - ai * spawnTimeRangeAiK,
+                standardSpawnTimeRange.y - ai * spawnTimeRangeAiK);
+            activateTime = (20 - ai) * 1.5f;
         }
     }
 
