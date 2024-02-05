@@ -15,6 +15,7 @@ public class GameData
     public int starsCount = 0;
     public bool isCustomNightOpened = false;
     public bool completedTwentyMode = false;
+    public string prevGameVersion = string.Empty;
     // =======================
 
     public static void LoadData()
@@ -30,6 +31,7 @@ public class GameData
         if (!PlayerPrefs.HasKey("GAME_DATA"))
         {
             data = new GameData();
+            data.prevGameVersion = Application.version.ToString();
             dataLoaded = true;
             SaveData();
             Debug.Log("Local saved data not found. New save created.");
@@ -86,13 +88,5 @@ public class GameData
         PlayerPrefs.SetString("GAME_DATA", dataStr);
         Debug.Log("Local data saved");
         YandexGames.Instance.SaveData(dataStr);
-    }
-
-    public static void Reset()
-    {
-        data = new GameData();
-        SaveData();
-        dataLoaded = false;
-        Debug.Log("Game data reset");
     }
 }

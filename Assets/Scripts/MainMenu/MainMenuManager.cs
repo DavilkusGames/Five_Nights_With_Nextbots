@@ -63,6 +63,12 @@ public class MainMenuManager : MonoBehaviour
         nightIdTxt.AddAdditionalText(' ' + (GameData.data.nightId+1).ToString());
         scoreTxt.AddAdditionalText(' ' + GameData.data.score.ToString());
         survivedNightsCountTxt.AddAdditionalText(' ' + GameData.data.survivedNightsCount.ToString());
+
+        if (GameData.data.prevGameVersion != Application.version.ToString())
+        {
+            GameData.data.prevGameVersion = Application.version.ToString();
+            GameData.SaveData();
+        }
     }
 
     public void Continue()
@@ -107,11 +113,5 @@ public class MainMenuManager : MonoBehaviour
     public void LoadGameScene()
     {
         SceneManager.LoadScene(1);
-    }
-
-    public void ResetSave()
-    {
-        GameData.Reset();
-        SceneManager.LoadScene(0);
     }
 }

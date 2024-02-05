@@ -65,8 +65,13 @@
     })
   },
 
-  SaveToLb : function (score) {
-    lb.setLeaderboardScore('fnwnScore', score);
+  ShowRewardedAd : function() {
+    console.log("Rewarded ad request...");
+    
+  },
+
+  SaveToLb : function (score, extraData) {
+    lb.setLeaderboardScore('fnwnScore', score, extraData);
   },
 
   SaveCloudData : function (data) {

@@ -32,7 +32,7 @@ public class YandexGames : MonoBehaviour
     private static extern void ShowRewardedAd();
 
     [DllImport("__Internal")]
-    private static extern void SaveToLb(int score);
+    private static extern void SaveToLb(int score, string extraData);
 
     [DllImport("__Internal")]
     private static extern void SaveCloudData(string data);
@@ -132,8 +132,15 @@ public class YandexGames : MonoBehaviour
             Debug.Log("Leaderboard save failed");
             return;
         }
-        SaveToLb(score);
-        Debug.Log("Saved to lb: " + score.ToString());
+
+        string extraData = null;
+        if (GameData.data.completedTwentyMode) extraData = "20/20/20/20";
+
+        //TMP
+        extraData = "Чел из Чуркастана";
+
+        SaveToLb(score, extraData);
+        Debug.Log("Saved to lb: " + score.ToString() + "; ExtraData: " + extraData);
     }
 
     public void SaveData(string str)
