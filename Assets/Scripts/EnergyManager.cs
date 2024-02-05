@@ -5,17 +5,18 @@ public class EnergyManager : MonoBehaviour
 {
     public TextTranslator energyTxt;
     public GameObject[] usageInds;
-    public int[] energyDecreaseTimePerNight;
+    public float[] staticEnergyDecreasePerHour;
     public int powerUsageK = 1;
     public FanCntrl fan;
     public OfficeLight light;
+    public TimeManager timeManager;
 
     public static EnergyManager Instance;
 
     private SourceAudio poweroffAudio;
-    private int energy = 1000;
+    private float energy = 100f;
     private int powerUsage = 1;
-    private float energyDecreaseTime = 0f;
+    private float staticDecreasePerH = 0f;
     private float nextEnergyDecreaseTime = 0f;
 
     private void Awake()
@@ -32,8 +33,8 @@ public class EnergyManager : MonoBehaviour
     void Start()
     {
         poweroffAudio = GetComponent<SourceAudio>();
-        energyDecreaseTime = energyDecreaseTimePerNight[GameData.SelectedNightId];
-        nextEnergyDecreaseTime = Time.time + energyDecreaseTime;
+        staticDecreasePerH = staticEnergyDecreasePerHour[GameData.SelectedNightId];
+        nextEnergyDecreaseTime = Time.time + 1f;
 
         UpdateEnergyTxt();
         UpdateUsageInds();
@@ -43,11 +44,11 @@ public class EnergyManager : MonoBehaviour
     {
         if (energy > 0 && Time.time >= nextEnergyDecreaseTime)
         {
-            energy -= 1;
-            energy -= (powerUsage-1) * powerUsageK;
+            energy -= (staticDecreasePerH / timeManager.nightTimeInSec);
+            energy -= (powerUsage - 1) * 8.2f;
             if (energy < 0) energy = 0;
             UpdateEnergyTxt();
-            nextEnergyDecreaseTime = Time.time + energyDecreaseTime;
+            nextEnergyDecreaseTime = Time.time + 1f;
             if (energy == 0) PowerDown();
         }
     }
@@ -76,7 +77,7 @@ public class EnergyManager : MonoBehaviour
 
     private void UpdateEnergyTxt()
     {
-        energyTxt.AddAdditionalText((energy/10).ToString() + '%');
+        energyTxt.AddAdditionalText(((int)energy).ToString() + '%');
     }
 
     private void UpdateUsageInds()
