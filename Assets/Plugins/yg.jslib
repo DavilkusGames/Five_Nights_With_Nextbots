@@ -84,8 +84,8 @@
     })
   },
 
-  SaveToLb : function (score, extraData) {
-    lb.setLeaderboardScore('fnwnScore', score, extraData);
+  SaveToLb : function (score) {
+    lb.setLeaderboardScore('fnwnScore', score);
   },
 
   SaveCloudData : function (data) {
