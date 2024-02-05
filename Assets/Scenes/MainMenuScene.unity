@@ -2165,7 +2165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txt: {fileID: 493221282}
-  engStr: New Game
+  engStr: Custom Night
 --- !u!114 &493221282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9748,8 +9748,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 318, y: -89}
-  m_SizeDelta: {x: 529.33, y: 107.19}
+  m_AnchoredPosition: {x: 339, y: -89}
+  m_SizeDelta: {x: 600, y: 107.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2017302666
 MonoBehaviour:
@@ -9771,7 +9771,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0421\u0432\u043E\u044F \u043D\u043E\u0447\u044C"
+  m_text: "\u0421\u0432\u043E\u044F \u041D\u043E\u0447\u044C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c0a3a821e03b50d45bf8950914b96851, type: 2}
   m_sharedMaterial: {fileID: 8711286992357248100, guid: c0a3a821e03b50d45bf8950914b96851, type: 2}

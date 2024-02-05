@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
 
     public void SkipNightRequest()
     {
+        skipNightBtn.SetActive(false);
         gameTime.SkipNight();
     }
 

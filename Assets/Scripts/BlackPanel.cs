@@ -18,6 +18,7 @@ public class BlackPanel : MonoBehaviour
     {
         if (Instance != null) DestroyImmediate(gameObject);
         Instance = this;
+        img = GetComponent<Image>();
     }
 
     private void OnDestroy()
@@ -28,8 +29,6 @@ public class BlackPanel : MonoBehaviour
     void Start()
     {
         currentFadeSpeed = fadeSpeed;
-        img = GetComponent<Image>();
-        SetUIBlock(false);
     }
 
     void Update()
@@ -68,6 +67,7 @@ public class BlackPanel : MonoBehaviour
 
         alpha = 1f;
         targetAlpha = 0f;
+        SetUIBlock(false);
         this.callback = callback;
     }
 

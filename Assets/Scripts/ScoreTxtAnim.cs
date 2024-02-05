@@ -1,3 +1,4 @@
+using Plugins.Audio.Core;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,6 +18,12 @@ public class ScoreTxtAnim : MonoBehaviour
     private int incScore = 0;
 
     private SixAmSceneManager manager;
+    private SourceAudio incAudio;
+
+    private void Start()
+    {
+        incAudio = GetComponent<SourceAudio>();
+    }
 
     public void Init(SixAmSceneManager manager, int initScore, int incScore)
     {
@@ -46,6 +53,7 @@ public class ScoreTxtAnim : MonoBehaviour
             incScore -= perTickIncrease;
             initScore += perTickIncrease;
             scoreTxt.AddAdditionalText(' ' + ScoreToStr(initScore));
+            incAudio.PlayOneShot("score");
             yield return new WaitForSeconds(tickTime);
         }
         initScore += -incScore;

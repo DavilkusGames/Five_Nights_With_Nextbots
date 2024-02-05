@@ -62,7 +62,14 @@ public class SixAmSceneManager : MonoBehaviour
         showClock = false;
         isLblActive = false;
         alarmTxt.SetActive(false);
-        BlackPanel.Instance.FadeOut(scoreTxt.StartAnim, 2f);
+
+        scoreTxt.StartAnim();
+        Invoke(nameof(StartFadeOut), 0.2f);
+    }
+
+    private void StartFadeOut()
+    {
+        BlackPanel.Instance.FadeOut(null, 2f);
     }
 
     public void ScoreAnimDone()
