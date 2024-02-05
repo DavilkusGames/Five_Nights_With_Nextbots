@@ -18,6 +18,11 @@ public class TimeManager : MonoBehaviour
         StartCoroutine(nameof(NightTimer));
     }
 
+    private void Update()
+    {
+        if (Application.isEditor && Input.GetKeyDown(KeyCode.N)) SkipNight();
+    }
+
     private IEnumerator NightTimer()
     {
         while (time < 6)

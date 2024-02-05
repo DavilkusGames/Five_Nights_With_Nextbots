@@ -40,6 +40,8 @@ public class YandexGames : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void LoadCloudData();
 
+    public delegate void RewardedCallback(bool isRewarded);
+
     public static YandexGames Instance { get; private set; }
     public static bool IsInit { get; private set; }
     public static bool IsRus { get; private set; }
@@ -49,6 +51,7 @@ public class YandexGames : MonoBehaviour
     private static string[] RusLangDomens = { "ru", "be", "kk", "uk", "uz" };
     private List<TextTranslator> translateQueue = new List<TextTranslator>();
     private Action adCallback;
+    private RewardedCallback rewardedCallback;
     private float prevAdShowTime = 0f;
 
     private void Awake()
@@ -112,6 +115,39 @@ public class YandexGames : MonoBehaviour
             Debug.Log("Ad called too early. Skipped");
             callback();
             return;
+        }
+    }
+
+    public void ShowRewarded(RewardedCallback callback)
+    {
+        if (Application.isEditor || !IsInit)
+        {
+            Debug.Log("Rewarded ad cannot be shown in editor or SDK not initialized");
+            callback(false);
+            return;
+        }
+
+        rewardedCallback = callback;
+        AudioListener.volume = 0f;
+        ShowRewardedAd();
+    }
+
+    public void Rewarded()
+    {
+        if (rewardedCallback != null)
+        {
+            rewardedCallback(true);
+            rewardedCallback = null;
+        }
+    }
+
+    public void RewardedClosed()
+    {
+        AudioListener.volume = 1f;
+        if (rewardedCallback != null)
+        {
+            rewardedCallback(false);
+            rewardedCallback = null;
         }
     }
 

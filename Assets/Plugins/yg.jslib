@@ -58,7 +58,7 @@
                 myGameInstance.SendMessage("_yandexGames", "AdShown");
             },
             onError: function(error) {
-                console.log("Ad error!");
+                console.log("Ad error:", error);
                 myGameInstance.SendMessage("_yandexGames", "AdShown");
             }
         }
@@ -67,7 +67,21 @@
 
   ShowRewardedAd : function() {
     console.log("Rewarded ad request...");
-    
+    ysdk.adv.showRewardedVideo({
+        callbacks: {
+            onRewarded: () => {
+                console.log('REWARDED');
+                myGameInstance.SendMessage("_yandexGames", "Rewarded");
+            },
+            onClose: () => {
+                console.log('Rewarded ad closed.');
+                myGameInstance.SendMessage("_yandexGames", "RewardedClosed");
+            }, 
+            onError: (e) => {
+                console.log('Error while open rewarded ad:', e);
+            }
+        }
+    })
   },
 
   SaveToLb : function (score, extraData) {

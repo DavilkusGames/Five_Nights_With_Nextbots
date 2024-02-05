@@ -65,7 +65,14 @@ public class GameManager : MonoBehaviour
     public void SkipNightRequest()
     {
         skipNightBtn.SetActive(false);
-        gameTime.SkipNight();
+        Pause();
+        YandexGames.Instance.ShowRewarded(SkipNight);
+    }
+
+    public void SkipNight(bool skip)
+    {
+        Resume();
+        if (skip) gameTime.SkipNight();
     }
 
     private IEnumerator AdTimer()
