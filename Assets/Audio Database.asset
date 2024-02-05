@@ -18,130 +18,130 @@ MonoBehaviour:
     FolderPath: 
     Name: 
     Preload: 1
-    _id: c2d129a1-c65f-4701-8425-acea8ccdd140
+    _id: 7b8af0e4-734c-4de3-bc40-c776b989dc41
   - Clip: {fileID: 8300000, guid: 112497a22ec26094e9ef40ae2fd1d28f, type: 3}
     Key: screamer_3
     FolderPath: 
     Name: 
     Preload: 1
-    _id: e3ecd9ea-5fe1-48a3-9ebc-6a79371ce80c
+    _id: fb2d21df-4f59-46d9-8a83-9fef10860364
   - Clip: {fileID: 8300000, guid: 516189b3bcf289147b2c21b9bd4eb66b, type: 3}
     Key: score
     FolderPath: 
     Name: 
     Preload: 1
-    _id: 040f88d2-1c1e-49f6-a688-b504b0ee7359
+    _id: 40a45fba-a049-4595-8aa0-6d450f3dfccd
   - Clip: {fileID: 8300000, guid: 91fe1b3e3212003469428c1c00111d8c, type: 3}
     Key: screamer_2
     FolderPath: 
     Name: 
     Preload: 1
-    _id: fb5483b7-b9ab-4eb3-a9a3-3de9e946f50a
+    _id: 3783eca1-50d2-4dd7-956a-bd1b2f40c64c
   - Clip: {fileID: 8300000, guid: 42449d752cdd5ca4f9c9d449d07ce009, type: 3}
     Key: camsDisabled_0
     FolderPath: 
     Name: 
     Preload: 1
-    _id: f4a7d31f-0945-423e-8065-1c1fd8f80ba2
+    _id: 86db8fe5-a8fa-4b0c-b8a7-d70c86241fbc
   - Clip: {fileID: 8300000, guid: 62b2352f5bbe0154a9d9353f4f5917a4, type: 3}
     Key: alarm
     FolderPath: 
     Name: 
     Preload: 1
-    _id: 9f79e96a-b760-49dc-b3ea-c05354f3bf28
+    _id: b49caa1c-13b8-480e-9d72-a798891eb256
   - Clip: {fileID: 8300000, guid: f217c1ee2d1e37347972ad7a9874bdc9, type: 3}
     Key: camsDisabled_2
     FolderPath: 
     Name: 
     Preload: 1
-    _id: 207b6ad2-4fe5-4227-84bf-d998b2779e5e
+    _id: 44a608d0-afb0-43de-aaba-a80357f02db9
   - Clip: {fileID: 8300000, guid: 23e6cc15d42c98849afa0f914058ba83, type: 3}
     Key: camsDisabled_1
     FolderPath: 
     Name: 
     Preload: 1
-    _id: a51620d2-2171-42be-a0ce-4c1516c5d9ca
+    _id: 2426a3fd-c446-4aaf-a310-cbf5ba2a9ce8
   - Clip: {fileID: 8300000, guid: 5304664ffb1016f41b1ee4460be123b6, type: 3}
     Key: menuMusic
     FolderPath: 
     Name: 
     Preload: 1
-    _id: a8c7b41a-8821-408f-bcd0-2e1ad299a6b9
+    _id: e950ee7a-eb45-4b44-89b8-cbe00f513a94
   - Clip: {fileID: 8300000, guid: e4a0bef34fbd8a548a02997466575956, type: 3}
     Key: static
     FolderPath: 
     Name: 
     Preload: 1
-    _id: 7c4e0a6a-41b6-4fad-888a-51b728c09a10
+    _id: e8445ced-98a2-473a-98b8-0f8aa4a2caaf
   - Clip: {fileID: 8300000, guid: 95068b5c6dab3bc48a2e08cbacee2a6f, type: 3}
     Key: tabletDown
     FolderPath: 
     Name: 
     Preload: 1
-    _id: feab0344-630c-4562-8641-96e6e1a9fcca
+    _id: 0054e9df-da17-40b9-9c85-363e0984cab8
   - Clip: {fileID: 8300000, guid: 95fe1c6ace4155c43b73fff118bc0cf6, type: 3}
     Key: screamer_1
     FolderPath: 
     Name: 
     Preload: 1
-    _id: b1e17441-1ecc-47a8-991b-d4585d8429b5
+    _id: 5d1d3058-e1bd-4fee-8d37-0d14fb9c0e8a
   - Clip: {fileID: 8300000, guid: b5824d72ed82cbb42bb3dae5f44184a6, type: 3}
     Key: lights
     FolderPath: 
     Name: 
     Preload: 1
-    _id: 459a244b-51bd-42f9-b0e1-e6459ed4d470
+    _id: 230fba4f-1e2a-4d55-9a8a-2bee6b57edd4
   - Clip: {fileID: 8300000, guid: 366725cf10e746049ae21108b9af8eb0, type: 3}
     Key: camChange
     FolderPath: 
     Name: 
     Preload: 1
-    _id: a2fb7db5-2697-46fe-8db4-82ee692641b8
+    _id: bf43b4ea-fb5f-4863-ad09-f044637a906e
   - Clip: {fileID: 8300000, guid: 763e1cae3f4e47744aca554ed8e5e3c2, type: 3}
     Key: camWorking
     FolderPath: 
     Name: 
     Preload: 1
-    _id: 65268838-191a-475b-b62c-f04b668e941f
+    _id: 952b33c0-af92-480b-aa5a-e14f524b52a6
   - Clip: {fileID: 8300000, guid: 28d4b8bc459a6a24b88ccecb358eb1ff, type: 3}
     Key: officeAmbience
     FolderPath: 
     Name: 
     Preload: 1
-    _id: dc5a1770-33a5-4a3d-9711-fd9a030b8122
+    _id: 597b0baa-9444-4342-aca2-790353d1aecc
   - Clip: {fileID: 8300000, guid: 39633078e9933e64b889e22a21db1860, type: 3}
     Key: door
     FolderPath: 
     Name: 
     Preload: 1
-    _id: 378a8a5b-5013-473e-812a-08e6bd2d0a58
+    _id: 910648a5-8cc9-4691-a01a-93f2c6804186
   - Clip: {fileID: 8300000, guid: 4aae84e8b36f99443857d02da3308da3, type: 3}
     Key: doorScreamer
     FolderPath: 
     Name: 
     Preload: 1
-    _id: 6c620511-c34d-4a85-bab3-5e806cd74336
+    _id: 29f13ab7-5772-4124-a6cc-3523dc162cef
   - Clip: {fileID: 8300000, guid: ba10bd0a0d0af49489659628dea7e44b, type: 3}
     Key: screamer_0
     FolderPath: 
     Name: 
     Preload: 1
-    _id: 52a77780-a03d-44eb-94b9-7eefa162dc8d
+    _id: 96fcea30-7380-4e63-a9df-63bb55fdc973
   - Clip: {fileID: 8300000, guid: 0d0667cb9ff339044ba28b0d38fba0d4, type: 3}
     Key: powerdown
     FolderPath: 
     Name: 
     Preload: 1
-    _id: a3a26908-8618-4783-b7aa-0e42aab79f31
+    _id: 57baca82-453f-4248-8b60-e1ceb6bef4e5
   - Clip: {fileID: 8300000, guid: ad762a87c20378a41bb911f05c71cde6, type: 3}
     Key: clockAlarm
     FolderPath: 
     Name: 
     Preload: 1
-    _id: 4bd33ebf-f08b-4968-8ee7-fd430db13c6f
+    _id: 9847ed05-db73-4f7c-900a-4e97f5191686
   - Clip: {fileID: 8300000, guid: ff8ad3b95d313264eb09c6555182575c, type: 3}
     Key: tabletUp
     FolderPath: 
     Name: 
     Preload: 1
-    _id: 4aa162e9-5b8c-4934-8272-6216646ebe5c
+    _id: 5a545d96-9332-40e6-83a0-0ef8dabb520b

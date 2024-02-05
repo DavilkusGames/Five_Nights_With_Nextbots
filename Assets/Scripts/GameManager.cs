@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         if (GameData.SelectedNightId == 0)
         {
             skipNightBtn.SetActive(true);
-            Invoke(nameof(SkipNightRequest), skipNightBtnTime);
+            Invoke(nameof(SkipNightBtnTimeout), skipNightBtnTime);
         }
     }
 
@@ -65,8 +65,11 @@ public class GameManager : MonoBehaviour
     public void SkipNightRequest()
     {
         skipNightBtn.SetActive(false);
-        Pause();
-        YandexGames.Instance.ShowRewarded(SkipNight);
+        if (YandexGames.Instance != null)
+        {
+            Pause();
+            YandexGames.Instance.ShowRewarded(SkipNight);
+        }
     }
 
     public void SkipNight(bool skip)

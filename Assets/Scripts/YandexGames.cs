@@ -53,6 +53,7 @@ public class YandexGames : MonoBehaviour
     private Action adCallback;
     private RewardedCallback rewardedCallback;
     private float prevAdShowTime = 0f;
+    private bool isRewarded = false;
 
     private void Awake()
     {
@@ -127,6 +128,7 @@ public class YandexGames : MonoBehaviour
             return;
         }
 
+        isRewarded = false;
         rewardedCallback = callback;
         AudioListener.volume = 0f;
         ShowRewardedAd();
@@ -134,11 +136,7 @@ public class YandexGames : MonoBehaviour
 
     public void Rewarded()
     {
-        if (rewardedCallback != null)
-        {
-            rewardedCallback(true);
-            rewardedCallback = null;
-        }
+        isRewarded = true;
     }
 
     public void RewardedClosed()
@@ -146,7 +144,7 @@ public class YandexGames : MonoBehaviour
         AudioListener.volume = 1f;
         if (rewardedCallback != null)
         {
-            rewardedCallback(false);
+            rewardedCallback(isRewarded);
             rewardedCallback = null;
         }
     }
