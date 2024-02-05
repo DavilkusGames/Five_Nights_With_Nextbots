@@ -9273,11 +9273,11 @@ MonoBehaviour:
   moveType: 0
   attackType: 1
   screamerTime: 1.5
-  perNightAI: 070000000700000007000000070000000700000007000000
+  perNightAI: 01000000030000000500000007000000090000000c000000
   moveChanceTime: 4
   walkBackChance: 0.1
   attackTime: 8
-  moveMinPeriod: 8
+  moveMinPeriod: 10
   pathNodes:
   - {fileID: 1919373581}
   - {fileID: 290953077}
@@ -9558,11 +9558,11 @@ MonoBehaviour:
   moveType: 0
   attackType: 1
   screamerTime: 1.2
-  perNightAI: 070000000700000007000000070000000700000007000000
+  perNightAI: 00000000010000000300000005000000090000000c000000
   moveChanceTime: 4.2
   walkBackChance: 0.07
   attackTime: 11
-  moveMinPeriod: 14
+  moveMinPeriod: 10
   pathNodes:
   - {fileID: 1362859758}
   - {fileID: 359741925}
@@ -32271,11 +32271,11 @@ MonoBehaviour:
   moveType: 3
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 000000000700000007000000070000000700000007000000
+  perNightAI: 010000000300000006000000090000000c0000000e000000
   moveChanceTime: 6
   walkBackChance: 0
   attackTime: 0
-  moveMinPeriod: 8
+  moveMinPeriod: 10
   pathNodes:
   - {fileID: 1887621604}
   - {fileID: 897386261}
@@ -44551,11 +44551,11 @@ MonoBehaviour:
   moveType: 2
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 070000000700000007000000070000000700000007000000
-  moveChanceTime: 3.6
+  perNightAI: 010000000200000006000000090000000b0000000c000000
+  moveChanceTime: 4.5
   walkBackChance: 0.1
   attackTime: 9
-  moveMinPeriod: 8
+  moveMinPeriod: 10
   pathNodes:
   - {fileID: 580544237}
   - {fileID: 1611552213}
