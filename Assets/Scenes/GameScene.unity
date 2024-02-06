@@ -9293,8 +9293,6 @@ MonoBehaviour:
   randomSpawnsId: 
   standardSpawnTimeRange: {x: 0, y: 0}
   spawnTimeRangeAiK: 1
-  runAudio: {fileID: 0}
-  room: {fileID: 0}
 --- !u!1 &446123946
 GameObject:
   m_ObjectHideFlags: 0
@@ -9578,8 +9576,6 @@ MonoBehaviour:
   randomSpawnsId: 00000000010000000200000003000000
   standardSpawnTimeRange: {x: 80, y: 130}
   spawnTimeRangeAiK: 1
-  runAudio: {fileID: 0}
-  room: {fileID: 0}
 --- !u!1 &449689168
 GameObject:
   m_ObjectHideFlags: 0
@@ -15718,6 +15714,8 @@ Transform:
   - {fileID: 1887621603}
   - {fileID: 897386260}
   - {fileID: 1622038058}
+  - {fileID: 2081132730}
+  - {fileID: 1114949249}
   m_Father: {fileID: 422436879}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &752887917
@@ -18523,7 +18521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &887818575
 Transform:
   m_ObjectHideFlags: 0
@@ -18970,7 +18968,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 897386260}
-  - component: {fileID: 897386261}
   m_Layer: 0
   m_Name: path_1
   m_TagString: Untagged
@@ -18993,24 +18990,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 751286364}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &897386261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897386259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd62bb705af51941a7ca21678a663c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 1
-  camId: 0
-  nextPathNodes: []
-  prevPathNodes: []
-  moveProbability: 0
-  officeDoorId: -1
 --- !u!1 &914345553
 GameObject:
   m_ObjectHideFlags: 0
@@ -22939,11 +22918,7 @@ MonoBehaviour:
   - incTime: 2
     nextbot: {fileID: 442118172}
   - incTime: 3
-    nextbot: {fileID: 442118172}
-  - incTime: 3
     nextbot: {fileID: 448458505}
-  - incTime: 3
-    nextbot: {fileID: 1566072372}
   - incTime: 4
     nextbot: {fileID: 1951758427}
 --- !u!1 &1084260956
@@ -23642,6 +23617,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113900716}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1114949248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1114949249}
+  m_Layer: 0
+  m_Name: runPath_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1114949249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114949248}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 4.498, y: 0.922, z: 0.5619998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 751286364}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1117471660
 GameObject:
   m_ObjectHideFlags: 0
@@ -32228,7 +32234,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1566072371}
   - component: {fileID: 1566072372}
-  - component: {fileID: 1566072373}
   m_Layer: 0
   m_Name: Sanic
   m_TagString: Untagged
@@ -32261,59 +32266,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1566072370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb21cb791ac0d7349b42679f32e006f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f32270e1af532c488e18314e06e8c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 3
-  obj: {fileID: 1794906842}
-  screamer: {fileID: 2004432869}
-  type: 2
-  moveType: 3
-  attackType: 0
-  screamerTime: 1.5
-  perNightAI: 010000000300000006000000090000000c0000000e000000
-  moveChanceTime: 6
-  walkBackChance: 0
-  attackTime: 0
-  moveMinPeriod: 10
+  roomCntrl: {fileID: 1789859687}
+  obj: {fileID: 0}
   pathNodes:
-  - {fileID: 1887621604}
-  - {fileID: 897386261}
-  - {fileID: 1622038059}
-  randomSpawnsId: 
-  standardSpawnTimeRange: {x: 0, y: 0}
-  spawnTimeRangeAiK: 1
-  runAudio: {fileID: 1566072373}
-  room: {fileID: 1789859687}
---- !u!114 &1566072373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566072370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _provider: 0
-  _volume: 1
-  _loop: 0
-  _mute: 0
-  _pitch: 1
-  _output: {fileID: 0}
-  _bypassEffects: 0
-  _bypassListenerEffects: 0
-  _bypassReverbZones: 0
-  _stereoPan: 0
-  _spatialBlend: 0
-  _reverbZoneMix: 1
-  _dopplerLevel: 1
-  _spread: 0
-  _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500
+  - {fileID: 1887621603}
+  - {fileID: 897386260}
+  - {fileID: 1622038058}
+  runNodes:
+  - {fileID: 2081132730}
+  - {fileID: 1114949249}
+  perNightAI: 
+  moveChanceTime: 6
+  runWaitTime: 5
+  attackWaitTime: 2
+  moveMinPeriod: 10
+  normalCam: {fileID: 1157354057}
+  runCam: {fileID: 1764621755}
+  playerCam: {fileID: 311925045}
 --- !u!1 &1572674073
 GameObject:
   m_ObjectHideFlags: 0
@@ -33308,7 +33280,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1622038058}
-  - component: {fileID: 1622038059}
   m_Layer: 0
   m_Name: path_2
   m_TagString: Untagged
@@ -33331,24 +33302,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 751286364}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1622038059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622038057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd62bb705af51941a7ca21678a663c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 2
-  camId: 0
-  nextPathNodes: []
-  prevPathNodes: []
-  moveProbability: 0
-  officeDoorId: -1
 --- !u!1 &1629494442
 GameObject:
   m_ObjectHideFlags: 0
@@ -34340,7 +34293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1675028314
 Transform:
   m_ObjectHideFlags: 0
@@ -36136,7 +36089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _provider: 0
-  _volume: 1
+  _volume: 0.6
   _loop: 1
   _mute: 1
   _pitch: 1
@@ -36246,6 +36199,7 @@ GameObject:
   - component: {fileID: 1794906845}
   - component: {fileID: 1794906844}
   - component: {fileID: 1794906843}
+  - component: {fileID: 1794906846}
   m_Layer: 0
   m_Name: obj
   m_TagString: Untagged
@@ -36318,6 +36272,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1566072371}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1794906846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794906842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa36230d1fefb7146829e5785c2d9ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1795527167
 GameObject:
   m_ObjectHideFlags: 0
@@ -36367,7 +36333,7 @@ MonoBehaviour:
   - {fileID: 1951758427}
   - {fileID: 442118172}
   - {fileID: 448458505}
-  - {fileID: 1566072372}
+  sanic: {fileID: 1566072372}
   doors:
   - {fileID: 1425116074}
   - {fileID: 1670637461}
@@ -38483,7 +38449,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1887621603}
-  - component: {fileID: 1887621604}
   m_Layer: 0
   m_Name: path_0
   m_TagString: Untagged
@@ -38506,24 +38471,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 751286364}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1887621604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887621602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd62bb705af51941a7ca21678a663c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  camId: 0
-  nextPathNodes: []
-  prevPathNodes: []
-  moveProbability: 0
-  officeDoorId: -1
 --- !u!1 &1888062624
 GameObject:
   m_ObjectHideFlags: 0
@@ -44570,8 +44517,6 @@ MonoBehaviour:
   randomSpawnsId: 
   standardSpawnTimeRange: {x: 0, y: 0}
   spawnTimeRangeAiK: 1
-  runAudio: {fileID: 0}
-  room: {fileID: 0}
 --- !u!1 &1958773832
 GameObject:
   m_ObjectHideFlags: 0
@@ -46239,6 +46184,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069527537}
   m_Mesh: {fileID: 4579454407841743219, guid: 9a50ad5a0cd23914893866027b9c5b8c, type: 3}
+--- !u!1 &2081132729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2081132730}
+  m_Layer: 0
+  m_Name: runPath_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2081132730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081132729}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 4.498, y: 0.922, z: -5.438}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 751286364}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2085578462
 GameObject:
   m_ObjectHideFlags: 1

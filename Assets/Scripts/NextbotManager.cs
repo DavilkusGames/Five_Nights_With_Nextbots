@@ -8,6 +8,7 @@ using System;
 public class NextbotManager : MonoBehaviour
 {
     public NextbotCntrl[] nextbots;
+    public SanicCntrl sanic;
     public DoorCntrl[] doors;
     public static NextbotManager Instance;
 
@@ -109,5 +110,6 @@ public class NextbotManager : MonoBehaviour
     public void Disable()
     {
         foreach (var nextbot in nextbots) nextbot.Disable();
+        sanic.Disable();
     }
 }

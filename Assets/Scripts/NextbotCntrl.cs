@@ -1,11 +1,10 @@
-using Plugins.Audio.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine; 
 
 public enum NextbotType
 {
-    Normal, Raider, Runner
+    Normal, Raider
 };
 
 public enum NextbotCamMoveType
@@ -45,10 +44,6 @@ public class NextbotCntrl : MonoBehaviour
     public int[] randomSpawnsId;
     public Vector2 standardSpawnTimeRange = Vector2.zero;
     public float spawnTimeRangeAiK = 1f;
-
-    [Header("Sanic")]
-    public SourceAudio runAudio;
-    public SanicRoomCntrl room;
 
     private void Awake()
     {
@@ -183,7 +178,7 @@ public class NextbotCntrl : MonoBehaviour
 
     public void CamChanged(int camId)
     {
-
+        return;
     }
 
     public void Screamer()
