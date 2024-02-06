@@ -30,12 +30,13 @@ public class TextTranslator : MonoBehaviour
 
     public void SetText(string text)
     {
-        baseText = text;
-        if (isTranslated) txt.text = baseText + additionalText;
+        txt.text = text;
+        isTranslated = true;
     }
 
     public void Translate(bool isRus)
     {
+        if (isTranslated) return;
         if (!isRus) baseText = engStr;
         else baseText = txt.text;
 
