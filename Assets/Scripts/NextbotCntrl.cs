@@ -45,13 +45,9 @@ public class NextbotCntrl : MonoBehaviour
     public Vector2 standardSpawnTimeRange = Vector2.zero;
     public float spawnTimeRangeAiK = 1f;
 
-    private void Awake()
-    {
-        TabletCntrl.Instance.SubscribeToCamChange(CamChanged);
-    }
-
     private void Start()
     {
+        TabletCntrl.Instance.SubscribeToCamChange(CamChanged);
         trans = transform;
         if (!GameData.IsCustomNight) ai = perNightAI[GameData.SelectedNightId];
         else ai = GameData.CustomAI[id];

@@ -31,13 +31,9 @@ public class SanicCntrl : MonoBehaviour
     private bool isEnabled = false;
     private bool isWatched = false;
 
-    private void Awake()
-    {
-        TabletCntrl.Instance.SubscribeToCamChange(CamChanged);
-    }
-
     private void Start()
     {
+        TabletCntrl.Instance.SubscribeToCamChange(CamChanged);
         trans = transform;
         if (!GameData.IsCustomNight) ai = perNightAI[GameData.SelectedNightId];
         else ai = GameData.CustomAI[3];
@@ -47,7 +43,7 @@ public class SanicCntrl : MonoBehaviour
             isEnabled = true;
             activateTime -= ai * 0.75f;
             runWaitTime -= ai * 0.1f;
-            attackWaitTime -= ai * 0.1f;
+            attackWaitTime -= ai * 0.02f;
             rotateToCam.SetTarget(normalCam);
             StartCoroutine(nameof(MoveTimer));
         }
@@ -55,7 +51,7 @@ public class SanicCntrl : MonoBehaviour
 
     private IEnumerator MoveTimer()
     {
-        yield return new WaitForSeconds(activateTime);
+        //yield return new WaitForSeconds(activateTime);
         while (true)
         {
             yield return new WaitForSeconds(moveChanceTime);
@@ -69,6 +65,7 @@ public class SanicCntrl : MonoBehaviour
                     if (isWatched)
                     {
                         MovePrevNode();
+                        isWatched = false;
                     }
                     else
                     {
@@ -90,7 +87,7 @@ public class SanicCntrl : MonoBehaviour
 
     public void CamChanged(int id)
     {
-        if (id == 0) isWatched = true;
+        if (id == 0 && nodeId > 0) isWatched = true;
     }
 
     public void MovePrevNode()

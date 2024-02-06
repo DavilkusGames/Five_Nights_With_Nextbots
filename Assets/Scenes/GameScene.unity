@@ -9273,7 +9273,7 @@ MonoBehaviour:
   moveType: 0
   attackType: 1
   screamerTime: 1.5
-  perNightAI: 01000000030000000500000007000000090000000c000000
+  perNightAI: 00000000030000000500000007000000090000000c000000
   moveChanceTime: 4
   walkBackChance: 0.1
   attackTime: 8
@@ -32270,7 +32270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomCntrl: {fileID: 1789859687}
-  obj: {fileID: 0}
+  obj: {fileID: 1794906842}
   pathNodes:
   - {fileID: 1887621603}
   - {fileID: 897386260}
@@ -32278,11 +32278,13 @@ MonoBehaviour:
   runNodes:
   - {fileID: 2081132730}
   - {fileID: 1114949249}
-  perNightAI: 
+  perNightAI: 140000000000000000000000000000000000000000000000
   moveChanceTime: 6
   runWaitTime: 5
-  attackWaitTime: 2
-  moveMinPeriod: 10
+  attackWaitTime: 1.2
+  moveMinPeriod: 5
+  runSpeed: 3
+  rotateToCam: {fileID: 1794906846}
   normalCam: {fileID: 1157354057}
   runCam: {fileID: 1764621755}
   playerCam: {fileID: 311925045}
@@ -44498,7 +44500,7 @@ MonoBehaviour:
   moveType: 2
   attackType: 0
   screamerTime: 1.5
-  perNightAI: 010000000200000006000000090000000b0000000c000000
+  perNightAI: 000000000200000006000000090000000b0000000c000000
   moveChanceTime: 4.5
   walkBackChance: 0.1
   attackTime: 9
