@@ -33,6 +33,7 @@ public class DoorCntrl : MonoBehaviour
     private NextbotCntrl nextbotInDoorway;
     private Action lightBlinkCallback;
     private bool isNextbotUnspotted = false;
+    private bool isOccupied = false;
 
     void Start()
     {
@@ -64,7 +65,7 @@ public class DoorCntrl : MonoBehaviour
 
     public bool GetDoorState() { return isClosed; }
     public bool GetLightState() { return isLightOn; }
-    public bool IsOccupied() { return (nextbotInDoorway != null); }
+    public bool IsOccupied() { return isOccupied; }
 
     public void Break()
     {
@@ -94,14 +95,19 @@ public class DoorCntrl : MonoBehaviour
 
     public void NextbotEntered(NextbotCntrl nextbot)
     {
-        nextbotInDoorway = nextbot;
-        nextbot.obj.SetActive(isLightOn && !isLightBlinked);
-        isNextbotUnspotted = true;
+        if (nextbot != null)
+        {
+            nextbotInDoorway = nextbot;
+            nextbot.obj.SetActive(isLightOn && !isLightBlinked);
+            isNextbotUnspotted = true;
+        }
+        isOccupied = true;
     }
 
     public void NextbotLeft()
     {
         nextbotInDoorway = null;
+        isOccupied = false;
     }
 
     public void ToggleDoor(bool isSilent)

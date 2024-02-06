@@ -35,7 +35,8 @@ public class NextbotManager : MonoBehaviour
 
     public void NextbotEnteredDoor(int doorId, int nextbotId)
     {
-        doors[doorId].NextbotEntered(nextbots[nextbotId]);
+        if (nextbotId < nextbots.Length) doors[doorId].NextbotEntered(nextbots[nextbotId]);
+        else doors[doorId].NextbotEntered(null);
     }
     
     public bool IsPlayerWatching(int camId)
