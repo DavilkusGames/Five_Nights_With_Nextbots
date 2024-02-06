@@ -85,7 +85,7 @@ public class SixAmSceneManager : MonoBehaviour
 
     public void ExitFromScene()
     {
-        if (completedNightId < 4) SceneManager.LoadScene(0);
+        if (completedNightId < 4 || completedNightId == 6) SceneManager.LoadScene(0);
         else if (completedNightId == 4) SceneManager.LoadScene(5);
         else if (GameData.data.nightId == 5) SceneManager.LoadScene(7);
     }

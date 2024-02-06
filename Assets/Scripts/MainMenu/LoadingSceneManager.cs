@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,7 +23,9 @@ public class LoadingSceneManager : MonoBehaviour
 
     private void Start()
     {
-        nightTxt.AddAdditionalText(' ' + (GameData.SelectedNightId+1).ToString());
+        if (GameData.SelectedNightId < 6) nightTxt.AddAdditionalText(' ' + (GameData.SelectedNightId + 1).ToString());
+        else nightTxt.AddAdditionalText(' ' + (YandexGames.IsRus ? "Своя Ночь" : "Custom Night"));
+
         Invoke(nameof(LoadGameScene), loadDelay);
         StartCoroutine(nameof(ScanLinesAnimation));
 

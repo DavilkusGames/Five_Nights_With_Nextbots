@@ -2,9 +2,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Plugins.Audio.Core;
+using System;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [Serializable]
+    public class CustomNightSettingsPlash
+    {
+        public TMP_Text aiTxt;
+        public Button increaseBtn;
+        public Button decreaseBtn;
+    }
+
     public GameObject continueBtn;
     public GameObject continueDisabledTxt;
 
@@ -12,11 +22,13 @@ public class MainMenuManager : MonoBehaviour
     public GameObject customNightDisabledTxt;
 
     public GameObject newGameConfirmPanel;
+    public GameObject customNightPanel;
     public GameObject newspaper;
     public TextTranslator nightIdTxt;
     public TextTranslator scoreTxt;
     public TextTranslator survivedNightsCountTxt;
     public SourceAudio menuMusic;
+    public CustomNightSettingsPlash[] cnSettings;
 
     public TMP_Text verTxt;
     public GameObject loadingPanel;
@@ -36,6 +48,15 @@ public class MainMenuManager : MonoBehaviour
         verTxt.text = Application.version;
 
         menuMusic.Play("menuMusic");
+
+        if (GameData.IsCustomNight) customNightBtn.SetActive(true);
+        for (int i = 0; i < cnSettings.Length; i++)
+        {
+            int ai = GameData.CustomAI[i];
+            cnSettings[i].aiTxt.text = ai.ToString();
+            cnSettings[i].decreaseBtn.interactable = (ai > 0);
+            cnSettings[i].increaseBtn.interactable = (ai < 20);
+        }
 
         if (GameData.dataLoaded) DataLoaded(false);
         else if (Application.isEditor) GameData.LoadData();
@@ -74,6 +95,7 @@ public class MainMenuManager : MonoBehaviour
     public void Continue()
     {
         GameData.SelectedNightId = GameData.data.nightId;
+        GameData.IsCustomNight = false;
         BlackPanel.Instance.SetUIBlock(true);
         BlackPanel.Instance.FadeIn(LoadGameScene);
     }
@@ -100,10 +122,41 @@ public class MainMenuManager : MonoBehaviour
         BlackPanel.Instance.FadeIn(LoadGameScene);
     }
 
+    public void StartCustomNight()
+    {
+        GameData.SelectedNightId = 6;
+        GameData.IsCustomNight = true;
+        BlackPanel.Instance.SetUIBlock(true);
+        BlackPanel.Instance.FadeIn(LoadGameScene);
+    }
+
+    public void IncreaseCNAI(int id)
+    {
+        int ai = GameData.CustomAI[id];
+        ai++;
+        if (ai > 20) ai = 20;
+        cnSettings[id].aiTxt.text = ai.ToString();
+        cnSettings[id].decreaseBtn.interactable = (ai > 0);
+        cnSettings[id].increaseBtn.interactable = (ai < 20);
+        GameData.CustomAI[id] = ai;
+    }
+
+    public void DecreaseCNAI(int id)
+    {
+        int ai = GameData.CustomAI[id];
+        ai--;
+        if (ai < 0) ai = 0;
+        cnSettings[id].aiTxt.text = ai.ToString();
+        cnSettings[id].decreaseBtn.interactable = (ai > 0);
+        cnSettings[id].increaseBtn.interactable = (ai < 20);
+        GameData.CustomAI[id] = ai;
+    }
+
     public void ConfirmNewGame()
     {
         newGameConfirmPanel.SetActive(false);
         GameData.SelectedNightId = 0;
+        GameData.IsCustomNight = false;
         GameData.data.nightId = 0;
         GameData.SaveData();
         BlackPanel.Instance.SetUIBlock(true);
