@@ -364,7 +364,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -653,7 +653,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.0012531, y: -39.16}
-  m_SizeDelta: {x: 350, y: 75.31}
+  m_SizeDelta: {x: 500, y: 75.31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1051880220
 MonoBehaviour:
@@ -675,7 +675,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041D\u043E\u0447\u044C "
+  m_text: "\u041D\u043E\u0447\u044C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c0a3a821e03b50d45bf8950914b96851, type: 2}
   m_sharedMaterial: {fileID: 8711286992357248100, guid: c0a3a821e03b50d45bf8950914b96851, type: 2}
@@ -702,8 +702,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 44
+  m_fontSizeBase: 44
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -23,7 +23,7 @@ public class TimeManager : MonoBehaviour
     void Start()
     {
         if (GameData.SelectedNightId < 6) nightIdTxt.AddAdditionalText(' ' + (GameData.SelectedNightId + 1).ToString());
-        else nightIdTxt.AddAdditionalText(' ' + (YandexGames.IsRus ? "Своя Ночь" : "Custom Night"));
+        else nightIdTxt.SetText(' ' + (YandexGames.IsRus ? "Своя Ночь" : "Custom Night"));
 
         if (YandexGames.Instance != null && YandexGames.IsRus) timeTxt.text = "00:00";
         StartCoroutine(nameof(NightTimer));

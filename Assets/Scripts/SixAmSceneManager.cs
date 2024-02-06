@@ -37,11 +37,16 @@ public class SixAmSceneManager : MonoBehaviour
 
             int scoreInc = 0;
             if (!GameData.IsCustomNight) scoreInc = scoreForEachNight[GameData.data.nightId];
-            else scoreInc = GameData.CustomAI.Sum() * 100;
+            else
+            {
+                scoreInc = GameData.CustomAI.Sum() * 100;
+                if (GameData.CustomAI.Sum() == (20 * 4)) GameData.data.completedTwentyMode = true;
+            }
             scoreTxt.Init(this, GameData.data.score, scoreInc);
             GameData.data.score += scoreInc;
 
             if (GameData.data.nightId < 5) GameData.data.nightId++;
+            if (GameData.data.nightId == 5) GameData.data.isCustomNightOpened = true;
             GameData.data.survivedNightsCount++;
             GameData.SaveData();
 
@@ -87,6 +92,6 @@ public class SixAmSceneManager : MonoBehaviour
     {
         if (completedNightId < 4 || completedNightId == 6) SceneManager.LoadScene(0);
         else if (completedNightId == 4) SceneManager.LoadScene(5);
-        else if (GameData.data.nightId == 5) SceneManager.LoadScene(7);
+        else if (GameData.data.nightId == 5) SceneManager.LoadScene(6);
     }
 }

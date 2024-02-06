@@ -49,13 +49,15 @@ public class MainMenuManager : MonoBehaviour
 
         menuMusic.Play("menuMusic");
 
-        if (GameData.IsCustomNight) customNightBtn.SetActive(true);
-        for (int i = 0; i < cnSettings.Length; i++)
+        if (GameData.IsCustomNight)
         {
-            int ai = GameData.CustomAI[i];
-            cnSettings[i].aiTxt.text = ai.ToString();
-            cnSettings[i].decreaseBtn.interactable = (ai > 0);
-            cnSettings[i].increaseBtn.interactable = (ai < 20);
+            for (int i = 0; i < cnSettings.Length; i++)
+            {
+                int ai = GameData.CustomAI[i];
+                cnSettings[i].aiTxt.text = ai.ToString();
+                cnSettings[i].decreaseBtn.interactable = (ai > 0);
+                cnSettings[i].increaseBtn.interactable = (ai < 20);
+            }
         }
 
         if (GameData.dataLoaded) DataLoaded(false);
