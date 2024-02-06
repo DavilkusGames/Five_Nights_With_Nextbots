@@ -183,7 +183,7 @@ public class NextbotCntrl : MonoBehaviour
     {
         if (!isEnabled) return;
         obj.SetActive(false);
-        NextbotManager.Instance.Screamer(id);
+        NextbotManager.Instance.Screamer(id, screamer, screamerTime);
     }
 
     public void MoveOutOfOffice()

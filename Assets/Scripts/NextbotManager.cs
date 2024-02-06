@@ -88,17 +88,17 @@ public class NextbotManager : MonoBehaviour
 
     private void LightsOffScreamer()
     {
-        Screamer(0, true);
+        Screamer(0, nextbots[0].screamer, nextbots[0].screamerTime, true);
     }
 
-    public void Screamer(int id, bool isPowerDown=false)
+    public void Screamer(int id, GameObject screamer, float screamerTime, bool isPowerDown=false)
     {
         Disable();
-        nextbots[id].screamer.SetActive(true);
+        screamer.SetActive(true);
         screamerAudio.Play("screamer_" + id.ToString());
         UIManager.Instance.GameOver();
         if (!isLightsOff) GameManager.Instance.GameOver();
-        Invoke(nameof(ScreamerEnd), nextbots[id].screamerTime);
+        Invoke(nameof(ScreamerEnd), screamerTime);
         if (isPowerDown) GameOverManager.killerId = 4;
         else GameOverManager.killerId = id;
     }

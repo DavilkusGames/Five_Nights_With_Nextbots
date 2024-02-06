@@ -7,6 +7,7 @@ public class SanicCntrl : MonoBehaviour
 {
     public SanicRoomCntrl roomCntrl;
     public GameObject obj;
+    public GameObject screamer;
     public Transform[] pathNodes;
     public Transform[] runNodes;
     public int[] perNightAI;
@@ -15,6 +16,7 @@ public class SanicCntrl : MonoBehaviour
     public float attackWaitTime;
     public float moveMinPeriod;
     public float runSpeed = 3f;
+    public float screamerTime = 1.5f;
 
     [Header("CAMS")]
     public RotateToCam rotateToCam;
@@ -42,8 +44,8 @@ public class SanicCntrl : MonoBehaviour
         {
             isEnabled = true;
             activateTime -= ai * 0.75f;
-            runWaitTime -= ai * 0.1f;
-            attackWaitTime -= ai * 0.02f;
+            runWaitTime -= ai * 0.15f;
+            attackWaitTime -= ai * 0.04f;
             rotateToCam.SetTarget(normalCam);
             StartCoroutine(nameof(MoveTimer));
         }
@@ -51,7 +53,7 @@ public class SanicCntrl : MonoBehaviour
 
     private IEnumerator MoveTimer()
     {
-        //yield return new WaitForSeconds(activateTime);
+        yield return new WaitForSeconds(activateTime);
         while (true)
         {
             yield return new WaitForSeconds(moveChanceTime);
@@ -64,21 +66,12 @@ public class SanicCntrl : MonoBehaviour
 
                     if (isWatched)
                     {
-                        MovePrevNode();
+                        ResetNode();
                         isWatched = false;
                     }
                     else
                     {
                         MoveNextNode();
-                        if (nodeId == pathNodes.Length-1)
-                        {
-                            if (NextbotManager.Instance.CanEnterDoor(1))
-                            {
-                                isEnabled = false;
-                                NextbotManager.Instance.NextbotEnteredDoor(1, 3);
-                            }
-                            else MovePrevNode();
-                        }
                     }
                 }
             }
@@ -88,6 +81,12 @@ public class SanicCntrl : MonoBehaviour
     public void CamChanged(int id)
     {
         if (id == 0 && nodeId > 0) isWatched = true;
+    }
+
+    public void ResetNode()
+    {
+        nodeId = 0;
+        trans.position = pathNodes[0].position;
     }
 
     public void MovePrevNode()
@@ -104,7 +103,11 @@ public class SanicCntrl : MonoBehaviour
     public void MoveNextNode()
     {
         nodeId++;
-        if (nodeId >= pathNodes.Length) StartCoroutine(nameof(RunTimer));
+        if (nodeId >= pathNodes.Length)
+        {
+            if (NextbotManager.Instance.CanEnterDoor(1) && !NextbotManager.Instance.IsPlayerWatching(1)) StartCoroutine(nameof(RunTimer));
+            else MovePrevNode();
+        }
         else trans.position = pathNodes[nodeId].position;
     }
 
@@ -112,23 +115,26 @@ public class SanicCntrl : MonoBehaviour
     {
         isRunning = true;
         roomCntrl.AlarmState(true);
+        NextbotManager.Instance.NextbotEnteredDoor(1, 3);
 
+        obj.SetActive(false);
         float timeoutTime = Time.time + runWaitTime;
         while (true)
         {
-            yield return null;
+            yield return new WaitForEndOfFrame();
             if (Time.time >= timeoutTime || NextbotManager.Instance.IsPlayerWatching(1)) break;
         }
+        obj.SetActive(true);
 
         // RUN ANIMATION
         float runProgress = 0f;
         while (true)
         {
+            yield return new WaitForEndOfFrame();
             rotateToCam.SetTarget((NextbotManager.Instance.IsPlayerWatching(1)) ? runCam : playerCam);
-
             runProgress += runSpeed * Time.deltaTime;
             if (runProgress > 1f) runProgress = 1f;
-            trans.position = Vector3.Lerp(runNodes[0].position, runNodes[1].position, runProgress * Time.deltaTime);
+            trans.position = Vector3.Lerp(runNodes[0].position, runNodes[1].position, runProgress);
             if (runProgress == 1f) break;
         }
         yield return new WaitForSeconds(attackWaitTime);
@@ -137,7 +143,7 @@ public class SanicCntrl : MonoBehaviour
             if (isEnabled)
             {
                 obj.SetActive(false);
-                NextbotManager.Instance.Screamer(3);
+                NextbotManager.Instance.Screamer(3, screamer, screamerTime);
             }
         }
         else
@@ -152,8 +158,8 @@ public class SanicCntrl : MonoBehaviour
         isRunning = false;
 
         rotateToCam.SetTarget(normalCam);
-        nodeId = 0;
-        trans.position = pathNodes[0].position;
+        ResetNode();
+        roomCntrl.AlarmState(false);
     }
 
     public void Disable()
