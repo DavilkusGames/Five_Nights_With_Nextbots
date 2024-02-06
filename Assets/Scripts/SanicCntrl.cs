@@ -14,8 +14,10 @@ public class SanicCntrl : MonoBehaviour
     public float runWaitTime;
     public float attackWaitTime;
     public float moveMinPeriod;
+    public float runSpeed = 3f;
 
     [Header("CAMS")]
+    public RotateToCam rotateToCam;
     public Transform normalCam;
     public Transform runCam;
     public Transform playerCam;
@@ -29,14 +31,24 @@ public class SanicCntrl : MonoBehaviour
     private bool isEnabled = false;
     private bool isWatched = false;
 
+    private void Awake()
+    {
+        TabletCntrl.Instance.SubscribeToCamChange(CamChanged);
+    }
+
     private void Start()
     {
         trans = transform;
-        ai = perNightAI[GameData.SelectedNightId];
+        if (!GameData.IsCustomNight) ai = perNightAI[GameData.SelectedNightId];
+        else ai = GameData.CustomAI[3];
         if (ai == 0) obj.SetActive(false);
         else
         {
             isEnabled = true;
+            activateTime -= ai * 0.75f;
+            runWaitTime -= ai * 0.1f;
+            attackWaitTime -= ai * 0.1f;
+            rotateToCam.SetTarget(normalCam);
             StartCoroutine(nameof(MoveTimer));
         }
     }
@@ -76,14 +88,75 @@ public class SanicCntrl : MonoBehaviour
         }
     }
 
+    public void CamChanged(int id)
+    {
+        if (id == 0) isWatched = true;
+    }
+
     public void MovePrevNode()
     {
-
+        nodeId--;
+        if (nodeId < 0)
+        {
+            nodeId = 0;
+            return;
+        }
+        trans.position = pathNodes[nodeId].position;
     }
 
     public void MoveNextNode()
     {
+        nodeId++;
+        if (nodeId >= pathNodes.Length) StartCoroutine(nameof(RunTimer));
+        else trans.position = pathNodes[nodeId].position;
+    }
 
+    private IEnumerator RunTimer()
+    {
+        isRunning = true;
+        roomCntrl.AlarmState(true);
+
+        float timeoutTime = Time.time + runWaitTime;
+        while (true)
+        {
+            yield return null;
+            if (Time.time >= timeoutTime || NextbotManager.Instance.IsPlayerWatching(1)) break;
+        }
+
+        // RUN ANIMATION
+        float runProgress = 0f;
+        while (true)
+        {
+            rotateToCam.SetTarget((NextbotManager.Instance.IsPlayerWatching(1)) ? runCam : playerCam);
+
+            runProgress += runSpeed * Time.deltaTime;
+            if (runProgress > 1f) runProgress = 1f;
+            trans.position = Vector3.Lerp(runNodes[0].position, runNodes[1].position, runProgress * Time.deltaTime);
+            if (runProgress == 1f) break;
+        }
+        yield return new WaitForSeconds(attackWaitTime);
+        if (!NextbotManager.Instance.IsDoorClosed(1))
+        {
+            if (isEnabled)
+            {
+                obj.SetActive(false);
+                NextbotManager.Instance.Screamer(3);
+            }
+        }
+        else
+        {
+            NextbotManager.Instance.WaitForLightBlink(1, MoveOutOfOffice);
+        }
+    }
+
+    public void MoveOutOfOffice()
+    {
+        NextbotManager.Instance.NextbotLeftDoor(1);
+        isRunning = false;
+
+        rotateToCam.SetTarget(normalCam);
+        nodeId = 0;
+        trans.position = pathNodes[0].position;
     }
 
     public void Disable()

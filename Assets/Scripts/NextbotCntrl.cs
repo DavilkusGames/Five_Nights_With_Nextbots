@@ -9,7 +9,7 @@ public enum NextbotType
 
 public enum NextbotCamMoveType
 {
-    IgnoreCams, StunIfWatching, Random, BackIfWatching
+    IgnoreCams, StunIfWatching, Random
 };
 
 public enum NextbotAttackType
@@ -53,7 +53,8 @@ public class NextbotCntrl : MonoBehaviour
     private void Start()
     {
         trans = transform;
-        ai = perNightAI[GameData.SelectedNightId];
+        if (!GameData.IsCustomNight) ai = perNightAI[GameData.SelectedNightId];
+        else ai = GameData.CustomAI[id];
         standardSpawnTimeRange = new Vector2(standardSpawnTimeRange.x - ai * spawnTimeRangeAiK, 
             standardSpawnTimeRange.y - ai * spawnTimeRangeAiK);
         if (ai == 0) obj.SetActive(false);
@@ -183,6 +184,7 @@ public class NextbotCntrl : MonoBehaviour
 
     public void Screamer()
     {
+        if (!isEnabled) return;
         obj.SetActive(false);
         NextbotManager.Instance.Screamer(id);
     }
