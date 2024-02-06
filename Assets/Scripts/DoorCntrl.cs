@@ -112,7 +112,7 @@ public class DoorCntrl : MonoBehaviour
 
     public void ToggleDoor(bool isSilent)
     {
-        if (isAnimationPlaying || !this.enabled) return;
+        if (isAnimationPlaying || !this.enabled || TabletCntrl.Instance.IsTabletUp()) return;
         if (isBroken)
         {
             doorAudio.Play("doorError");
@@ -133,7 +133,7 @@ public class DoorCntrl : MonoBehaviour
 
     public void ToggleLight(bool state)
     {
-        if (!this.enabled) return;
+        if (!this.enabled || TabletCntrl.Instance.IsTabletUp()) return;
         if (isBroken)
         {
             if (state) doorAudio.Play("doorError");
