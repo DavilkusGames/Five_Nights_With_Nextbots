@@ -56,23 +56,21 @@ public class SanicCntrl : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(moveChanceTime);
-            if (isEnabled && !isRunning && Random.Range(1, 21) <= ai)
+
+            if (isEnabled && !isRunning && !NextbotManager.Instance.IsPlayerWatching(0))
             {
-                if (!NextbotManager.Instance.IsPlayerWatching(0))
+                if (isWatched)
+                {
+                    if (Random.Range(0, 10) < 7) ResetNode();
+                    else MovePrevNode();
+                    isWatched = false;
+                }
+                else if (Random.Range(1, 21) <= ai)
                 {
                     if (Time.time < prevMoveTime + moveMinPeriod) yield return new WaitForSeconds((prevMoveTime + moveMinPeriod) - Time.time);
-                    prevMoveTime = Time.time;
-
-                    if (isWatched)
-                    {
-                        ResetNode();
-                        isWatched = false;
-                    }
-                    else
-                    {
-                        MoveNextNode();
-                    }
+                    MoveNextNode();
                 }
+                prevMoveTime = Time.time;
             }
         }
     }
@@ -116,6 +114,14 @@ public class SanicCntrl : MonoBehaviour
         roomCntrl.AlarmState(true);
         NextbotManager.Instance.NextbotEnteredDoor(1, 3);
 
+        // WAIT FOR TRANSITION FROM CAM 1
+        while (true)
+        {
+            yield return new WaitForEndOfFrame();
+            if (!NextbotManager.Instance.IsPlayerWatching(1)) break;
+        }
+
+        // WAIT FOR TRANSITION TO CAM 1
         obj.SetActive(false);
         float timeoutTime = Time.time + runWaitTime;
         while (true)
@@ -159,6 +165,7 @@ public class SanicCntrl : MonoBehaviour
         rotateToCam.SetTarget(normalCam);
         ResetNode();
         roomCntrl.AlarmState(false);
+        if (NextbotManager.Instance.IsPlayerWatching(0)) TabletCntrl.Instance.DisableCams();
     }
 
     public void Disable()

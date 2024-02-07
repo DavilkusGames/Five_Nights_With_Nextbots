@@ -51,6 +51,7 @@ public class DoorCntrl : MonoBehaviour
         {
             isLightBlinked = !isLightBlinked;
             light.SetActive(!isLightBlinked);
+            blackImitation.SetActive(isLightBlinked);
             if (nextbotInDoorway != null) nextbotInDoorway.obj.SetActive(!isLightBlinked);
             if (isLightBlinked && lightBlinkCallback != null)
             {

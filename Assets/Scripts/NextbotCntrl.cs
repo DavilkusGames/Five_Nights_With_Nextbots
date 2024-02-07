@@ -180,7 +180,6 @@ public class NextbotCntrl : MonoBehaviour
 
     public void Screamer()
     {
-        if (!isEnabled) return;
         obj.SetActive(false);
         NextbotManager.Instance.Screamer(id, screamer, screamerTime);
     }
