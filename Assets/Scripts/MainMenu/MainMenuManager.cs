@@ -162,7 +162,7 @@ public class MainMenuManager : MonoBehaviour
         GameData.data.nightId = 0;
         GameData.SaveData();
         BlackPanel.Instance.SetUIBlock(true);
-        BlackPanel.Instance.FadeIn(LoadGameScene);
+        BlackPanel.Instance.FadeIn(ShowNewspaper, 3f);
     }
 
     public void LoadGameScene()
