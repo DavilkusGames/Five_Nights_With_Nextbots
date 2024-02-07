@@ -85,7 +85,7 @@
   },
 
   SaveToLb : function (score) {
-    lb.setLeaderboardScore('fnwnScore', score);
+    lb.setLeaderboardScore('fivenwnScore', score);
   },
 
   SaveCloudData : function (data) {
