@@ -81,7 +81,7 @@ public class MainMenuManager : MonoBehaviour
         continueDisabledTxt.SetActive((GameData.data.nightId == 0));
 
         customNightBtn.SetActive(GameData.data.isCustomNightOpened);
-        customNightDisabledTxt.SetActive(GameData.data.isCustomNightOpened);
+        customNightDisabledTxt.SetActive(!GameData.data.isCustomNightOpened);
 
         nightIdTxt.AddAdditionalText(' ' + (GameData.data.nightId+1).ToString());
         scoreTxt.AddAdditionalText(' ' + GameData.data.score.ToString());
