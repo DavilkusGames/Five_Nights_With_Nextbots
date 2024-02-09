@@ -80,8 +80,8 @@ public class MainMenuManager : MonoBehaviour
         continueBtn.SetActive((GameData.data.nightId > 0));
         continueDisabledTxt.SetActive((GameData.data.nightId == 0));
 
-        customNightBtn.SetActive(GameData.data.isCustomNightOpened);
-        customNightDisabledTxt.SetActive(!GameData.data.isCustomNightOpened);
+        customNightBtn.SetActive((GameData.data.isCustomNightOpened || YandexGames.CustomNightOpenedPromo));
+        customNightDisabledTxt.SetActive(!(GameData.data.isCustomNightOpened || YandexGames.CustomNightOpenedPromo));
 
         nightIdTxt.AddAdditionalText(' ' + (GameData.data.nightId+1).ToString());
         scoreTxt.AddAdditionalText(' ' + GameData.data.score.ToString());

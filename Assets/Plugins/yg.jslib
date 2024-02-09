@@ -84,6 +84,13 @@
     })
   },
 
+  IsCNPromo : function () {
+    ysdk.getFlags())
+    .then(flags => {
+        return (flags.custom_night_opened == "True");
+    });
+  },
+
   SaveToLb : function (score) {
     lb.setLeaderboardScore('fivenwnScore', score);
   },

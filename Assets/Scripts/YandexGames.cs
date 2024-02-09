@@ -23,6 +23,9 @@ public class YandexGames : MonoBehaviour
     private static extern string GetLang();
 
     [DllImport("__Internal")]
+    private static extern bool IsCNPromo();
+
+    [DllImport("__Internal")]
     private static extern bool IsMobilePlatform();
 
     [DllImport("__Internal")]
@@ -47,6 +50,7 @@ public class YandexGames : MonoBehaviour
     public static bool IsRus { get; private set; }
     public static bool IsAuth { get; private set; }
     public static bool IsMobile { get; private set; }
+    public static bool CustomNightOpenedPromo { get; private set; }
 
     private static string[] RusLangDomens = { "ru", "be", "kk", "uk", "uz" };
     private List<TextTranslator> translateQueue = new List<TextTranslator>();
@@ -228,6 +232,8 @@ public class YandexGames : MonoBehaviour
         while (!PlayerInit()) yield return new WaitForSeconds(0.2f);
         IsAuth = AuthCheck();
         Debug.Log("IsAuth: " + IsAuth.ToString());
+        CustomNightOpenedPromo = IsCNPromo();
+        Debug.Log("CN Promo State: " + CustomNightOpenedPromo.ToString());
 
         GameData.LoadData();
     }
