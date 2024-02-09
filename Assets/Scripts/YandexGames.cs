@@ -218,6 +218,7 @@ public class YandexGames : MonoBehaviour
     {
         CustomNightOpenedPromo = true;
         Debug.Log("CN Promo Active!");
+        if (MainMenuManager.Instance != null) MainMenuManager.Instance.CNPromoActive();
     }
 
     private IEnumerator WaitForSDKInit()
