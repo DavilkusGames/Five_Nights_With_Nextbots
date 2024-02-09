@@ -84,10 +84,11 @@
     })
   },
 
-  IsCNPromo : function () {
-    ysdk.getFlags())
-    .then(flags => {
-        return (flags.custom_night_opened == "True");
+  CNPromoFlag : function () {
+    ysdk.getFlags().then(flags => {
+        if (flags.custom_night_opened === "True") {
+            myGameInstance.SendMessage("_yandexGames", "CNPromoActive");
+        }
     });
   },
 

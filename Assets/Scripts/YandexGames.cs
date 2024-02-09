@@ -23,7 +23,7 @@ public class YandexGames : MonoBehaviour
     private static extern string GetLang();
 
     [DllImport("__Internal")]
-    private static extern bool IsCNPromo();
+    private static extern void CNPromoFlag();
 
     [DllImport("__Internal")]
     private static extern bool IsMobilePlatform();
@@ -214,6 +214,12 @@ public class YandexGames : MonoBehaviour
         if (IsInit) GameReady();
     }
 
+    public void CNPromoActive()
+    {
+        CustomNightOpenedPromo = true;
+        Debug.Log("CN Promo Active!");
+    }
+
     private IEnumerator WaitForSDKInit()
     {
         yield return new WaitForSeconds(0.5f);
@@ -232,8 +238,7 @@ public class YandexGames : MonoBehaviour
         while (!PlayerInit()) yield return new WaitForSeconds(0.2f);
         IsAuth = AuthCheck();
         Debug.Log("IsAuth: " + IsAuth.ToString());
-        CustomNightOpenedPromo = IsCNPromo();
-        Debug.Log("CN Promo State: " + CustomNightOpenedPromo.ToString());
+        CNPromoFlag();
 
         GameData.LoadData();
     }
