@@ -131,7 +131,7 @@ public class NextbotCntrl : MonoBehaviour
                                 NextbotManager.Instance.NextbotEnteredDoor(pathNodes[nodeId].officeDoorId, id);
                                 StartCoroutine(nameof(InOfficeTimer));
                             }
-                            else MovePrevNode();
+                            else if (Random.Range(0, 7) >= 4) MovePrevNode();
                         }
                     }
                 }

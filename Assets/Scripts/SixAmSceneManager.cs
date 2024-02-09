@@ -39,7 +39,7 @@ public class SixAmSceneManager : MonoBehaviour
             if (!GameData.IsCustomNight) scoreInc = scoreForEachNight[GameData.data.nightId];
             else
             {
-                scoreInc = GameData.CustomAI.Sum() * 100;
+                scoreInc = GameData.CustomAI.Sum() * 15;
                 if (GameData.CustomAI.Sum() == (20 * 4)) GameData.data.completedTwentyMode = true;
             }
             scoreTxt.Init(this, GameData.data.score, scoreInc);
