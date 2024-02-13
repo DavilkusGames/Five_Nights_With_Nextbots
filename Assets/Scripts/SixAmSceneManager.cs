@@ -45,8 +45,8 @@ public class SixAmSceneManager : MonoBehaviour
             scoreTxt.Init(this, GameData.data.score, scoreInc);
             GameData.data.score += scoreInc;
 
+            if (GameData.SelectedNightId == 5) GameData.data.isCustomNightOpened = true;
             if (GameData.data.nightId < 5) GameData.data.nightId++;
-            if (GameData.data.nightId == 5) GameData.data.isCustomNightOpened = true;
             GameData.data.survivedNightsCount++;
             GameData.SaveData();
 
