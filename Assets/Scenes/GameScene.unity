@@ -32079,7 +32079,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -234, y: -54.000244}
+  m_AnchoredPosition: {x: -234, y: -54.00023}
   m_SizeDelta: {x: 500, y: -220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1539820579
@@ -32876,10 +32876,10 @@ MonoBehaviour:
   - {fileID: 2081132730}
   - {fileID: 1114949249}
   perNightAI: 000000000300000005000000080000000b0000000d000000
-  moveChanceTime: 6
-  runWaitTime: 5
+  moveChanceTime: 4
+  runWaitTime: 6
   attackWaitTime: 1.2
-  moveMinPeriod: 5
+  moveMinPeriod: 6
   runSpeed: 0.65
   screamerTime: 1.5
   rotateToCam: {fileID: 1794906846}

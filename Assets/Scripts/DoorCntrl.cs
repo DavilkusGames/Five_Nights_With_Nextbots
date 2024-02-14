@@ -109,6 +109,7 @@ public class DoorCntrl : MonoBehaviour
     {
         nextbotInDoorway = null;
         isOccupied = false;
+        isNextbotUnspotted = false;
     }
 
     public void ToggleDoor(bool isSilent)
